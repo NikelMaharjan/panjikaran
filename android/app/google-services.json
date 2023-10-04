@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "346909195933",
+    "project_id": "digitalpalika-65acc",
+    "storage_bucket": "digitalpalika-65acc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:346909195933:android:299d24859038baafb05e74",
+        "android_client_info": {
+          "package_name": "com.example.model"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLSG_4PzcslUOi8jSTHJAdY7k99xtN-rs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
