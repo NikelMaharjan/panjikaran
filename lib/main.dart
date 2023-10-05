@@ -76,7 +76,7 @@ class Main extends StatelessWidget {
     return GetMaterialApp(
       theme: ThemeData(
         useMaterial3: true,
-        fontFamily: 'Poppins'
+        fontFamily: 'Raleway'
       ),
       debugShowCheckedModeBanner: false,
       home: StatusPage()

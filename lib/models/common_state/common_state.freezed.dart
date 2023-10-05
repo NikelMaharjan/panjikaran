@@ -21,6 +21,7 @@ mixin _$CommonState {
   bool get isSuccess => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
+  Otp? get otp => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CommonStateCopyWith<CommonState> get copyWith =>
@@ -34,7 +35,12 @@ abstract class $CommonStateCopyWith<$Res> {
       _$CommonStateCopyWithImpl<$Res, CommonState>;
   @useResult
   $Res call(
-      {String errText, bool isLoad, bool isSuccess, bool isError, User? user});
+      {String errText,
+      bool isLoad,
+      bool isSuccess,
+      bool isError,
+      User? user,
+      Otp? otp});
 }
 
 /// @nodoc
@@ -55,6 +61,7 @@ class _$CommonStateCopyWithImpl<$Res, $Val extends CommonState>
     Object? isSuccess = null,
     Object? isError = null,
     Object? user = freezed,
+    Object? otp = freezed,
   }) {
     return _then(_value.copyWith(
       errText: null == errText
@@ -77,6 +84,10 @@ class _$CommonStateCopyWithImpl<$Res, $Val extends CommonState>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
+      otp: freezed == otp
+          ? _value.otp
+          : otp // ignore: cast_nullable_to_non_nullable
+              as Otp?,
     ) as $Val);
   }
 }
@@ -90,7 +101,12 @@ abstract class _$$_CommonStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String errText, bool isLoad, bool isSuccess, bool isError, User? user});
+      {String errText,
+      bool isLoad,
+      bool isSuccess,
+      bool isError,
+      User? user,
+      Otp? otp});
 }
 
 /// @nodoc
@@ -109,6 +125,7 @@ class __$$_CommonStateCopyWithImpl<$Res>
     Object? isSuccess = null,
     Object? isError = null,
     Object? user = freezed,
+    Object? otp = freezed,
   }) {
     return _then(_$_CommonState(
       errText: null == errText
@@ -131,6 +148,10 @@ class __$$_CommonStateCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
+      otp: freezed == otp
+          ? _value.otp
+          : otp // ignore: cast_nullable_to_non_nullable
+              as Otp?,
     ));
   }
 }
@@ -143,7 +164,8 @@ class _$_CommonState implements _CommonState {
       required this.isLoad,
       required this.isSuccess,
       required this.isError,
-      required this.user});
+      this.user,
+      this.otp});
 
   @override
   final String errText;
@@ -155,10 +177,12 @@ class _$_CommonState implements _CommonState {
   final bool isError;
   @override
   final User? user;
+  @override
+  final Otp? otp;
 
   @override
   String toString() {
-    return 'CommonState(errText: $errText, isLoad: $isLoad, isSuccess: $isSuccess, isError: $isError, user: $user)';
+    return 'CommonState(errText: $errText, isLoad: $isLoad, isSuccess: $isSuccess, isError: $isError, user: $user, otp: $otp)';
   }
 
   @override
@@ -171,12 +195,13 @@ class _$_CommonState implements _CommonState {
             (identical(other.isSuccess, isSuccess) ||
                 other.isSuccess == isSuccess) &&
             (identical(other.isError, isError) || other.isError == isError) &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.otp, otp) || other.otp == otp));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, errText, isLoad, isSuccess, isError, user);
+      Object.hash(runtimeType, errText, isLoad, isSuccess, isError, user, otp);
 
   @JsonKey(ignore: true)
   @override
@@ -191,7 +216,8 @@ abstract class _CommonState implements CommonState {
       required final bool isLoad,
       required final bool isSuccess,
       required final bool isError,
-      required final User? user}) = _$_CommonState;
+      final User? user,
+      final Otp? otp}) = _$_CommonState;
 
   @override
   String get errText;
@@ -203,6 +229,8 @@ abstract class _CommonState implements CommonState {
   bool get isError;
   @override
   User? get user;
+  @override
+  Otp? get otp;
   @override
   @JsonKey(ignore: true)
   _$$_CommonStateCopyWith<_$_CommonState> get copyWith =>

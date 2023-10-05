@@ -1,6 +1,7 @@
 
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:model/models/otp.dart';
 import 'package:model/models/user.dart';
 
 part 'common_state.freezed.dart';
@@ -13,7 +14,9 @@ class CommonState with _$CommonState{
     required bool isLoad,
     required bool isSuccess,
     required bool isError,
-    required User? user
+    User? user,
+    Otp? otp,
+
   }) =_CommonState;
 
 

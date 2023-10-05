@@ -6,8 +6,10 @@ import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:model/models/common_state/common_state.dart';
 import 'package:model/models/otp.dart';
 import 'package:model/provider/otp_provider.dart';
+import 'package:model/provider/otp_state_provider.dart';
 import 'package:model/services/otp_services.dart';
 
 class OtpPage extends ConsumerStatefulWidget {
@@ -22,7 +24,7 @@ class OtpPage extends ConsumerStatefulWidget {
 
 class _OtpPageState extends ConsumerState<OtpPage> {
   late Timer _timer;
-  int _start = 30;
+  int _start = 10;
 
   void startTimer() {
     const oneSec = Duration(seconds: 1);
@@ -30,9 +32,8 @@ class _OtpPageState extends ConsumerState<OtpPage> {
       oneSec,
           (Timer timer) {
         if (_start == 0) {
-          print("something");
-          OtpServices.getOtpToken(token: widget.token);
-          _start = 30;
+          ref.invalidate(otpStateProvider);
+          _start = 10;
         } else {
           setState(() {
             _start--;
@@ -60,6 +61,10 @@ class _OtpPageState extends ConsumerState<OtpPage> {
 
 
     final otpData = ref.watch(otpProvider(widget.token));
+
+
+    final otpState = ref.watch(otpStateProvider);
+
 
 
     return Scaffold(
@@ -132,6 +137,44 @@ class _OtpPageState extends ConsumerState<OtpPage> {
                 SizedBox(height: 20,),
 
 
+                //
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     CircleAvatar(
+                //       radius: 18,
+                //       backgroundColor: Colors.black,
+                //       child: CircleAvatar(
+                //         radius: 16,
+                //         backgroundColor: Colors.white,
+                //         child: Text("$_start"),
+                //       ),
+                //     ),
+                //
+                //     SizedBox(width: 10,),
+                //
+                //     otpData.when(
+                //         data: (data){
+                //           print(data.toString());
+                //           return Text(data.otp.toString(), style: TextStyle(fontSize: 30, letterSpacing: 8),);
+                //         },
+                //         error: (err, stack) => Center(child: Text(err.toString()),),
+                //         loading: () => Center(child: CircularProgressIndicator(),)
+                //     ),
+                //
+                //
+                //     // StreamBuilder(
+                //     //     initialData: Otp(expired_at: "30", otp: "0"),
+                //     //
+                //     //     stream: OtpServices.getOtpToken(token: widget.token),
+                //     //     builder: (context, snapshot) {
+                //     //       return  Text(
+                //     //         snapshot.data!.otp, style: TextStyle(fontSize: 50),
+                //     //       );
+                //     //     }
+                //     // ),
+                //   ],
+                // ),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -147,28 +190,13 @@ class _OtpPageState extends ConsumerState<OtpPage> {
                     ),
 
                     SizedBox(width: 10,),
+                    
+                    _buildOtp(otpState)
 
-                    otpData.when(
-                        data: (data){
-                          return Text(data.otp.toString(), style: TextStyle(fontSize: 30, letterSpacing: 8),);
-                        },
-                        error: (err, stack) => Center(child: Text(err.toString()),),
-                        loading: () => Center(child: CircularProgressIndicator(),)
-                    ),
-
-
-                    // StreamBuilder(
-                    //     initialData: Otp(expired_at: "30", otp: "0"),
-                    //
-                    //     stream: OtpServices.getOtpToken(token: widget.token),
-                    //     builder: (context, snapshot) {
-                    //       return  Text(
-                    //         snapshot.data!.otp, style: TextStyle(fontSize: 50),
-                    //       );
-                    //     }
-                    // ),
                   ],
-                ),
+                )
+
+
 
 
 
@@ -182,4 +210,21 @@ class _OtpPageState extends ConsumerState<OtpPage> {
       ),
     );
   }
+
+   _buildOtp(CommonState otpState) {
+    if(otpState.isLoad){
+      return CircularProgressIndicator();
+    }
+
+    else if(otpState.errText.isEmpty){
+
+      return Text(otpState.otp!.otp.toString(), style: TextStyle(fontSize: 20),);
+
+    }
+
+    else{
+      return Center(child: Text(otpState.errText),);
+    }
+  }
+
 }

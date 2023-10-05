@@ -55,7 +55,6 @@ class OtpServices {
 
   static Future <Either<String, Otp>> getOtpToken ({required String token}) async {
     final dio = Dio();
-    print("called");
 
     try{
       final response = await dio.post("https://panjikaran.digitalpalika.org/api/v1/auth/otp/resend",

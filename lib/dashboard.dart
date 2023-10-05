@@ -59,7 +59,7 @@ class DashBoardPage extends ConsumerWidget {
       ),
 
       body: PersistentTabView(
-        backgroundColor: Colors.green, // Default is Colors.white.
+        backgroundColor: Colors.white, // Default is Colors.white.
 
         context,
         screens: [
@@ -82,13 +82,13 @@ class DashBoardPage extends ConsumerWidget {
         icon:  const Icon(CupertinoIcons.profile_circled),
         title: ("Profile"),
         activeColorPrimary: Colors.black,
-        inactiveColorPrimary: CupertinoColors.white,
+        inactiveColorPrimary: CupertinoColors.black,
       ),
       PersistentBottomNavBarItem(
         icon:  const Icon(CupertinoIcons.add_circled),
         title: ("Services"),
         activeColorPrimary: Colors.black,
-        inactiveColorPrimary: CupertinoColors.white,
+        inactiveColorPrimary: CupertinoColors.black,
       ),
 
 
