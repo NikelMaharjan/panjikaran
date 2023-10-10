@@ -2,20 +2,21 @@
 
 import 'dart:async';
 
-import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:dio/dio.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:model/models/common_state/common_state.dart';
 import 'package:model/models/otp.dart';
-import 'package:model/provider/otp_provider.dart';
+import 'package:model/models/location.dart';
 import 'package:model/provider/otp_state_provider.dart';
 import 'package:model/services/otp_services.dart';
 
 class OtpPage extends ConsumerStatefulWidget {
 
-  String token;
-  OtpPage({required this.token});
+
 
   @override
   ConsumerState<OtpPage> createState() => _OtpPageState();
@@ -60,7 +61,6 @@ class _OtpPageState extends ConsumerState<OtpPage> {
   Widget build(BuildContext context) {
 
 
-    final otpData = ref.watch(otpProvider(widget.token));
 
 
     final otpState = ref.watch(otpStateProvider);
@@ -137,44 +137,7 @@ class _OtpPageState extends ConsumerState<OtpPage> {
                 SizedBox(height: 20,),
 
 
-                //
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   children: [
-                //     CircleAvatar(
-                //       radius: 18,
-                //       backgroundColor: Colors.black,
-                //       child: CircleAvatar(
-                //         radius: 16,
-                //         backgroundColor: Colors.white,
-                //         child: Text("$_start"),
-                //       ),
-                //     ),
-                //
-                //     SizedBox(width: 10,),
-                //
-                //     otpData.when(
-                //         data: (data){
-                //           print(data.toString());
-                //           return Text(data.otp.toString(), style: TextStyle(fontSize: 30, letterSpacing: 8),);
-                //         },
-                //         error: (err, stack) => Center(child: Text(err.toString()),),
-                //         loading: () => Center(child: CircularProgressIndicator(),)
-                //     ),
-                //
-                //
-                //     // StreamBuilder(
-                //     //     initialData: Otp(expired_at: "30", otp: "0"),
-                //     //
-                //     //     stream: OtpServices.getOtpToken(token: widget.token),
-                //     //     builder: (context, snapshot) {
-                //     //       return  Text(
-                //     //         snapshot.data!.otp, style: TextStyle(fontSize: 50),
-                //     //       );
-                //     //     }
-                //     // ),
-                //   ],
-                // ),
+
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -205,7 +168,41 @@ class _OtpPageState extends ConsumerState<OtpPage> {
               ],
             ),
           ),
+          // DropdownSearch<Province>(
+          //
+          //   dropdownDecoratorProps: DropDownDecoratorProps(
+          //     dropdownSearchDecoration: InputDecoration(
+          //       labelText: "Menu mode",
+          //       hintText: "country in menu mode",
+          //     )
+          //   ),
+          //
+          //   asyncItems: (String filter) async {
+          //
+          //
+          //     try{
+          //
+          //       var response = await Dio().get(
+          //           "https://panjikaran.digitalpalika.org/api/v1/provinces"
+          //       );
+          //       final data = (response.data['results'] as List).map((e) => Province.fromJson(e)).toList();
+          //       return data;
+          //
+          //     }
+          //     on DioException catch (err) {
+          //       throw "Something went wrong";
+          //
+          //     }
+          //
+          //   },
+          //   onChanged: (Province? data) {
+          //     print(data);
+          //   },
+          // )
 
+          FormBuilderDropdown(name: "name", items: [
+
+          ])
         ],
       ),
     );

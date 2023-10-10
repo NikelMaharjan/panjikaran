@@ -37,9 +37,6 @@ class AuthService {
       final user = Hive.box<String?>('user');
       user.put('userInfo', jsonEncode(response.data));
 
-
-
-
       final phone = Hive.box<String?>('phone_number');
       phone.put('phone_number', phone_number);
 
@@ -86,7 +83,6 @@ class AuthService {
                 'Accept': 'application/json'
               }
           ));
-
 
 
       if(response.data["detail"] != null){
