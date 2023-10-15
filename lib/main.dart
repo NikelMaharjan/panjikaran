@@ -7,6 +7,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:model/count.dart';
@@ -73,13 +74,28 @@ class Main extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
-        fontFamily: 'Raleway'
-      ),
-      debugShowCheckedModeBanner: false,
-      home: StatusPage()
+    final height =    MediaQuery.of(context).size.height;
+    final width =    MediaQuery.of(context).size.width;
+
+    return ScreenUtilInit(
+      designSize:  Size(width, height),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child){
+        return GetMaterialApp(
+            theme: ThemeData(
+                useMaterial3: true,
+                fontFamily: 'Poppins',
+                elevatedButtonTheme: ElevatedButtonThemeData(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black,
+
+                    ))
+            ),
+            debugShowCheckedModeBanner: false,
+            home: StatusPage()
+        );
+      },
     );
   }
 }

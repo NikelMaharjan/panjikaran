@@ -15,8 +15,8 @@ class AuthService {
     final dio = Dio();
     final fcm_token = Hive.box<String?>('fcm_token');
     final token  = fcm_token.get('fcm_token');
-    print("fcm_token is $token");
-    logDev.log(token!);
+    // print("fcm_token is $token");
+    // logDev.log(token!);
 
 
 

@@ -20,6 +20,7 @@ mixin _$CommonState {
   bool get isLoad => throw _privateConstructorUsedError;
   bool get isSuccess => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
+  Map<dynamic, dynamic>? get data => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
   Otp? get otp => throw _privateConstructorUsedError;
 
@@ -39,6 +40,7 @@ abstract class $CommonStateCopyWith<$Res> {
       bool isLoad,
       bool isSuccess,
       bool isError,
+      Map<dynamic, dynamic>? data,
       User? user,
       Otp? otp});
 }
@@ -60,6 +62,7 @@ class _$CommonStateCopyWithImpl<$Res, $Val extends CommonState>
     Object? isLoad = null,
     Object? isSuccess = null,
     Object? isError = null,
+    Object? data = freezed,
     Object? user = freezed,
     Object? otp = freezed,
   }) {
@@ -80,6 +83,10 @@ class _$CommonStateCopyWithImpl<$Res, $Val extends CommonState>
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
               as bool,
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, dynamic>?,
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -105,6 +112,7 @@ abstract class _$$_CommonStateCopyWith<$Res>
       bool isLoad,
       bool isSuccess,
       bool isError,
+      Map<dynamic, dynamic>? data,
       User? user,
       Otp? otp});
 }
@@ -124,6 +132,7 @@ class __$$_CommonStateCopyWithImpl<$Res>
     Object? isLoad = null,
     Object? isSuccess = null,
     Object? isError = null,
+    Object? data = freezed,
     Object? user = freezed,
     Object? otp = freezed,
   }) {
@@ -144,6 +153,10 @@ class __$$_CommonStateCopyWithImpl<$Res>
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
               as bool,
+      data: freezed == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, dynamic>?,
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -159,13 +172,15 @@ class __$$_CommonStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CommonState implements _CommonState {
-  const _$_CommonState(
+  _$_CommonState(
       {required this.errText,
       required this.isLoad,
       required this.isSuccess,
       required this.isError,
+      final Map<dynamic, dynamic>? data,
       this.user,
-      this.otp});
+      this.otp})
+      : _data = data;
 
   @override
   final String errText;
@@ -175,6 +190,16 @@ class _$_CommonState implements _CommonState {
   final bool isSuccess;
   @override
   final bool isError;
+  final Map<dynamic, dynamic>? _data;
+  @override
+  Map<dynamic, dynamic>? get data {
+    final value = _data;
+    if (value == null) return null;
+    if (_data is EqualUnmodifiableMapView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
   @override
   final User? user;
   @override
@@ -182,7 +207,7 @@ class _$_CommonState implements _CommonState {
 
   @override
   String toString() {
-    return 'CommonState(errText: $errText, isLoad: $isLoad, isSuccess: $isSuccess, isError: $isError, user: $user, otp: $otp)';
+    return 'CommonState(errText: $errText, isLoad: $isLoad, isSuccess: $isSuccess, isError: $isError, data: $data, user: $user, otp: $otp)';
   }
 
   @override
@@ -195,13 +220,14 @@ class _$_CommonState implements _CommonState {
             (identical(other.isSuccess, isSuccess) ||
                 other.isSuccess == isSuccess) &&
             (identical(other.isError, isError) || other.isError == isError) &&
+            const DeepCollectionEquality().equals(other._data, _data) &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.otp, otp) || other.otp == otp));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, errText, isLoad, isSuccess, isError, user, otp);
+  int get hashCode => Object.hash(runtimeType, errText, isLoad, isSuccess,
+      isError, const DeepCollectionEquality().hash(_data), user, otp);
 
   @JsonKey(ignore: true)
   @override
@@ -211,11 +237,12 @@ class _$_CommonState implements _CommonState {
 }
 
 abstract class _CommonState implements CommonState {
-  const factory _CommonState(
+  factory _CommonState(
       {required final String errText,
       required final bool isLoad,
       required final bool isSuccess,
       required final bool isError,
+      final Map<dynamic, dynamic>? data,
       final User? user,
       final Otp? otp}) = _$_CommonState;
 
@@ -227,6 +254,8 @@ abstract class _CommonState implements CommonState {
   bool get isSuccess;
   @override
   bool get isError;
+  @override
+  Map<dynamic, dynamic>? get data;
   @override
   User? get user;
   @override

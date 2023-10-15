@@ -21,6 +21,9 @@ class ProfilePage extends StatelessWidget {
     final phonenumber  = phone.get('phone_number');
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Profile"),
+      ),
       body:  Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

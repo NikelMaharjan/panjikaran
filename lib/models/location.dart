@@ -1,6 +1,6 @@
 
 
-class Province {
+class Provincee {
 
   final int id;
   final String en_names;
@@ -8,11 +8,11 @@ class Province {
   final int province_no;
 
 
-  Province({required this.id, required this.en_names, required this.np_name, required this.province_no});
+  Provincee({required this.id, required this.en_names, required this.np_name, required this.province_no});
 
 
-  factory Province.fromJson (Map<String, dynamic> json){
-    return Province(
+  factory Provincee.fromJson (Map<String, dynamic> json){
+    return Provincee(
         id: json['id'],
         en_names: json['en_names'],
         np_name: json['np_name'],
@@ -26,16 +26,16 @@ class Province {
 
 }
 
-class District {
+class Districtt {
 
   final int id;
   final String np_name;
   final String en_name;
 
-  District({required this.id, required this.en_name, required this.np_name});
+  Districtt({required this.id, required this.en_name, required this.np_name});
 
-  factory District.fromJson (Map<String, dynamic> json){
-    return District(
+  factory Districtt.fromJson (Map<String, dynamic> json){
+    return Districtt(
         id: json['id'],
         np_name: json['np_name'],
         en_name: json['en_name'],
@@ -51,16 +51,16 @@ class District {
 }
 
 
-class Municipality {
+class Municipalityy {
 
   final int id;
   final String name_en;
   final String name_np;
 
-  Municipality({required this.id, required this.name_en, required this.name_np});
+  Municipalityy({required this.id, required this.name_en, required this.name_np});
 
-  factory Municipality.fromJson (Map<String, dynamic> json){
-    return Municipality(
+  factory Municipalityy.fromJson (Map<String, dynamic> json){
+    return Municipalityy(
       id: json['id'],
       name_en: json['name_en'],
       name_np: json['name_np'],
@@ -76,22 +76,22 @@ class Municipality {
 
 
 
-class Ward {
+class Wardd {
 
   final int id;
   final String address;
 
-  Ward({required this.id, required this.address});
+  Wardd({required this.id, required this.address});
 
-  factory Ward.fromJson (Map<String, dynamic> json){
-    return Ward(
+  factory Wardd.fromJson (Map<String, dynamic> json){
+    return Wardd(
       id: json['id'],
       address: json['address'],
     );
   }
 
   @override
-  String toString() => address;
+  String toString() => id.toString();
 
 
 

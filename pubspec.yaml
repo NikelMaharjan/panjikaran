@@ -49,6 +49,15 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   flutter_form_builder: ^9.1.1
   dropdown_search: ^5.0.6
+  form_builder_validators: ^9.0.0
+  flutter_screenutil: ^5.9.0
+  image_picker: ^1.0.4
+  fluttertoast: ^8.2.1
+  intl: ^0.18.1
+  nepali_date_picker: ^5.3.1
+
+
+
 
 
 
@@ -79,7 +88,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/fonts/
+    - assets/images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -91,12 +100,46 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+
+
   fonts:
-    - family: Raleway
+    - family: Poppins
       fonts:
-        - asset: assets/fonts/Raleway-Regular.ttf
-        - asset: assets/fonts/Raleway-Bold.ttf
-          weight: 700
+        - asset: fonts/Poppins/Poppins-Regular.ttf
+
+    - family: PoppinSemiBold
+      fonts:
+        - asset: fonts/Poppins/Poppins-SemiBold.ttf
+
+    - family: PoppinMedium
+      fonts:
+        - asset: fonts/Poppins/Poppins-Medium.ttf
+
+    - family: RobotoSlab
+      fonts:
+        - asset: fonts/Roboto/RobotoSlab-Regular.ttf
+
+
+    - family: Roboto
+      fonts:
+        - asset: fonts/Roboto/Roboto-Regular.ttf
+
+    - family: RobotoBold
+      fonts:
+        - asset: fonts/Roboto/Roboto-Bold.ttf
+
+    - family: RobotoBold
+      fonts:
+        - asset: fonts/Roboto/Roboto-Bold.ttf
+
+    - family: SourceSansSemiBold
+      fonts:
+        - asset: fonts/SourceSan/SourceSansPro-SemiBold.ttf
+
+    - family: ABeeZee
+      fonts:
+        - asset: fonts/ab/ABeeZee-Regular.ttf
+  #
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

@@ -9,11 +9,12 @@ part 'common_state.freezed.dart';
 @freezed
 class CommonState with _$CommonState{
 
-  const factory CommonState({
+    factory CommonState({
     required String errText,
     required bool isLoad,
     required bool isSuccess,
     required bool isError,
+    Map? data,
     User? user,
     Otp? otp,
 

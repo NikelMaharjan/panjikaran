@@ -200,9 +200,6 @@ class _OtpPageState extends ConsumerState<OtpPage> {
           //   },
           // )
 
-          FormBuilderDropdown(name: "name", items: [
-
-          ])
         ],
       ),
     );
