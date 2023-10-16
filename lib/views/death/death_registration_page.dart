@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:model/common/toasts.dart';
 import 'package:model/constants/colors.dart';
 import 'package:model/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -116,7 +117,7 @@ class _CompleteFormState extends ConsumerState<DeathRegistrationPage> {
                   name: 'dead_reason',
                   isBirth: true,
                   isRequired: true,
-                  isNumber: true,
+                  isLast: true
 
                 ),
 
@@ -138,13 +139,23 @@ class _CompleteFormState extends ConsumerState<DeathRegistrationPage> {
                   onPressed: () {
 
                     _formKey.currentState!.save();
-                    final formData = _formKey.currentState!.value;
-
-                    final newdata = Map.of(formData);
 
 
+                    if (_formKey.currentState!.validate()) {
+                      final formData = _formKey.currentState!.value;
+                      final newData = Map.of(formData);
+                      Get.to(() => AddressDetailPage(fields: newData), transition: Transition.leftToRight);
 
-                    Get.to(() => AddressDetailPage(fields: newdata,), transition: Transition.leftToRight);
+
+
+                    } else {
+                      //    ref.read(modeProvider.notifier).change();
+                      Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
+                    }
+
+
+
+
 
 
 

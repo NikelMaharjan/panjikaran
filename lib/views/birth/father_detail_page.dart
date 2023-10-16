@@ -96,7 +96,6 @@ class _CompleteFormState extends ConsumerState<FatherDetailPage> {
                       label: 'Father Middle Name',
                       hintText: 'father middle name',
                       name: 'father_middle_name',
-                      isRequired: false,
                       isText: true,
                   ),
                   gapH14,
@@ -440,6 +439,7 @@ class _CompleteFormState extends ConsumerState<FatherDetailPage> {
           name: name,
           decoration: InputDecoration(
             isDense: true,
+
             hintText: label,
           ),
           validator:

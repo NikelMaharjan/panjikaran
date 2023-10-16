@@ -36,6 +36,8 @@ final matri = [
 
 
 
+
+
 final religions = [
   "हिन्दु",
   "बौद्ध",

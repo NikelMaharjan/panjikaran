@@ -420,6 +420,7 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
           decoration: InputDecoration(
             isDense: true,
             hintText: label,
+
           ),
           validator:
           FormBuilderValidators.compose([FormBuilderValidators.required()]),

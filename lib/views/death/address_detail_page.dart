@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:model/common/toasts.dart';
 import 'package:model/constants/sizes.dart';
 import 'package:get/get.dart';
 import 'package:model/views/death/parents_and_witness_detail_page.dart';
@@ -111,17 +112,25 @@ class _CompleteFormState extends ConsumerState<AddressDetailPage> {
                   onPressed: () {
 
                     _formKey.currentState!.save();
-                    final formData = _formKey.currentState!.value;
 
-                    final newData = Map.of(formData);
+                    if (_formKey.currentState!.validate()) {
+                      final formData = _formKey.currentState!.value;
+
+                      final newData = Map.of(formData);
+
+                      widget.fields.addAll(newData);
+
+                      Get.to(()=> ParentsAndWitnessDetailPage(fields: widget.fields));
 
 
 
+                    } else {
+                      //    ref.read(modeProvider.notifier).change();
+                      Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
+                    }
 
-                //    widget.fields.addAll(newData);
 
 
-                    Get.to(()=> ParentsAndWitnessDetailPage(fields: widget.fields,), transition: Transition.leftToRight);
 
                   },
                   child: const Text(
@@ -145,6 +154,8 @@ class _CompleteFormState extends ConsumerState<AddressDetailPage> {
           decoration: InputDecoration(
             isDense: true,
             hintText: label,
+
+
           ),
           validator:
           FormBuilderValidators.compose([FormBuilderValidators.required()]),

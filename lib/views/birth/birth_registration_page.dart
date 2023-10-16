@@ -135,8 +135,8 @@ class _CompleteFormState extends ConsumerState<BirthBibaran> {
                     ]),
                 gapH16,
                 if(d == 'true') Forms.textForm(
-                    label: 'अक्षमता विवरण:',
-                    hintText: 'अक्षमता विवरण',
+                    label: 'Disability Detail:',
+                    hintText: 'disability detail`',
                     name: 'details_disability',
                     isText: true,
                     isRequired: true
@@ -349,7 +349,7 @@ class _CompleteFormState extends ConsumerState<BirthBibaran> {
                     hintText: 'grandfather first name',
                     name: 'grandfather_first_name',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
                 gapH10,
                 Forms.textForm(
@@ -357,7 +357,6 @@ class _CompleteFormState extends ConsumerState<BirthBibaran> {
                     hintText: 'grandfather middle name',
                     name: 'grandfather_middle_name',
                     isText: true,
-                    isRequired:  false
                 ),
                 gapH10,
                 Forms.textForm(

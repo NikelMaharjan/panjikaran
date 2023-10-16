@@ -12,7 +12,7 @@ import 'dart:developer' as logDev;
 
 
 
-final crudProvider = StateNotifierProvider<CrudProvider, CommonState>((ref) => CrudProvider(CommonState(
+final crudProvider = StateNotifierProvider.autoDispose<CrudProvider, CommonState>((ref) => CrudProvider(CommonState(
     errText: '', isLoad: false, isSuccess: false, isError: false, data: {} )));
 
 

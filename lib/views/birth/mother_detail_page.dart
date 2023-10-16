@@ -97,7 +97,6 @@ class _CompleteFormState extends ConsumerState<MotherDetailPage> {
                       label: 'Mother Middle Name',
                       hintText: 'mother middle name',
                       name: 'mother_middle_name',
-                      isRequired: false,
                       isText: true,
                   ),
 

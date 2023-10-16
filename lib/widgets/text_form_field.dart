@@ -145,6 +145,7 @@ class Forms{
     bool? isLast,
     bool? isTextArea,
     bool? isBirth,
+    bool? initialValue,
     required String name
   }){
     return Container(
@@ -166,7 +167,7 @@ class Forms{
                       style: TextStyles.labelTextStyle,
                       children: [
                         if(isRequired !=null)   TextSpan(
-                            text: '*',
+                            text: ' *',
                             style: TextStyles.starLabelTextStyle
                         )
                       ]
@@ -196,9 +197,11 @@ class Forms{
                         final date = '${val!.substring(6, 10)}-${val.substring(
                             3, 5)}-${val.substring(0, 2)}';
                         return date;
-                      } else {
-                        return val!.trim().toString();
                       }
+
+
+
+
                     },
                     keyboardType: isDate != null || isNumber != null ? TextInputType
                         .number :

@@ -12,6 +12,7 @@ import 'package:model/profile_page.dart';
 import 'package:model/provider/auth_provider.dart';
 import 'package:get/get.dart';
 import 'package:model/views/darta_main_page.dart';
+import 'package:model/views/death/parents_and_witness_detail_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class DashBoardPage extends ConsumerWidget {
@@ -72,8 +73,10 @@ class DashBoardPage extends ConsumerWidget {
           ProfilePage(),
 
 
-
           DartaMainPage(),
+
+
+
 
 
 

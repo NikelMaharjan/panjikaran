@@ -569,26 +569,41 @@ class _CompleteFormState extends ConsumerState<DeathOfficeLocationPage> {
 
 
 
-                    onPressed: () {
+                    onPressed: crudData.isLoad ? null : () {
 
                       _formKey.currentState!.save();
 
 
-                      final formData = _formKey.currentState!.value;
-                      final newData = Map.of(formData);
+                      if (_formKey.currentState!.validate()) {
 
-                      newData['citizenship_issued_district_id'] = districtC.id;
-                      newData['office_ward_id'] = wardO.id;
-                      newData['ward_id'] = wardD.id;
+                        final formData = _formKey.currentState!.value;
+                        final newData = Map.of(formData);
+
+                        newData['citizenship_issued_district_id'] = districtC.id;
+                        newData['office_ward_id'] = wardO.id;
+                        newData['ward_id'] = wardD.id;
 
 
-                      widget.fields.addAll(newData);
-                      logDev.log("data is ${widget.fields}");
+                        widget.fields.addAll(newData);
+
+                        ref.read(crudProvider.notifier).postDeath(data: widget.fields);
+
+
+
+
+                      } else {
+                        //    ref.read(modeProvider.notifier).change();
+                        Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
+                      }
+
+
+
+
 
 
 
                     },
-                    child:  Text(
+                    child:  crudData.isLoad ? Center(child: CircularProgressIndicator(),) :Text(
                       'SUBMIT',
                     ),
                   ),
@@ -617,6 +632,7 @@ class _CompleteFormState extends ConsumerState<DeathOfficeLocationPage> {
           decoration: InputDecoration(
             isDense: true,
             hintText: label,
+
           ),
           validator:
           FormBuilderValidators.compose([FormBuilderValidators.required()]),

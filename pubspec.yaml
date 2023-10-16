@@ -51,10 +51,9 @@ dependencies:
   dropdown_search: ^5.0.6
   form_builder_validators: ^9.0.0
   flutter_screenutil: ^5.9.0
-  image_picker: ^1.0.4
   fluttertoast: ^8.2.1
   intl: ^0.18.1
-  nepali_date_picker: ^5.3.1
+  form_builder_image_picker: ^4.0.0
 
 
 

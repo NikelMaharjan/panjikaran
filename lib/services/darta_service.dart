@@ -3,8 +3,6 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:model/models/user.dart';
 import 'dart:developer' as logDev;
 
 
@@ -38,7 +36,6 @@ class DartaService {
 
   static Future<Either<String, bool>> postDeath({required Map data}) async {
     final dio = Dio();
-
 
 
     try {
