@@ -98,6 +98,7 @@ class _CompleteFormState extends ConsumerState<MotherDetailPage> {
                       hintText: 'mother middle name',
                       name: 'mother_middle_name',
                       isText: true,
+                      isRequired: false,
                   ),
 
 
@@ -179,7 +180,6 @@ class _CompleteFormState extends ConsumerState<MotherDetailPage> {
                       name: 'mother_citizenship_no',
                       isRequired: true,
                       isText: true,
-                      isLast: true,
                       isNumber: true
                   ),
                   gapH14,
@@ -191,7 +191,6 @@ class _CompleteFormState extends ConsumerState<MotherDetailPage> {
                       name: 'mother_citizenship_date',
                       isRequired: true,
                       isText: true,
-                      isLast: true,
                       isDate: true
                   ),
 
@@ -244,7 +243,6 @@ class _CompleteFormState extends ConsumerState<MotherDetailPage> {
                       name: 'married_registration_no',
                       isRequired: true,
                       isText: true,
-                      isLast: true,
                       isNumber: true,
                   ),
 
@@ -258,7 +256,6 @@ class _CompleteFormState extends ConsumerState<MotherDetailPage> {
                       name: 'married_date_ad',
                       isRequired: true,
                       isText: true,
-                      isLast: true,
                       isDate: true
                   ),
 
@@ -271,7 +268,6 @@ class _CompleteFormState extends ConsumerState<MotherDetailPage> {
                       name: 'married_date_bs',
                       isRequired: true,
                       isText: true,
-                      isLast: true,
                       isDate: true,
                   ),
 
@@ -297,7 +293,6 @@ class _CompleteFormState extends ConsumerState<MotherDetailPage> {
                       name: 'total_alive_child',
                       isRequired: true,
                       isText: true,
-                      isLast: true,
                       isNumber: true
                   ),
 

@@ -86,7 +86,6 @@ class _CompleteFormState extends ConsumerState<AddressDetailPage> {
                   name: 'tole',
                   isBirth: true,
                   isRequired: true,
-                  isNumber: true,
                 ),
                 gapH10,
 

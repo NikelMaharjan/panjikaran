@@ -72,7 +72,7 @@ class _CompleteFormState extends ConsumerState<CourtDetailPage> {
                 Forms.textForm(
                   label: 'Court Decision Number',
                   hintText: 'court decision number',
-                  name: 'court_decission_no',
+                  name: 'court_decission_date',
                   isRequired: true,
                   isText: true,
                   isNumber: true
@@ -86,7 +86,6 @@ class _CompleteFormState extends ConsumerState<CourtDetailPage> {
                     name: 'court_decision_date',
                     isRequired: true,
                     isDate: true,
-                    isLast:true
                 ),
                 gapH10,
                 Forms.textForm(
@@ -95,7 +94,6 @@ class _CompleteFormState extends ConsumerState<CourtDetailPage> {
                     name: 'married_date_bs',
                     isRequired: true,
                     isDate: true,
-                    isLast:true
                 ),
 
                 gapH10,
@@ -105,7 +103,6 @@ class _CompleteFormState extends ConsumerState<CourtDetailPage> {
                     name: 'married_date_ad',
                     isRequired: true,
                     isDate: true,
-                    isLast:true
                 ),
 
                 gapH10,
@@ -114,7 +111,7 @@ class _CompleteFormState extends ConsumerState<CourtDetailPage> {
                     hintText: 'married registration number',
                     name: 'married_registration_no',
                     isText: true,
-                    isRequired:  false,
+                    isRequired:  true,
                     isNumber: true
                 ),
                 gapH10,
@@ -133,20 +130,17 @@ class _CompleteFormState extends ConsumerState<CourtDetailPage> {
                     _formKey1.currentState!.save();
 
 
-                      Get.to(() => HusbandDetailPage(), transition: Transition.leftToRight);
 
 
+                    if (_formKey1.currentState!.validate()) {
+                      final formData = _formKey1.currentState!.value;
+                      final newData = Map.of(formData);
+                      Get.to(() => HusbandDetailPage(fields: newData,), transition: Transition.leftToRight);
 
-                    // if (_formKey1.currentState!.validate()) {
-                    //   final formData = _formKey1.currentState!.value;
-                    //   final newData = Map.of(formData);
-                    //
-                    //   Get.to(() => FatherDetailPage(fields: newData,), transition: Transition.leftToRight);
-                    //
-                    // } else {
-                    //   //    ref.read(modeProvider.notifier).change();
-                    //   Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
-                    // }
+                    } else {
+                      //    ref.read(modeProvider.notifier).change();
+                      Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
+                    }
                   },
                   child:  Text(
                     'To Husband Detail Page',

@@ -82,7 +82,6 @@ class _CompleteFormState extends ConsumerState<BirthBibaran> {
                     name: 'name_np',
                     isRequired: true,
                     isText: true,
-                    isLast: true
                 ),
                 gapH10,
                 _buildCard(label:'Birth Place', name: 'birth_place', datas: [
@@ -156,7 +155,6 @@ class _CompleteFormState extends ConsumerState<BirthBibaran> {
                     name: 'foreign_address_np',
                     isText: true,
                     isRequired:  false,
-                    isLast: true
                 ),
                 gapH10,
                 Column(
@@ -357,6 +355,7 @@ class _CompleteFormState extends ConsumerState<BirthBibaran> {
                     hintText: 'grandfather middle name',
                     name: 'grandfather_middle_name',
                     isText: true,
+                    isRequired: false
                 ),
                 gapH10,
                 Forms.textForm(
@@ -364,7 +363,7 @@ class _CompleteFormState extends ConsumerState<BirthBibaran> {
                     hintText: 'grandfather last name',
                     name: 'grandfather_last_name',
                     isText: true,
-                    isRequired:  false,
+                    isRequired: true,
                     isLast: true
                 ),
                 gapH14,

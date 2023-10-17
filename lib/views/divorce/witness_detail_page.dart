@@ -30,6 +30,13 @@ import 'package:get/get.dart';
 
 class WitnessDetailPage extends ConsumerStatefulWidget {
 
+
+  Map fields;
+
+  WitnessDetailPage({required this.fields});
+
+
+
   @override
   ConsumerState<WitnessDetailPage> createState() {
     return _CompleteFormState();
@@ -75,7 +82,7 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
                     hintText: 'english name',
                     name: 'witness_full_name_en',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
 
                 gapH10,
@@ -85,8 +92,7 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
                     hintText: 'nepali name',
                     name: 'witness_full_name_np',
                     isText: true,
-                    isRequired:  false,
-                    isLast: true
+                    isRequired:  true,
                 ),
 
 
@@ -100,7 +106,7 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
                     hintText: 'birth country',
                     name: 'witness_birth_country',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
 
                 gapH10,
@@ -111,7 +117,7 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
                     hintText: 'citizenship country',
                     name: 'witness_citizenship_country',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
 
                 gapH10,
@@ -122,7 +128,7 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
                     name: 'witness_citizenship_no',
                     isText: true,
                     isNumber: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
 
 
@@ -134,7 +140,6 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
                     name: 'witness_citizenship_date',
                     isRequired: true,
                     isDate: true,
-                    isLast:true
                 ),
 
                 gapH10,
@@ -152,7 +157,7 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
                     hintText: 'street name',
                     name: 'witness_street_name',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
 
 
@@ -162,7 +167,7 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
                     hintText: 'tole name',
                     name: 'witness_tole',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
 
 
@@ -172,8 +177,9 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
                     hintText: 'house number',
                     name: 'witness_house_no',
                     isText: true,
-                    isRequired:  false,
-                    isNumber: true
+                    isRequired:  true,
+                    isNumber: true,
+                    isLast: true
                 ),
 
                 gapH10,
@@ -184,6 +190,7 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
                   name: 'witness_photo',
                   decoration: const InputDecoration(labelText: 'Pick Photos'),
                   maxImages: 1,
+
 
                 ),
 
@@ -198,30 +205,32 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
 
                     _formKey1.currentState!.save();
 
-                    final formData = _formKey1.currentState!.value;
-                    final newData = Map.of(formData);
-
-                    newData.update("witness_photo", (value) => newData['witness_photo']);
 
 
 
-                     Get.to(() => DivorceOfficeLocationPage(), transition: Transition.leftToRight);
+
+                    if (_formKey1.currentState!.validate()) {
+                      final formData = _formKey1.currentState!.value;
+                      final newData = Map.of(formData);
+
+                      newData.update("witness_photo", (value) => newData['witness_photo'][0]);
+
+
+                      widget.fields.addAll(newData);
+
+                      //   print(newData['witness_photo'][0]);
 
 
 
-                    // if (_formKey1.currentState!.validate()) {
-                    //   final formData = _formKey1.currentState!.value;
-                    //   final newData = Map.of(formData);
-                    //
-                    //   Get.to(() => FatherDetailPage(fields: newData,), transition: Transition.leftToRight);
-                    //
-                    // } else {
-                    //   //    ref.read(modeProvider.notifier).change();
-                    //   Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
-                    // }
+                      Get.to(() => DivorceOfficeLocationPage(fields: widget.fields,), transition: Transition.leftToRight);
+
+                    } else {
+                      //    ref.read(modeProvider.notifier).change();
+                      Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
+                    }
                   },
                   child:  Text(
-                    'To Wife Detail Page',
+                    'To Office Detail Page',
                   ),
                 ),
               ],

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:model/constants/colors.dart';
+import 'package:model/provider/test.dart';
 import 'package:model/views/birth/birth_registration_page.dart';
 import 'package:model/home_page.dart';
 import 'package:model/otp_page.dart';
@@ -13,6 +14,7 @@ import 'package:model/provider/auth_provider.dart';
 import 'package:get/get.dart';
 import 'package:model/views/darta_main_page.dart';
 import 'package:model/views/death/parents_and_witness_detail_page.dart';
+import 'package:model/views/divorce/witness_detail_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class DashBoardPage extends ConsumerWidget {
@@ -69,6 +71,8 @@ class DashBoardPage extends ConsumerWidget {
 
         context,
         screens: [
+
+        //  ProfilePage(),
 
           ProfilePage(),
 

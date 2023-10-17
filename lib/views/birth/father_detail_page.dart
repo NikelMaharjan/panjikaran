@@ -97,6 +97,7 @@ class _CompleteFormState extends ConsumerState<FatherDetailPage> {
                       hintText: 'father middle name',
                       name: 'father_middle_name',
                       isText: true,
+                     isRequired: false
                   ),
                   gapH14,
                   Forms.textForm(
@@ -105,7 +106,6 @@ class _CompleteFormState extends ConsumerState<FatherDetailPage> {
                       name: 'father_last_name',
                       isRequired: true,
                       isText: true,
-                      isLast: true,
                   ),
                   gapH14,
                   _buildCard(label:'Religion', name: 'father_religion', datas: religions ),
@@ -166,7 +166,6 @@ class _CompleteFormState extends ConsumerState<FatherDetailPage> {
                       name: 'father_citizenship_no',
                       isRequired: true,
                       isText: true,
-                      isLast: true,
                       isNumber: true
                   ),
                   gapH14,
@@ -177,7 +176,6 @@ class _CompleteFormState extends ConsumerState<FatherDetailPage> {
                       name: 'father_citizenship_date',
                       isRequired: true,
                       isText: true,
-                      isLast: true,
                       isDate: true
                   ),
                   gapH14,

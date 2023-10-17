@@ -95,7 +95,7 @@ class _OtpPageState extends ConsumerState<OtpPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Nikel Maharajn", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                    Text("Nikel Maharjan", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                     Text("nikelmaharjan@gmail.com")
                   ],
                 )

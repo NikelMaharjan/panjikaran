@@ -166,7 +166,7 @@ class Forms{
                       text: label,
                       style: TextStyles.labelTextStyle,
                       children: [
-                        if(isRequired !=null)   TextSpan(
+                        if(isRequired == true)   TextSpan(
                             text: ' *',
                             style: TextStyles.starLabelTextStyle
                         )

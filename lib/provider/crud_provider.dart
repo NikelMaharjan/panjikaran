@@ -51,7 +51,7 @@ class CrudProvider extends StateNotifier<CommonState>{
 
   Future<void> postDeath({required Map data}) async {
 
-     logDev.log("data is $data}");
+   //  logDev.log("data is $data}");
 
     state = state.copyWith(errText: '', isError: false, isLoad: true, isSuccess: false);
     final response = await DartaService.postDeath(data: data);
@@ -64,6 +64,25 @@ class CrudProvider extends StateNotifier<CommonState>{
         }
     );
   }
+
+  Future<void> postDivorce({required Map data}) async {
+
+    //  logDev.log("data is $data}");
+
+    state = state.copyWith(errText: '', isError: false, isLoad: true, isSuccess: false);
+    final response = await DartaService.postDivorce(data: data);
+    response.fold(
+            (l) {
+          state =  state.copyWith(errText: l, isError: true, isLoad: false, isSuccess: false);
+        },
+            (r) {
+          state = state.copyWith(errText: '', isError: false, isLoad: false, isSuccess: r,);
+        }
+    );
+  }
+
+
+
 
 
 

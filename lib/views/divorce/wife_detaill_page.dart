@@ -26,6 +26,11 @@ import 'package:get/get.dart';
 
 class WifeDetailPage extends ConsumerStatefulWidget {
 
+
+  Map fields;
+
+  WifeDetailPage({required this.fields});
+
   @override
   ConsumerState<WifeDetailPage> createState() {
     return _CompleteFormState();
@@ -71,7 +76,7 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     hintText: 'english name',
                     name: 'wife_full_name_ep',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
 
                 gapH10,
@@ -81,8 +86,7 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     hintText: 'nepali name',
                     name: 'wife_full_name_np',
                     isText: true,
-                    isRequired:  false,
-                    isLast: true
+                    isRequired:  true,
                 ),
 
 
@@ -95,7 +99,6 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     name: 'wife_birth_date',
                     isRequired: true,
                     isDate: true,
-                    isLast:true
                 ),
 
                 gapH10,
@@ -106,7 +109,7 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     hintText: 'birth country',
                     name: 'wife_birth_country',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
 
 
@@ -118,7 +121,7 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     hintText: 'citizenship country',
                     name: 'wife_citizenship_country',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
 
                 gapH10,
@@ -129,7 +132,7 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     name: 'wife_citizenship_no',
                     isText: true,
                     isNumber: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
 
 
@@ -141,7 +144,6 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     name: 'wife_citizenship_date',
                     isRequired: true,
                     isDate: true,
-                    isLast:true
                 ),
 
                 gapH10,
@@ -161,7 +163,7 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     hintText: 'street name',
                     name: 'wife_street_name',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
 
 
@@ -171,7 +173,7 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     hintText: 'tole name',
                     name: 'wife_tole',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
 
 
@@ -181,7 +183,7 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     hintText: 'house number',
                     name: 'wife_house_no',
                     isText: true,
-                    isRequired:  false,
+                    isRequired:  true,
                     isNumber: true
                 ),
 
@@ -196,7 +198,7 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     hintText: 'mother tongue',
                     name: 'wife_mother_tongue',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
                 gapH10,
 
@@ -207,7 +209,7 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     hintText: 'english name',
                     name: 'wife_grand_father_en',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
                 gapH10,
 
@@ -218,7 +220,7 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     hintText: 'nepali name',
                     name: 'wife_grand_father_np',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
                 gapH10,
 
@@ -229,7 +231,7 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     hintText: 'english name',
                     name: 'wife_father_name_en',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
                 gapH10,
 
@@ -240,7 +242,7 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     hintText: 'nepali name',
                     name: 'wife_father_name_np',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
 
                 gapH10,
@@ -252,7 +254,7 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     hintText: 'english name',
                     name: 'wife_mother_name_en',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
 
                 gapH10,
@@ -264,7 +266,7 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     hintText: 'nepali name',
                     name: 'wife_mother_name_np',
                     isText: true,
-                    isRequired:  false
+                    isRequired:  true
                 ),
 
                 gapH10,
@@ -276,18 +278,8 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     hintText: 'address',
                     name: 'wife_address',
                     isText: true,
-                    isRequired:  false
-                ),
-                gapH10,
-
-
-
-                Forms.textForm(
-                    label: 'Father Name (NP)',
-                    hintText: 'nepali name',
-                    name: 'husband_father_name_np',
-                    isText: true,
-                    isRequired:  false
+                    isRequired:  true,
+                    isLast: true
                 ),
 
 
@@ -308,20 +300,24 @@ class _CompleteFormState extends ConsumerState<WifeDetailPage> {
                     _formKey1.currentState!.save();
 
 
-                         Get.to(() => WitnessDetailPage(), transition: Transition.leftToRight);
+
+
+                    if (_formKey1.currentState!.validate()) {
+
+                      final formData = _formKey1.currentState!.value;
+
+                      final newData = Map.of(formData);
+
+                      widget.fields.addAll(newData);
 
 
 
-                    // if (_formKey1.currentState!.validate()) {
-                    //   final formData = _formKey1.currentState!.value;
-                    //   final newData = Map.of(formData);
-                    //
-                    //   Get.to(() => FatherDetailPage(fields: newData,), transition: Transition.leftToRight);
-                    //
-                    // } else {
-                    //   //    ref.read(modeProvider.notifier).change();
-                    //   Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
-                    // }
+                      Get.to(() => WitnessDetailPage(fields: widget.fields,), transition: Transition.leftToRight);
+
+                    } else {
+                      //    ref.read(modeProvider.notifier).change();
+                      Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
+                    }
                   },
                   child:  Text(
                     'To Witness Detail Page',

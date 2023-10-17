@@ -17,6 +17,7 @@ List<DartaData> dartaList  = [
  DartaData(image: Image.asset('assets/images/birth.png',), label: "Birth"),
  DartaData(image: Image.asset('assets/images/death.png'), label: "Death"),
  DartaData(image: Image.asset('assets/images/divorce.png'), label: "Divorce"),
+ DartaData(image: Image.asset('assets/images/marriage.png'), label: "Marriage"),
 
 
 ];

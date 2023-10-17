@@ -30,46 +30,38 @@ import '../../provider/validate_provider.dart';
 
 
 
-class DivorceOfficeLocationPage extends ConsumerStatefulWidget {
+class MarriageOfficeDetailPage extends ConsumerStatefulWidget {
 
-  Map fields;
-
-  DivorceOfficeLocationPage({required this.fields});
 
 
 
   @override
-  ConsumerState<DivorceOfficeLocationPage> createState() {
+  ConsumerState<MarriageOfficeDetailPage> createState() {
     return _CompleteFormState();
   }
 }
 
-class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
+class _CompleteFormState extends ConsumerState<MarriageOfficeDetailPage> {
 
 
-  Provincee provinceO =  Provincee(id: 0, en_names: "", np_name: "", province_no: 0);
-  Districtt districtO=  Districtt(id: 0, en_name: "", np_name: "");
-  Municipalityy municipalityO =  Municipalityy(id: 0, name_en: "", name_np: "");
-  Wardd wardO =  Wardd(id: 0, address: "");
+  Provincee provinceG =  Provincee(id: 0, en_names: "", np_name: "", province_no: 0);
+  Districtt districtG =  Districtt(id: 0, en_name: "", np_name: "");
+  Municipalityy municipalityG =  Municipalityy(id: 0, name_en: "", name_np: "");
+  Wardd wardG =  Wardd(id: 0, address: "");
 
 
-  Provincee provinceH =  Provincee(id: 0, en_names: "", np_name: "", province_no: 0);
-  Districtt districtH=  Districtt(id: 0, en_name: "", np_name: "");
-  Municipalityy municipalityH =  Municipalityy(id: 0, name_en: "", name_np: "");
-  Wardd wardH =  Wardd(id: 0, address: "");
+  Provincee provinceB =  Provincee(id: 0, en_names: "", np_name: "", province_no: 0);
+  Districtt districtB =  Districtt(id: 0, en_name: "", np_name: "");
+  Municipalityy municipalityB =  Municipalityy(id: 0, name_en: "", name_np: "");
+  Wardd wardB =  Wardd(id: 0, address: "");
 
 
+  Provincee provinceM =  Provincee(id: 0, en_names: "", np_name: "", province_no: 0);
+  Districtt districtM =  Districtt(id: 0, en_name: "", np_name: "");
+  Municipalityy municipalityM =  Municipalityy(id: 0, name_en: "", name_np: "");
+  Wardd wardM =  Wardd(id: 0, address: "");
 
 
-  Provincee provinceW =  Provincee(id: 0, en_names: "", np_name: "", province_no: 0);
-  Districtt districtW=  Districtt(id: 0, en_name: "", np_name: "");
-  Municipalityy municipalityW =  Municipalityy(id: 0, name_en: "", name_np: "");
-  Wardd wardW =  Wardd(id: 0, address: "");
-
-  Provincee provinceWw =  Provincee(id: 0, en_names: "", np_name: "", province_no: 0);
-  Districtt districtWw=  Districtt(id: 0, en_name: "", np_name: "");
-  Municipalityy municipalityWw =  Municipalityy(id: 0, name_en: "", name_np: "");
-  Wardd wardWw =  Wardd(id: 0, address: "");
 
 
 
@@ -84,17 +76,17 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
 
     final mode = ref.watch(modeProvider);
 
-
-    ref.listen(crudProvider, (previous, next) {
-      if(next.isError){
-        CommonSnack.errrorSnack(context: context, msg: next.errText);
-      }else if(next.isSuccess){
-        CommonSnack.successSnack(context: context, msg: "Successful Added");
-        Get.offAll(DartaMainPage());
-
-      }
-
-    });
+    //
+    // ref.listen(crudProvider, (previous, next) {
+    //   if(next.isError){
+    //     CommonSnack.errrorSnack(context: context, msg: next.errText);
+    //   }else if(next.isSuccess){
+    //     CommonSnack.successSnack(context: context, msg: "Successful Added");
+    //     Get.offAll(DartaMainPage());
+    //
+    //   }
+    //
+    // });
 
     return WillPopScope(
       onWillPop: ()async{
@@ -119,7 +111,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                 children: [
                   gapH20,
 
-                  Text("Select Office Location"),
+                  Text("Select Groom Location"),
                   gapH10,
 
                   Card(
@@ -152,7 +144,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                         },
                         onChanged: (Provincee? data) {
                           setState(() {
-                            provinceO = data!;
+                            provinceG = data!;
                           });
                         },
                       ),
@@ -166,7 +158,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: DropdownSearch<Districtt>(
                         validator: dropDownValidation,
-                        enabled:   provinceO.en_names.isEmpty ? false : true ,
+                        enabled:   provinceG.en_names.isEmpty ? false : true ,
 
 
                         dropdownDecoratorProps: DropDownDecoratorProps(
@@ -183,7 +175,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                             var response = await Dio().get(
                                 "https://panjikaran.digitalpalika.org/api/v1/districts",
                                 queryParameters: {
-                                  "province" : provinceO.id
+                                  "province" : provinceG.id
                                 }
                             );
                             final data = (response.data['results'] as List).map((e) => Districtt.fromJson(e)).toList();
@@ -198,7 +190,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                         },
                         onChanged: (Districtt? data) {
                           setState(() {
-                            districtO = data!;
+                            districtG = data!;
                           });
                         },
                       ),
@@ -213,7 +205,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                       child: DropdownSearch<Municipalityy>(
                         validator: dropDownValidation,
 
-                        enabled:   districtO.np_name.isEmpty ? false : true ,
+                        enabled:   districtG.np_name.isEmpty ? false : true ,
 
 
                         dropdownDecoratorProps: DropDownDecoratorProps(
@@ -230,7 +222,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                             var response = await Dio().get(
                                 "https://panjikaran.digitalpalika.org/api/v1/muncipalities",
                                 queryParameters: {
-                                  "district" : districtO.id
+                                  "district" : districtG.id
                                 }
                             );
                             final data = (response.data['results'] as List).map((e) => Municipalityy.fromJson(e)).toList();
@@ -245,7 +237,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                         },
                         onChanged: (Municipalityy? data) {
                           setState(() {
-                            municipalityO = data!;
+                            municipalityG = data!;
                           });
                         },
                       ),
@@ -260,7 +252,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                       child: DropdownSearch<Wardd>(
                         validator: dropDownValidation,
 
-                        enabled:   municipalityO.name_en.isEmpty ? false : true ,
+                        enabled:   municipalityG.name_en.isEmpty ? false : true ,
 
 
                         dropdownDecoratorProps: DropDownDecoratorProps(
@@ -277,7 +269,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                             var response = await Dio().get(
                                 "https://panjikaran.digitalpalika.org/api/v1/wards",
                                 queryParameters: {
-                                  "municipality" : municipalityO.id
+                                  "municipality" : municipalityG.id
                                 }
                             );
                             final data = (response.data['results'] as List).map((e) => Wardd.fromJson(e)).toList();
@@ -292,7 +284,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                         },
                         onChanged: (Wardd? data) {
                           setState(() {
-                            wardO = data!;
+                            wardG = data!;
                           });
                         },
                       ),
@@ -301,7 +293,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
 
                   gapH16,
 
-                  Text("Select Husband Location"),
+                  Text("Select Bride Location"),
 
                   gapH10,
 
@@ -335,7 +327,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                         },
                         onChanged: (Provincee? data) {
                           setState(() {
-                            provinceH = data!;
+                            provinceB = data!;
                           });
                         },
                       ),
@@ -349,7 +341,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: DropdownSearch<Districtt>(
                         validator: dropDownValidation,
-                        enabled:   provinceH.en_names.isEmpty ? false : true ,
+                        enabled:   provinceB.en_names.isEmpty ? false : true ,
 
 
                         dropdownDecoratorProps: DropDownDecoratorProps(
@@ -366,7 +358,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                             var response = await Dio().get(
                                 "https://panjikaran.digitalpalika.org/api/v1/districts",
                                 queryParameters: {
-                                  "province" : provinceH.id
+                                  "province" : provinceB.id
                                 }
                             );
                             final data = (response.data['results'] as List).map((e) => Districtt.fromJson(e)).toList();
@@ -381,7 +373,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                         },
                         onChanged: (Districtt? data) {
                           setState(() {
-                            districtH = data!;
+                            districtB = data!;
                           });
                         },
                       ),
@@ -396,7 +388,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                       child: DropdownSearch<Municipalityy>(
                         validator: dropDownValidation,
 
-                        enabled:   districtH.np_name.isEmpty ? false : true ,
+                        enabled:   districtB.np_name.isEmpty ? false : true ,
 
 
                         dropdownDecoratorProps: DropDownDecoratorProps(
@@ -413,7 +405,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                             var response = await Dio().get(
                                 "https://panjikaran.digitalpalika.org/api/v1/muncipalities",
                                 queryParameters: {
-                                  "district" : districtH.id
+                                  "district" : districtB.id
                                 }
                             );
                             final data = (response.data['results'] as List).map((e) => Municipalityy.fromJson(e)).toList();
@@ -428,7 +420,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                         },
                         onChanged: (Municipalityy? data) {
                           setState(() {
-                            municipalityH = data!;
+                            municipalityB = data!;
                           });
                         },
                       ),
@@ -443,7 +435,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                       child: DropdownSearch<Wardd>(
                         validator: dropDownValidation,
 
-                        enabled:   municipalityH.name_en.isEmpty ? false : true ,
+                        enabled:   municipalityB.name_en.isEmpty ? false : true ,
 
 
                         dropdownDecoratorProps: DropDownDecoratorProps(
@@ -460,7 +452,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                             var response = await Dio().get(
                                 "https://panjikaran.digitalpalika.org/api/v1/wards",
                                 queryParameters: {
-                                  "municipality" : municipalityH.id
+                                  "municipality" : municipalityB.id
                                 }
                             );
                             final data = (response.data['results'] as List).map((e) => Wardd.fromJson(e)).toList();
@@ -475,191 +467,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                         },
                         onChanged: (Wardd? data) {
                           setState(() {
-                            wardH = data!;
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-
-
-                  gapH16,
-
-                  Text("Select Wife Location"),
-
-                  gapH10,
-
-                  Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: DropdownSearch<Provincee>(
-                        validator: dropDownValidation,
-
-                        dropdownDecoratorProps: DropDownDecoratorProps(
-                            dropdownSearchDecoration: InputDecoration(
-                                label: Text("Province")
-                            )
-                        ),
-
-                        asyncItems: (String filter) async {
-
-
-                          try{
-
-                            var response = await Dio().get("https://panjikaran.digitalpalika.org/api/v1/provinces");
-                            final data = (response.data['results'] as List).map((e) => Provincee.fromJson(e)).toList();
-                            return data;
-
-                          }
-                          on DioException catch (err) {
-                            throw "Something went wrong";
-
-                          }
-
-                        },
-                        onChanged: (Provincee? data) {
-                          setState(() {
-                            provinceW = data!;
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-
-                  gapH10,
-
-                  Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: DropdownSearch<Districtt>(
-                        validator: dropDownValidation,
-                        enabled:   provinceW.en_names.isEmpty ? false : true ,
-
-
-                        dropdownDecoratorProps: DropDownDecoratorProps(
-                            dropdownSearchDecoration: InputDecoration(
-                                label: Text("District")
-                            )
-                        ),
-
-                        asyncItems: (String filter) async {
-
-
-                          try{
-
-                            var response = await Dio().get(
-                                "https://panjikaran.digitalpalika.org/api/v1/districts",
-                                queryParameters: {
-                                  "province" : provinceW.id
-                                }
-                            );
-                            final data = (response.data['results'] as List).map((e) => Districtt.fromJson(e)).toList();
-                            return data;
-
-                          }
-                          on DioException catch (err) {
-                            throw "Something went wrong";
-
-                          }
-
-                        },
-                        onChanged: (Districtt? data) {
-                          setState(() {
-                            districtW = data!;
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-
-                  gapH10,
-
-                  Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: DropdownSearch<Municipalityy>(
-                        validator: dropDownValidation,
-
-                        enabled:   districtW.np_name.isEmpty ? false : true ,
-
-
-                        dropdownDecoratorProps: DropDownDecoratorProps(
-                            dropdownSearchDecoration: InputDecoration(
-                                label: Text("Municipality")
-                            )
-                        ),
-
-                        asyncItems: (String filter) async {
-
-
-                          try{
-
-                            var response = await Dio().get(
-                                "https://panjikaran.digitalpalika.org/api/v1/muncipalities",
-                                queryParameters: {
-                                  "district" : districtW.id
-                                }
-                            );
-                            final data = (response.data['results'] as List).map((e) => Municipalityy.fromJson(e)).toList();
-                            return data;
-
-                          }
-                          on DioException catch (err) {
-                            throw "Something went wrong";
-
-                          }
-
-                        },
-                        onChanged: (Municipalityy? data) {
-                          setState(() {
-                            municipalityW = data!;
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-
-                  gapH10,
-
-                  Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: DropdownSearch<Wardd>(
-                        validator: dropDownValidation,
-
-                        enabled:   municipalityW.name_en.isEmpty ? false : true ,
-
-
-                        dropdownDecoratorProps: DropDownDecoratorProps(
-                            dropdownSearchDecoration: InputDecoration(
-                                label: Text("Ward")
-                            )
-                        ),
-
-                        asyncItems: (String filter) async {
-
-
-                          try{
-
-                            var response = await Dio().get(
-                                "https://panjikaran.digitalpalika.org/api/v1/wards",
-                                queryParameters: {
-                                  "municipality" : municipalityW.id
-                                }
-                            );
-                            final data = (response.data['results'] as List).map((e) => Wardd.fromJson(e)).toList();
-                            return data;
-
-                          }
-                          on DioException catch (err) {
-                            throw "Something went wrong";
-
-                          }
-
-                        },
-                        onChanged: (Wardd? data) {
-                          setState(() {
-                            wardW = data!;
+                            wardB = data!;
                           });
                         },
                       ),
@@ -668,7 +476,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
 
                   gapH16,
 
-                  Text("Select Witness Location"),
+                  Text("Select Marriage Location"),
 
                   gapH10,
 
@@ -702,7 +510,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                         },
                         onChanged: (Provincee? data) {
                           setState(() {
-                            provinceWw = data!;
+                            provinceM = data!;
                           });
                         },
                       ),
@@ -716,7 +524,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: DropdownSearch<Districtt>(
                         validator: dropDownValidation,
-                        enabled:   provinceWw.en_names.isEmpty ? false : true ,
+                        enabled:   provinceM.en_names.isEmpty ? false : true ,
 
 
                         dropdownDecoratorProps: DropDownDecoratorProps(
@@ -733,7 +541,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                             var response = await Dio().get(
                                 "https://panjikaran.digitalpalika.org/api/v1/districts",
                                 queryParameters: {
-                                  "province" : provinceWw.id
+                                  "province" : provinceM.id
                                 }
                             );
                             final data = (response.data['results'] as List).map((e) => Districtt.fromJson(e)).toList();
@@ -748,7 +556,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                         },
                         onChanged: (Districtt? data) {
                           setState(() {
-                            districtWw = data!;
+                            districtM = data!;
                           });
                         },
                       ),
@@ -763,7 +571,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                       child: DropdownSearch<Municipalityy>(
                         validator: dropDownValidation,
 
-                        enabled:   districtWw.np_name.isEmpty ? false : true ,
+                        enabled:   districtM.np_name.isEmpty ? false : true ,
 
 
                         dropdownDecoratorProps: DropDownDecoratorProps(
@@ -780,7 +588,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                             var response = await Dio().get(
                                 "https://panjikaran.digitalpalika.org/api/v1/muncipalities",
                                 queryParameters: {
-                                  "district" : districtWw.id
+                                  "district" : districtM.id
                                 }
                             );
                             final data = (response.data['results'] as List).map((e) => Municipalityy.fromJson(e)).toList();
@@ -795,7 +603,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                         },
                         onChanged: (Municipalityy? data) {
                           setState(() {
-                            municipalityWw = data!;
+                            municipalityM = data!;
                           });
                         },
                       ),
@@ -810,7 +618,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                       child: DropdownSearch<Wardd>(
                         validator: dropDownValidation,
 
-                        enabled:   municipalityWw.name_en.isEmpty ? false : true ,
+                        enabled:   municipalityM.name_en.isEmpty ? false : true ,
 
 
                         dropdownDecoratorProps: DropDownDecoratorProps(
@@ -827,7 +635,7 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                             var response = await Dio().get(
                                 "https://panjikaran.digitalpalika.org/api/v1/wards",
                                 queryParameters: {
-                                  "municipality" : municipalityWw.id
+                                  "municipality" : municipalityM.id
                                 }
                             );
                             final data = (response.data['results'] as List).map((e) => Wardd.fromJson(e)).toList();
@@ -842,12 +650,15 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                         },
                         onChanged: (Wardd? data) {
                           setState(() {
-                            wardWw = data!;
+                            wardM = data!;
                           });
                         },
                       ),
                     ),
                   ),
+
+
+
 
 
 
@@ -869,18 +680,16 @@ class _CompleteFormState extends ConsumerState<DivorceOfficeLocationPage> {
                         final formData = _formKey4.currentState!.value;
                         final newData = Map.of(formData);
 
-                        newData['office_ward_id'] = wardO.id;
-                        newData['husband_ward_id'] = wardH.id;
-                        newData['wife_ward_id'] = wardW.id;
-                        newData['witness_ward_id'] = wardWw.id;
-                        newData['husband_issued_district_id'] = districtH.id;
-                        newData['wife_issued_district'] = districtW.id;
+                        newData['groom_ward_id'] = wardG.id;
+                        newData['bride_ward_id'] = wardB.id;
+                        newData['groom_issued_district_id'] = districtG.id;
+                        newData['bride_issued_district_id'] = districtB.id;
+                        newData['married_ward_id'] = wardM.id;
 
-                        widget.fields.addAll(newData);
+                     //   widget.fields.addAll(newData);
 
-                      //  logDev.log("data is ${widget.fields}");
+                        //  logDev.log("data is ${widget.fields}");
 
-                        ref.read(crudProvider.notifier).postDivorce(data: widget.fields);
 
 
 

@@ -162,7 +162,6 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
                       name: 'witness_citizenship_no',
                       isRequired: true,
                       isText: true,
-                      isLast: true,
                       isNumber: true
                   ),
                   gapH14,
@@ -173,7 +172,6 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
                       name: 'witness_citizenship_date',
                       isRequired: true,
                       isText: true,
-                      isLast: true,
                       isDate: true
                   ),
 
@@ -420,6 +418,7 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
           decoration: InputDecoration(
             isDense: true,
             hintText: label,
+
 
           ),
           validator:

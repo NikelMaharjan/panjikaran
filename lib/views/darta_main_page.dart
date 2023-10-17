@@ -6,6 +6,7 @@ import 'package:model/models/darta.dart';
 import 'package:model/views/death/death_registration_page.dart';
 import 'package:model/views/divorce/court_detail_page.dart';
 import 'package:model/views/divorce/husband_detail_page.dart';
+import 'package:model/views/marriage/groom_detail_page.dart';
 
 import '../constants/sizes.dart';
 import 'package:get/get.dart';
@@ -17,6 +18,9 @@ class DartaMainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
+
     return Scaffold(
       appBar: AppBar(
 
@@ -49,6 +53,11 @@ class DartaMainPage extends StatelessWidget {
                   case 2:
                     Get.to(() => CourtDetailPage(), transition: Transition.leftToRight);
                     break;
+
+                  case 3:
+                    Get.to(() => GroomDetailPage(), transition: Transition.leftToRight);
+                    break;
+
 
 
 
