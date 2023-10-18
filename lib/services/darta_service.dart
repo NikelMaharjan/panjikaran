@@ -168,7 +168,7 @@ class DartaService {
         for(final m in data.entries) m.key : m.value,
         'groom_photo' : await MultipartFile.fromFile((data['groom_photo'] as XFile).path, filename:  (data['groom_photo'] as XFile).name),
          'bride_photo' : await MultipartFile.fromFile((data['bride_photo'] as XFile).path, filename:  (data['bride_photo'] as XFile).name),
-       e  'witness_photo' : await MultipartFile.fromFile((data['witness_photo'] as XFile).path, filename:  (data['witness_photo'] as XFile).name),
+         'witness_photo' : await MultipartFile.fromFile((data['witness_photo'] as XFile).path, filename:  (data['witness_photo'] as XFile).name),
       }
 
 
