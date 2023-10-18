@@ -18,6 +18,7 @@ import 'package:model/views/birth/father_detail_page.dart';
 import 'package:model/views/divorce/court_detail_page.dart';
 import 'package:model/views/divorce/witness_detail_page.dart';
 import 'package:model/views/marriage/bride_detail_page.dart';
+import 'package:model/views/marriage/marriage_office_detail_page.dart';
 import 'package:model/widgets/text_form_field.dart';
 
 import '../../constants/colors.dart';
@@ -26,18 +27,22 @@ import 'package:get/get.dart';
 
 
 
-class GroomDetailPage extends ConsumerStatefulWidget {
+class MarriageDetailPage extends ConsumerStatefulWidget {
+
+  Map<String, dynamic> fields;
+
+  MarriageDetailPage({required this.fields});
 
 
 
 
   @override
-  ConsumerState<GroomDetailPage> createState() {
+  ConsumerState<MarriageDetailPage> createState() {
     return _CompleteFormState();
   }
 }
 
-class _CompleteFormState extends ConsumerState<GroomDetailPage> {
+class _CompleteFormState extends ConsumerState<MarriageDetailPage> {
 
 
 
@@ -55,7 +60,7 @@ class _CompleteFormState extends ConsumerState<GroomDetailPage> {
           backgroundColor: backgroundColor,
           elevation: 0,
           foregroundColor: blackColor,
-          title: const Text('Groom Details')
+          title: const Text('Marriage Details')
       ),
 
 
@@ -71,32 +76,41 @@ class _CompleteFormState extends ConsumerState<GroomDetailPage> {
               children: [
                 gapH20,
 
-                Forms.textForm(
-                    label: 'Full Name (EN)',
-                    hintText: 'english name',
-                    name: 'groom_full_name_en',
-                    isText: true,
-                    isRequired:  true
-                ),
+                Forms.radioButton(
+                    label: 'Social Tradition Marriage',
+                    name: 'is_social_tradtion',
+                    info: [
+                      true,
+                      false
+                    ]),
 
                 gapH10,
 
-                Forms.textForm(
-                  label: 'Full Name (NP)',
-                  hintText: 'nepali name',
-                  name: 'groom_full_name_np',
-                  isText: true,
-                  isRequired:  true,
-                ),
-
+                Forms.radioButton(
+                    label: "Is Law",
+                    name: 'is_law',
+                    info: [
+                      true,
+                      false
+                    ]),
 
                 gapH10,
 
 
                 Forms.textForm(
-                  label: 'Birth Date',
+                  label: 'Married Date (BS)',
                   hintText: '(DD-MM-YYYY)',
-                  name: 'groom_birth_date',
+                  name: 'married_date_bs',
+                  isRequired: true,
+                  isDate: true,
+                ),
+
+                gapH10,
+
+                Forms.textForm(
+                  label: 'Married Date (AD)',
+                  hintText: '(DD-MM-YYYY)',
+                  name: 'married_date_ad',
                   isRequired: true,
                   isDate: true,
                 ),
@@ -105,187 +119,21 @@ class _CompleteFormState extends ConsumerState<GroomDetailPage> {
 
 
                 Forms.textForm(
-                    label: 'Birth Country',
-                    hintText: 'birth country',
-                    name: 'groom_birth_country',
-                    isText: true,
-                    isRequired:  true
-                ),
-
-
-
-                gapH10,
-
-                Forms.textForm(
-                    label: 'Citizenship country',
-                    hintText: 'citizenship country',
-                    name: 'groom_citizenship_country',
-                    isText: true,
-                    isRequired:  true
-                ),
-
-                gapH10,
-
-                _buildCard(label:'Education', name: 'groom_education_status', datas: literacy_types ),
-
-                gapH10,
-
-                _buildCard(label:'Religion', name: 'groom_religion', datas: religions ),
-
-                gapH10,
-
-
-
-                Forms.textForm(
-                    label: 'Occupation',
-                    hintText: 'occupation',
-                    name: 'groom_occupation',
-                    isText: true,
-                    isRequired:  true
-                ),
-
-
-                gapH10,
-
-
-
-
-                Forms.textForm(
-                    label: 'Mother Tongue',
-                    hintText: 'mother tomgue',
-                    name: 'groom_mother_tongue',
-                    isText: true,
-                    isRequired:  true
-                ),
-
-
-                gapH10,
-                Forms.textForm(
-                    label: 'Street Name',
+                    label: 'Married Street name',
                     hintText: 'street name',
-                    name: 'groom_street_name',
-                    isText: true,
-                    isRequired:  true,
-                ),
-
-
-
-                gapH10,
-                Forms.textForm(
-                    label: 'Tole Name',
-                    hintText: 'tole name',
-                    name: 'groom_tole',
+                    name: 'married_street_name',
                     isText: true,
                     isRequired:  true
                 ),
 
 
-                gapH10,
-                Forms.textForm(
-                    label: 'House Number',
-                    hintText: 'house number',
-                    name: 'groom_house_no',
-                    isText: true,
-                    isRequired:  true,
-                    isNumber: true
-                ),
-
-
-                gapH10,
-                Forms.textForm(
-                    label: 'Birth Country',
-                    hintText: 'birth country',
-                    name: 'groom_birth_country',
-                    isText: true,
-                    isRequired:  true,
-                ),
-
-
-                gapH10,
-                Forms.textForm(
-                    label: 'Citizenship Country',
-                    hintText: 'citizenship country',
-                    name: 'groom_citizenship_country',
-                    isText: true,
-                    isRequired:  true,
-                ),
-
-
-                gapH10,
-                Forms.textForm(
-                    label: 'Citizenship Number',
-                    hintText: 'citizenship number',
-                    name: 'groom_citizenship_no',
-                    isText: true,
-                    isRequired:  true,
-                    isNumber: true
-                ),
-
 
                 gapH10,
 
-
                 Forms.textForm(
-                  label: 'Citizenship Date',
-                  hintText: '(DD-MM-YYYY)',
-                  name: 'groom_citizenship_date',
-                  isRequired: true,
-                  isDate: true,
-                ),
-
-
-                gapH10,
-                Forms.textForm(
-                    label: 'Address',
-                    hintText: 'address',
-                    name: 'groom_address',
-                    isText: true,
-                    isRequired:  true,
-                ),
-
-
-                gapH10,
-
-
-
-
-                Forms.textForm(
-                    label: 'Gradnfather Name (EN)',
-                    hintText: 'english name',
-                    name: 'groom_grand_father_en',
-                    isText: true,
-                    isRequired:  true
-                ),
-                gapH10,
-
-
-
-                Forms.textForm(
-                    label: 'Gradnfather Name (NP)',
-                    hintText: 'nepali name',
-                    name: 'groom_grand_father_np',
-                    isText: true,
-                    isRequired:  true
-                ),
-                gapH10,
-
-
-
-                Forms.textForm(
-                    label: 'Father Name (EN)',
-                    hintText: 'english name',
-                    name: 'groom_father_name_en',
-                    isText: true,
-                    isRequired:  true
-                ),
-                gapH10,
-
-
-
-                Forms.textForm(
-                    label: 'Father Name (NP)',
-                    hintText: 'nepali name',
-                    name: 'groom_father_name_np',
+                    label: 'Married Tole',
+                    hintText: 'married tole',
+                    name: 'married_tole',
                     isText: true,
                     isRequired:  true
                 ),
@@ -293,44 +141,43 @@ class _CompleteFormState extends ConsumerState<GroomDetailPage> {
                 gapH10,
 
 
-
-                Forms.textForm(
-                    label: 'Mother Name (EN)',
-                    hintText: 'english name',
-                    name: 'groom_mother_name_en',
-                    isText: true,
-                    isRequired:  true
-                ),
-
                 gapH10,
 
 
 
                 Forms.textForm(
-                    label: 'Mother Name (NP)',
-                    hintText: 'nepali name',
-                    name: 'groom_mother_name_np',
+                    label: 'Married House Number',
+                    hintText: 'married house number',
+                    name: 'married_house_no',
                     isText: true,
+                    isNumber: true,
                     isRequired:  true
                 ),
+
 
                 gapH10,
 
 
-                FormBuilderImagePicker(
-                  validator: FormBuilderValidators.required(errorText: "required"),
-                  name: 'groom_photo',
-                  decoration: const InputDecoration(labelText: 'Add Photo'),
-                  maxImages: 1,
 
 
+                Forms.textForm(
+                    label: 'Married Address (EN)',
+                    hintText: 'english address',
+                    name: 'married_address_en',
+                    isText: true,
+                    isRequired:  true
                 ),
 
 
+                gapH10,
 
-
-
-
+                Forms.textForm(
+                    label: 'Married Address (NP)',
+                    hintText: 'nepali address',
+                    name: 'married_address_np',
+                    isText: true,
+                    isRequired:  true
+                ),
 
 
 
@@ -347,26 +194,17 @@ class _CompleteFormState extends ConsumerState<GroomDetailPage> {
 
 
 
-
-
-
-
-
                     if (_formKey1.currentState!.validate()) {
 
                       final formData = _formKey1.currentState!.value;
 
                       final newData = Map.of(formData);
 
-                      newData.update('groom_photo', (value) => newData['groom_photo'][0]);
-
-
-                    //  ref.read(crudProvider.notifier).postMarriage(data: newData);
+                      widget.fields.addAll(newData);
 
 
 
-
-                       Get.to(() => BrideDetailPage(fields: newData,), transition: Transition.leftToRight);
+                      Get.to(() => MarriageOfficeDetailPage(fields: widget.fields,), transition: Transition.leftToRight);
 
                     } else {
                       //    ref.read(modeProvider.notifier).change();
@@ -374,7 +212,7 @@ class _CompleteFormState extends ConsumerState<GroomDetailPage> {
                     }
                   },
                   child:  Text(
-                    'To Bride Detail Page',
+                    'To Office Detail Page',
                   ),
                 ),
               ],

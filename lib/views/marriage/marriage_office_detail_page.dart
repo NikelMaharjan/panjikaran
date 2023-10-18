@@ -32,6 +32,10 @@ import '../../provider/validate_provider.dart';
 
 class MarriageOfficeDetailPage extends ConsumerStatefulWidget {
 
+  Map<String, dynamic> fields;
+
+  MarriageOfficeDetailPage({required this.fields});
+
 
 
 
@@ -42,6 +46,13 @@ class MarriageOfficeDetailPage extends ConsumerStatefulWidget {
 }
 
 class _CompleteFormState extends ConsumerState<MarriageOfficeDetailPage> {
+
+
+
+  Provincee provinceO =  Provincee(id: 0, en_names: "", np_name: "", province_no: 0);
+  Districtt districtO =  Districtt(id: 0, en_name: "", np_name: "");
+  Municipalityy municipalityO =  Municipalityy(id: 0, name_en: "", name_np: "");
+  Wardd wardO =  Wardd(id: 0, address: "");
 
 
   Provincee provinceG =  Provincee(id: 0, en_names: "", np_name: "", province_no: 0);
@@ -76,17 +87,17 @@ class _CompleteFormState extends ConsumerState<MarriageOfficeDetailPage> {
 
     final mode = ref.watch(modeProvider);
 
-    //
-    // ref.listen(crudProvider, (previous, next) {
-    //   if(next.isError){
-    //     CommonSnack.errrorSnack(context: context, msg: next.errText);
-    //   }else if(next.isSuccess){
-    //     CommonSnack.successSnack(context: context, msg: "Successful Added");
-    //     Get.offAll(DartaMainPage());
-    //
-    //   }
-    //
-    // });
+
+    ref.listen(crudProvider, (previous, next) {
+      if(next.isError){
+        CommonSnack.errrorSnack(context: context, msg: next.errText);
+      }else if(next.isSuccess){
+        CommonSnack.successSnack(context: context, msg: "Successful Added");
+        Get.offAll(DartaMainPage());
+
+      }
+
+    });
 
     return WillPopScope(
       onWillPop: ()async{
@@ -110,6 +121,189 @@ class _CompleteFormState extends ConsumerState<MarriageOfficeDetailPage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   gapH20,
+
+
+                  Text("Select Office Location"),
+                  gapH10,
+
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: DropdownSearch<Provincee>(
+                        validator: dropDownValidation,
+
+                        dropdownDecoratorProps: DropDownDecoratorProps(
+                            dropdownSearchDecoration: InputDecoration(
+                                label: Text("Province")
+                            )
+                        ),
+
+                        asyncItems: (String filter) async {
+
+
+                          try{
+
+                            var response = await Dio().get("https://panjikaran.digitalpalika.org/api/v1/provinces");
+                            final data = (response.data['results'] as List).map((e) => Provincee.fromJson(e)).toList();
+                            return data;
+
+                          }
+                          on DioException catch (err) {
+                            throw "Something went wrong";
+
+                          }
+
+                        },
+                        onChanged: (Provincee? data) {
+                          setState(() {
+                            provinceO = data!;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+
+                  gapH10,
+
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: DropdownSearch<Districtt>(
+                        validator: dropDownValidation,
+                        enabled:   provinceO.en_names.isEmpty ? false : true ,
+
+
+                        dropdownDecoratorProps: DropDownDecoratorProps(
+                            dropdownSearchDecoration: InputDecoration(
+                                label: Text("District")
+                            )
+                        ),
+
+                        asyncItems: (String filter) async {
+
+
+                          try{
+
+                            var response = await Dio().get(
+                                "https://panjikaran.digitalpalika.org/api/v1/districts",
+                                queryParameters: {
+                                  "province" : provinceO.id
+                                }
+                            );
+                            final data = (response.data['results'] as List).map((e) => Districtt.fromJson(e)).toList();
+                            return data;
+
+                          }
+                          on DioException catch (err) {
+                            throw "Something went wrong";
+
+                          }
+
+                        },
+                        onChanged: (Districtt? data) {
+                          setState(() {
+                            districtO = data!;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+
+                  gapH10,
+
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: DropdownSearch<Municipalityy>(
+                        validator: dropDownValidation,
+
+                        enabled:   districtO.np_name.isEmpty ? false : true ,
+
+
+                        dropdownDecoratorProps: DropDownDecoratorProps(
+                            dropdownSearchDecoration: InputDecoration(
+                                label: Text("Municipality")
+                            )
+                        ),
+
+                        asyncItems: (String filter) async {
+
+
+                          try{
+
+                            var response = await Dio().get(
+                                "https://panjikaran.digitalpalika.org/api/v1/muncipalities",
+                                queryParameters: {
+                                  "district" : districtO.id
+                                }
+                            );
+                            final data = (response.data['results'] as List).map((e) => Municipalityy.fromJson(e)).toList();
+                            return data;
+
+                          }
+                          on DioException catch (err) {
+                            throw "Something went wrong";
+
+                          }
+
+                        },
+                        onChanged: (Municipalityy? data) {
+                          setState(() {
+                            municipalityO = data!;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+
+                  gapH10,
+
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: DropdownSearch<Wardd>(
+                        validator: dropDownValidation,
+
+                        enabled:   municipalityO.name_en.isEmpty ? false : true ,
+
+
+                        dropdownDecoratorProps: DropDownDecoratorProps(
+                            dropdownSearchDecoration: InputDecoration(
+                                label: Text("Ward")
+                            )
+                        ),
+
+                        asyncItems: (String filter) async {
+
+
+                          try{
+
+                            var response = await Dio().get(
+                                "https://panjikaran.digitalpalika.org/api/v1/wards",
+                                queryParameters: {
+                                  "municipality" : municipalityO.id
+                                }
+                            );
+                            final data = (response.data['results'] as List).map((e) => Wardd.fromJson(e)).toList();
+                            return data;
+
+                          }
+                          on DioException catch (err) {
+                            throw "Something went wrong";
+
+                          }
+
+                        },
+                        onChanged: (Wardd? data) {
+                          setState(() {
+                            wardO = data!;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+
+                  gapH16,
 
                   Text("Select Groom Location"),
                   gapH10,
@@ -671,7 +865,6 @@ class _CompleteFormState extends ConsumerState<MarriageOfficeDetailPage> {
                     onPressed: crudData.isLoad ? null : () {
 
                       _formKey4.currentState!.save();
-                      //     print(_formKey4.currentState!.value);
 
 
 
@@ -685,10 +878,16 @@ class _CompleteFormState extends ConsumerState<MarriageOfficeDetailPage> {
                         newData['groom_issued_district_id'] = districtG.id;
                         newData['bride_issued_district_id'] = districtB.id;
                         newData['married_ward_id'] = wardM.id;
+                        newData['office_ward_id'] = wardO.id;
 
-                     //   widget.fields.addAll(newData);
+                        widget.fields.addAll(newData);
 
-                        //  logDev.log("data is ${widget.fields}");
+
+                      //  print(newData['witness_photo']);
+
+
+                       ref.read(crudProvider.notifier).postMarriage(data: widget.fields);
+
 
 
 

@@ -41,16 +41,6 @@ class _CompleteFormState extends ConsumerState<FatherDetailPage> {
   Municipalityy municipalityF =  Municipalityy(id: 0, name_en: "", name_np: "");
   Wardd wardF =  Wardd(id: 0, address: "");
 
-  final dobController = TextEditingController();
-  final nameController = TextEditingController();
-  final pToleController = TextEditingController();
-  final pWardController = TextEditingController();
-  final sadakController = TextEditingController();
-  final houseController = TextEditingController();
-  final toleController = TextEditingController();
-  final deshController = TextEditingController();
-  final citizenshipNo = TextEditingController();
-  final birth = TextEditingController();
 
 
   final _formKey2 = GlobalKey<FormBuilderState>();
@@ -58,7 +48,7 @@ class _CompleteFormState extends ConsumerState<FatherDetailPage> {
   @override
   Widget build(BuildContext context) {
 
-    final mode1 = ref.watch(modeProvider);
+    final mode = ref.watch(modeProvider);
 
 
     return WillPopScope(
@@ -78,7 +68,7 @@ class _CompleteFormState extends ConsumerState<FatherDetailPage> {
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: FormBuilder(
-        //    autovalidateMode: mode1,
+         //    autovalidateMode: mode,
               key: _formKey2,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -405,7 +395,7 @@ class _CompleteFormState extends ConsumerState<FatherDetailPage> {
 
 
                       } else {
-                    //    ref.read(modeProvider.notifier).change();
+                      // ref.read(modeProvider.notifier).change();
                         Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
                       }
                     },

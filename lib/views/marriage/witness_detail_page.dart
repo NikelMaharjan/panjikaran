@@ -18,6 +18,7 @@ import 'package:model/views/birth/father_detail_page.dart';
 import 'package:model/views/divorce/court_detail_page.dart';
 import 'package:model/views/divorce/witness_detail_page.dart';
 import 'package:model/views/marriage/marriage_office_detail_page.dart';
+import 'package:model/views/marriage/marriage_detail_page.dart';
 import 'package:model/widgets/text_form_field.dart';
 
 import '../../constants/colors.dart';
@@ -26,18 +27,23 @@ import 'package:get/get.dart';
 
 
 
-class WitnessDetailPage extends ConsumerStatefulWidget {
+class MarriageWitnessDetailPage extends ConsumerStatefulWidget {
+
+
+  Map<String, dynamic> fields;
+
+  MarriageWitnessDetailPage({required this.fields});
 
 
 
 
   @override
-  ConsumerState<WitnessDetailPage> createState() {
+  ConsumerState<MarriageWitnessDetailPage> createState() {
     return _CompleteFormState();
   }
 }
 
-class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
+class _CompleteFormState extends ConsumerState<MarriageWitnessDetailPage> {
 
 
   Provincee provinceW =  Provincee(id: 0, en_names: "", np_name: "", province_no: 0);
@@ -185,185 +191,208 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
 
                 gapH10,
 
-                Text("Select Location"),
-                gapH10,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
 
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: DropdownSearch<Provincee>(
-                      validator: dropDownValidation,
+                    Text("Select Location"),
+                    gapH10,
 
-                      dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                              label: Text("Province")
-                          )
+                    Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: DropdownSearch<Provincee>(
+                          validator: dropDownValidation,
+
+                          dropdownDecoratorProps: DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                  label: Text("Province")
+                              )
+                          ),
+
+                          asyncItems: (String filter) async {
+
+
+                            try{
+
+                              var response = await Dio().get("https://panjikaran.digitalpalika.org/api/v1/provinces");
+                              final data = (response.data['results'] as List).map((e) => Provincee.fromJson(e)).toList();
+                              return data;
+
+                            }
+                            on DioException catch (err) {
+                              throw "Something went wrong";
+
+                            }
+
+                          },
+                          onChanged: (Provincee? data) {
+                            setState(() {
+                              provinceW = data!;
+                            });
+                          },
+                        ),
                       ),
-
-                      asyncItems: (String filter) async {
-
-
-                        try{
-
-                          var response = await Dio().get("https://panjikaran.digitalpalika.org/api/v1/provinces");
-                          final data = (response.data['results'] as List).map((e) => Provincee.fromJson(e)).toList();
-                          return data;
-
-                        }
-                        on DioException catch (err) {
-                          throw "Something went wrong";
-
-                        }
-
-                      },
-                      onChanged: (Provincee? data) {
-                        setState(() {
-                          provinceW = data!;
-                        });
-                      },
                     ),
-                  ),
+
+                    gapH10,
+
+                    Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: DropdownSearch<Districtt>(
+                          validator: dropDownValidation,
+                          enabled:   provinceW.en_names.isEmpty ? false : true ,
+
+
+                          dropdownDecoratorProps: DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                  label: Text("District")
+                              )
+                          ),
+
+                          asyncItems: (String filter) async {
+
+
+                            try{
+
+                              var response = await Dio().get(
+                                  "https://panjikaran.digitalpalika.org/api/v1/districts",
+                                  queryParameters: {
+                                    "province" : provinceW.id
+                                  }
+                              );
+                              final data = (response.data['results'] as List).map((e) => Districtt.fromJson(e)).toList();
+                              return data;
+
+                            }
+                            on DioException catch (err) {
+                              throw "Something went wrong";
+
+                            }
+
+                          },
+                          onChanged: (Districtt? data) {
+                            setState(() {
+                              districtW = data!;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+
+                    gapH10,
+
+                    Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: DropdownSearch<Municipalityy>(
+                          validator: dropDownValidation,
+
+                          enabled:   districtW.np_name.isEmpty ? false : true ,
+
+
+                          dropdownDecoratorProps: DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                  label: Text("Municipality")
+                              )
+                          ),
+
+                          asyncItems: (String filter) async {
+
+
+                            try{
+
+                              var response = await Dio().get(
+                                  "https://panjikaran.digitalpalika.org/api/v1/muncipalities",
+                                  queryParameters: {
+                                    "district" : districtW.id
+                                  }
+                              );
+                              final data = (response.data['results'] as List).map((e) => Municipalityy.fromJson(e)).toList();
+                              return data;
+
+                            }
+                            on DioException catch (err) {
+                              throw "Something went wrong";
+
+                            }
+
+                          },
+                          onChanged: (Municipalityy? data) {
+                            setState(() {
+                              municipalityW = data!;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+
+                    gapH10,
+
+                    Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: DropdownSearch<Wardd>(
+                          validator: dropDownValidation,
+
+                          enabled:   municipalityW.name_en.isEmpty ? false : true ,
+
+
+                          dropdownDecoratorProps: DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                  label: Text("Ward")
+                              )
+                          ),
+
+                          asyncItems: (String filter) async {
+
+
+                            try{
+
+                              var response = await Dio().get(
+                                  "https://panjikaran.digitalpalika.org/api/v1/wards",
+                                  queryParameters: {
+                                    "municipality" : municipalityW.id
+                                  }
+                              );
+                              final data = (response.data['results'] as List).map((e) => Wardd.fromJson(e)).toList();
+                              return data;
+
+                            }
+                            on DioException catch (err) {
+                              throw "Something went wrong";
+
+                            }
+
+                          },
+                          onChanged: (Wardd? data) {
+                            setState(() {
+                              wardW = data!;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+
+                  ],
                 ),
 
-                gapH10,
-
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: DropdownSearch<Districtt>(
-                      validator: dropDownValidation,
-                      enabled:   provinceW.en_names.isEmpty ? false : true ,
-
-
-                      dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                              label: Text("District")
-                          )
-                      ),
-
-                      asyncItems: (String filter) async {
-
-
-                        try{
-
-                          var response = await Dio().get(
-                              "https://panjikaran.digitalpalika.org/api/v1/districts",
-                              queryParameters: {
-                                "province" : provinceW.id
-                              }
-                          );
-                          final data = (response.data['results'] as List).map((e) => Districtt.fromJson(e)).toList();
-                          return data;
-
-                        }
-                        on DioException catch (err) {
-                          throw "Something went wrong";
-
-                        }
-
-                      },
-                      onChanged: (Districtt? data) {
-                        setState(() {
-                          districtW = data!;
-                        });
-                      },
-                    ),
-                  ),
-                ),
 
                 gapH10,
 
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: DropdownSearch<Municipalityy>(
-                      validator: dropDownValidation,
-
-                      enabled:   districtW.np_name.isEmpty ? false : true ,
 
 
-                      dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                              label: Text("Municipality")
-                          )
-                      ),
-
-                      asyncItems: (String filter) async {
+                FormBuilderImagePicker(
+                  validator: FormBuilderValidators.required(errorText: "required"),
+                  name: 'witness_photo',
+                  decoration: const InputDecoration(labelText: 'Add Photo'),
+                  maxImages: 1,
 
 
-                        try{
-
-                          var response = await Dio().get(
-                              "https://panjikaran.digitalpalika.org/api/v1/muncipalities",
-                              queryParameters: {
-                                "district" : districtW.id
-                              }
-                          );
-                          final data = (response.data['results'] as List).map((e) => Municipalityy.fromJson(e)).toList();
-                          return data;
-
-                        }
-                        on DioException catch (err) {
-                          throw "Something went wrong";
-
-                        }
-
-                      },
-                      onChanged: (Municipalityy? data) {
-                        setState(() {
-                          municipalityW = data!;
-                        });
-                      },
-                    ),
-                  ),
                 ),
 
-                gapH10,
 
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: DropdownSearch<Wardd>(
-                      validator: dropDownValidation,
-
-                      enabled:   municipalityW.name_en.isEmpty ? false : true ,
-
-
-                      dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                              label: Text("Ward")
-                          )
-                      ),
-
-                      asyncItems: (String filter) async {
-
-
-                        try{
-
-                          var response = await Dio().get(
-                              "https://panjikaran.digitalpalika.org/api/v1/wards",
-                              queryParameters: {
-                                "municipality" : municipalityW.id
-                              }
-                          );
-                          final data = (response.data['results'] as List).map((e) => Wardd.fromJson(e)).toList();
-                          return data;
-
-                        }
-                        on DioException catch (err) {
-                          throw "Something went wrong";
-
-                        }
-
-                      },
-                      onChanged: (Wardd? data) {
-                        setState(() {
-                          wardW = data!;
-                        });
-                      },
-                    ),
-                  ),
-                ),
 
 
 
@@ -376,38 +405,29 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
 
                     _formKey1.currentState!.save();
 
-                    final formData = _formKey1.currentState!.value;
+
+                    if (_formKey1.currentState!.validate()) {
+
+                      final formData = _formKey1.currentState!.value;
+
+                      final newData = Map.of(formData);
+
+                      newData['witness_ward_id'] = wardW.id;
+
+                      newData.update('witness_photo', (value) => newData['witness_photo'][0]);
 
 
-                    final newData = Map.of(formData);
+                      widget.fields.addAll(newData);
 
-                    newData['witness_ward_id'] = wardW.id;
+                      Get.to(() => MarriageDetailPage(fields: widget.fields,), transition: Transition.leftToRight);
 
-                    Get.to(() => MarriageOfficeDetailPage(), transition: Transition.leftToRight);
-
-
-
-
-
-                    // if (_formKey1.currentState!.validate()) {
-                    //
-                    //   final formData = _formKey1.currentState!.value;
-                    //
-                    //   final newData = Map.of(formData);
-                    //
-                    //   widget.fields.addAll(newData);
-                    //
-                    //
-                    //
-                    //   Get.to(() => WitnessDetailPage(fields: widget.fields,), transition: Transition.leftToRight);
-                    //
-                    // } else {
-                    //   //    ref.read(modeProvider.notifier).change();
-                    //   Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
-                    // }
+                    } else {
+                      //    ref.read(modeProvider.notifier).change();
+                      Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
+                    }
                   },
                   child:  Text(
-                    'To Bride Detail Page',
+                    'To Marriage Detail Page',
                   ),
                 ),
               ],

@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:model/services/auth_services.dart';
 import 'package:model/services/darta_service.dart';
 
@@ -80,6 +81,24 @@ class CrudProvider extends StateNotifier<CommonState>{
         }
     );
   }
+
+  Future<void> postMarriage({required Map<String, dynamic> data}) async {
+
+    //  logDev.log("data is $data}");
+
+    state = state.copyWith(errText: '', isError: false, isLoad: true, isSuccess: false);
+    final response = await DartaService.postMarriage(data: data);
+    response.fold(
+            (l) {
+          state =  state.copyWith(errText: l, isError: true, isLoad: false, isSuccess: false);
+        },
+            (r) {
+          state = state.copyWith(errText: '', isError: false, isLoad: false, isSuccess: r,);
+        }
+    );
+  }
+
+
 
 
 

@@ -61,7 +61,7 @@ class _CompleteFormState extends ConsumerState<BirthBibaran> {
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: FormBuilder(
-         //   autovalidateMode: mode,
+           autovalidateMode: mode,
             key: _formKey1,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -397,7 +397,7 @@ class _CompleteFormState extends ConsumerState<BirthBibaran> {
                    Get.to(() => FatherDetailPage(fields: newData,), transition: Transition.leftToRight);
 
                     } else {
-                 //    ref.read(modeProvider.notifier).change();
+                   //  ref.read(modeProvider.notifier).change();
                       Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
                     }
                   },

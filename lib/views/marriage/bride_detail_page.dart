@@ -18,6 +18,7 @@ import 'package:model/views/birth/father_detail_page.dart';
 import 'package:model/views/divorce/court_detail_page.dart';
 import 'package:model/views/divorce/witness_detail_page.dart';
 import 'package:model/views/marriage/marriage_office_detail_page.dart';
+import 'package:model/views/marriage/witness_detail_page.dart';
 import 'package:model/widgets/text_form_field.dart';
 
 import '../../constants/colors.dart';
@@ -27,6 +28,11 @@ import 'package:get/get.dart';
 
 
 class BrideDetailPage extends ConsumerStatefulWidget {
+
+
+  Map<String, dynamic> fields;
+
+  BrideDetailPage({required this.fields});
 
 
 
@@ -124,13 +130,24 @@ class _CompleteFormState extends ConsumerState<BrideDetailPage> {
                     isRequired:  true
                 ),
 
+
+                gapH10,
+
+                Forms.radioButton(
+                    label: 'Is Bride Married',
+                    name: 'is_bride_married',
+                    info: [
+                      true,
+                      false
+                    ]),
+
                 gapH10,
 
                 _buildCard(label:'Education', name: 'bride_education_status', datas: literacy_types ),
 
                 gapH10,
 
-                _buildCard(label:'Religion', name: 'bride_religion', datas: literacy_types ),
+                _buildCard(label:'Religion', name: 'bride_religion', datas: religions ),
 
                 gapH10,
 
@@ -250,7 +267,7 @@ class _CompleteFormState extends ConsumerState<BrideDetailPage> {
 
 
                 Forms.textForm(
-                    label: 'Gradnfather Name (EN)',
+                    label: 'Grandfather Name (EN)',
                     hintText: 'english name',
                     name: 'bride_grand_father_en',
                     isText: true,
@@ -261,7 +278,7 @@ class _CompleteFormState extends ConsumerState<BrideDetailPage> {
 
 
                 Forms.textForm(
-                    label: 'Gradnfather Name (NP)',
+                    label: 'Grandfather Name (NP)',
                     hintText: 'nepali name',
                     name: 'bride_grand_father_np',
                     isText: true,
@@ -317,10 +334,11 @@ class _CompleteFormState extends ConsumerState<BrideDetailPage> {
                 gapH10,
 
 
+
                 FormBuilderImagePicker(
                   validator: FormBuilderValidators.required(errorText: "required"),
                   name: 'bride_photo',
-                  decoration: const InputDecoration(labelText: 'Pick Photos'),
+                  decoration: const InputDecoration(labelText: 'Add Photo'),
                   maxImages: 1,
 
 
@@ -344,31 +362,32 @@ class _CompleteFormState extends ConsumerState<BrideDetailPage> {
 
                     _formKey1.currentState!.save();
 
-                     Get.to(() => MarriageOfficeDetailPage(), transition: Transition.leftToRight);
 
 
 
 
 
-                    // if (_formKey1.currentState!.validate()) {
-                    //
-                    //   final formData = _formKey1.currentState!.value;
-                    //
-                    //   final newData = Map.of(formData);
-                    //
-                    //   widget.fields.addAll(newData);
-                    //
-                    //
-                    //
-                    //   Get.to(() => WitnessDetailPage(fields: widget.fields,), transition: Transition.leftToRight);
-                    //
-                    // } else {
-                    //   //    ref.read(modeProvider.notifier).change();
-                    //   Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
-                    // }
+                    if (_formKey1.currentState!.validate()) {
+
+                      final formData = _formKey1.currentState!.value;
+
+                      final newData = Map.of(formData);
+
+                      newData.update('bride_photo', (value) => newData['bride_photo'][0]);
+
+
+                      widget.fields.addAll(newData);
+
+
+                      Get.to(() => MarriageWitnessDetailPage(fields: widget.fields,), transition: Transition.leftToRight);
+
+                    } else {
+                      //    ref.read(modeProvider.notifier).change();
+                      Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
+                    }
                   },
                   child:  Text(
-                    'To Office Detail Page',
+                    'To Witness Detail Page',
                   ),
                 ),
               ],
