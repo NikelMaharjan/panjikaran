@@ -130,96 +130,96 @@ List<Nationalities> nationalData = nationalities.map((e) {
   return Nationalities(id: e[0], label: e[1]);
 }).toList();
 
-class Province {
-  final int id;
-  final String np_name;
-  final String en_name;
-  const Province({required this.id, required this.en_name, required this.np_name});
-
-  factory Province.fromJson(Map<String, dynamic> json){
-    return Province(
-        id: json['id'],
-        en_name: json['en_name'],
-        np_name: json['np_name']
-    );
-  }
-  @override
-  String toString() => np_name;
-}
-
-class District {
-  final int id;
-  final String np_name;
-  final String en_name;
-
-  const  District({
-    required this.id,
-    required this.np_name,
-    required this.en_name
-  });
-
-  factory District.fromJson(Map<String, dynamic> json){
-    return District(
-      id: json['id'],
-      np_name: json['np_name'],
-      en_name: json['en_name'],
-    );
-  }
-
-  @override
-  String toString() => np_name;
-}
-
-class Municipality {
-  final int id;
-  final String np_name;
-  final String en_name;
-  const  Municipality(
-      {
-        required this.id,
-        required this.en_name,
-        required this.np_name,
-      });
-
-  factory  Municipality.fromJson(Map<String, dynamic> json){
-    return  Municipality(
-      id: json['id'],
-      np_name: json['np_name'],
-      en_name: json['en_name'],
-    );
-  }
-
-
-  @override
-  String toString() => np_name;
-}
-
-class Ward {
-  final int id;
-  final String np_name;
-  final String en_name;
-  final String number;
-  const  Ward(
-      {
-        required this.id,
-        required this.en_name,
-        required this.np_name,
-        required this.number
-      });
-
-  factory  Ward.fromJson(Map<String, dynamic> json){
-    return  Ward(
-        id: json['id'],
-        np_name: json['np_name'],
-        en_name: json['en_name'],
-        number: '${json['number']}' ?? ''
-    );
-  }
-
-
-  @override
-  String toString() => number;
-}
+// class Province {
+//   final int id;
+//   final String np_name;
+//   final String en_name;
+//   const Province({required this.id, required this.en_name, required this.np_name});
+//
+//   factory Province.fromJson(Map<String, dynamic> json){
+//     return Province(
+//         id: json['id'],
+//         en_name: json['en_name'],
+//         np_name: json['np_name']
+//     );
+//   }
+//   @override
+//   String toString() => np_name;
+// }
+//
+// class District {
+//   final int id;
+//   final String np_name;
+//   final String en_name;
+//
+//   const  District({
+//     required this.id,
+//     required this.np_name,
+//     required this.en_name
+//   });
+//
+//   factory District.fromJson(Map<String, dynamic> json){
+//     return District(
+//       id: json['id'],
+//       np_name: json['np_name'],
+//       en_name: json['en_name'],
+//     );
+//   }
+//
+//   @override
+//   String toString() => np_name;
+// }
+//
+// class Municipality {
+//   final int id;
+//   final String np_name;
+//   final String en_name;
+//   const  Municipality(
+//       {
+//         required this.id,
+//         required this.en_name,
+//         required this.np_name,
+//       });
+//
+//   factory  Municipality.fromJson(Map<String, dynamic> json){
+//     return  Municipality(
+//       id: json['id'],
+//       np_name: json['np_name'],
+//       en_name: json['en_name'],
+//     );
+//   }
+//
+//
+//   @override
+//   String toString() => np_name;
+// }
+//
+// class Ward {
+//   final int id;
+//   final String np_name;
+//   final String en_name;
+//   final String number;
+//   const  Ward(
+//       {
+//         required this.id,
+//         required this.en_name,
+//         required this.np_name,
+//         required this.number
+//       });
+//
+//   factory  Ward.fromJson(Map<String, dynamic> json){
+//     return  Ward(
+//         id: json['id'],
+//         np_name: json['np_name'],
+//         en_name: json['en_name'],
+//         number: '${json['number']}' ?? ''
+//     );
+//   }
+//
+//
+//   @override
+//   String toString() => number;
+// }
 
 
 

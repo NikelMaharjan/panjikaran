@@ -76,25 +76,7 @@ class _CompleteFormState extends ConsumerState<MarriageDetailPage> {
               children: [
                 gapH20,
 
-                Forms.radioButton(
-                    label: 'Social Tradition Marriage',
-                    name: 'is_social_tradtion',
-                    info: [
-                      true,
-                      false
-                    ]),
 
-                gapH10,
-
-                Forms.radioButton(
-                    label: "Is Law",
-                    name: 'is_law',
-                    info: [
-                      true,
-                      false
-                    ]),
-
-                gapH10,
 
 
                 Forms.textForm(
@@ -179,6 +161,24 @@ class _CompleteFormState extends ConsumerState<MarriageDetailPage> {
                     isRequired:  true
                 ),
 
+                Forms.radioButton(
+                    label: 'Social Tradition Marriage',
+                    name: 'is_social_tradtion',
+                    info: [
+                      true,
+                      false
+                    ]),
+
+                gapH10,
+
+                Forms.radioButton(
+                    label: "Is Law",
+                    name: 'is_law',
+                    info: [
+                      true,
+                      false
+                    ]),
+
 
 
 
@@ -223,39 +223,39 @@ class _CompleteFormState extends ConsumerState<MarriageDetailPage> {
     );
   }
 
-  Column _buildColumn(AutovalidateMode? mode, District father, String label) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        gapH10,
-        Text.rich(
-          TextSpan(
-            text: label,
-            //   style: TextStyles.labelTextStyle,
-          ),
-        ),
-        gapH10,
-        Card(
-            child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child:
-                DropdownSearch<District>(
-                  validator:   _val,
-                  // asyncItems: (String filter) async {
-                  //   final response = await ref.read(singleDistrictService);
-                  //   return response;
-                  // },
-                  autoValidateMode: mode,
-                  dropdownDecoratorProps:  _buildDropDownDecoratorProps(father.np_name.isEmpty,label,),
-                  onChanged: (District? data) {
-                    //      ref.read(pdistrict.notifier).state = data!;
-                  },
-                )
-            )
-        ),
-      ],
-    );
-  }
+  // Column _buildColumn(AutovalidateMode? mode, District father, String label) {
+  //   return Column(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       gapH10,
+  //       Text.rich(
+  //         TextSpan(
+  //           text: label,
+  //           //   style: TextStyles.labelTextStyle,
+  //         ),
+  //       ),
+  //       gapH10,
+  //       Card(
+  //           child: Padding(
+  //               padding: const EdgeInsets.symmetric(horizontal: 10),
+  //               child:
+  //               DropdownSearch<District>(
+  //                 validator:   _val,
+  //                 // asyncItems: (String filter) async {
+  //                 //   final response = await ref.read(singleDistrictService);
+  //                 //   return response;
+  //                 // },
+  //                 autoValidateMode: mode,
+  //                 dropdownDecoratorProps:  _buildDropDownDecoratorProps(father.np_name.isEmpty,label,),
+  //                 onChanged: (District? data) {
+  //                   //      ref.read(pdistrict.notifier).state = data!;
+  //                 },
+  //               )
+  //           )
+  //       ),
+  //     ],
+  //   );
+  // }
 
   Card _buildCard({required String name, required String label, required List<String> datas}) {
     return Card(

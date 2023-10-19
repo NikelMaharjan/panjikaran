@@ -241,39 +241,39 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
     );
   }
 
-  Column _buildColumn(AutovalidateMode? mode, District father, String label) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        gapH10,
-        Text.rich(
-          TextSpan(
-            text: label,
-            //   style: TextStyles.labelTextStyle,
-          ),
-        ),
-        gapH10,
-        Card(
-            child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child:
-                DropdownSearch<District>(
-                  validator:   _val,
-                  // asyncItems: (String filter) async {
-                  //   final response = await ref.read(singleDistrictService);
-                  //   return response;
-                  // },
-                  autoValidateMode: mode,
-                  dropdownDecoratorProps:  _buildDropDownDecoratorProps(father.np_name.isEmpty,label,),
-                  onChanged: (District? data) {
-                    //      ref.read(pdistrict.notifier).state = data!;
-                  },
-                )
-            )
-        ),
-      ],
-    );
-  }
+  // Column _buildColumn(AutovalidateMode? mode, District father, String label) {
+  //   return Column(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       gapH10,
+  //       Text.rich(
+  //         TextSpan(
+  //           text: label,
+  //           //   style: TextStyles.labelTextStyle,
+  //         ),
+  //       ),
+  //       gapH10,
+  //       Card(
+  //           child: Padding(
+  //               padding: const EdgeInsets.symmetric(horizontal: 10),
+  //               child:
+  //               DropdownSearch<District>(
+  //                 validator:   _val,
+  //                 // asyncItems: (String filter) async {
+  //                 //   final response = await ref.read(singleDistrictService);
+  //                 //   return response;
+  //                 // },
+  //                 autoValidateMode: mode,
+  //                 dropdownDecoratorProps:  _buildDropDownDecoratorProps(father.np_name.isEmpty,label,),
+  //                 onChanged: (District? data) {
+  //                   //      ref.read(pdistrict.notifier).state = data!;
+  //                 },
+  //               )
+  //           )
+  //       ),
+  //     ],
+  //   );
+  // }
 
   Card _buildCard({required String name, required String label, required List<String> datas}) {
     return Card(
