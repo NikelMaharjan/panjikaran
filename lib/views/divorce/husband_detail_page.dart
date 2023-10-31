@@ -13,7 +13,6 @@ import 'package:model/models/location.dart';
 import 'package:model/provider/test.dart';
 import 'package:model/provider/crud_provider.dart';
 import 'package:model/provider/validate_provider.dart';
-import 'package:model/views/birth/father_detail_page.dart';
 import 'package:model/views/divorce/court_detail_page.dart';
 import 'package:model/views/divorce/wife_detaill_page.dart';
 import 'package:model/widgets/text_form_field.dart';

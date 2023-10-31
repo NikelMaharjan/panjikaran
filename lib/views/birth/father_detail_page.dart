@@ -53,7 +53,7 @@ class _CompleteFormState extends ConsumerState<FatherDetailPage> {
 
     return WillPopScope(
       onWillPop: ()async{
-      //  ref.read(bibahaProvider.notifier).remove(0);
+        //  ref.read(bibahaProvider.notifier).remove(0);
         return true;
       },
       child: Scaffold(
@@ -68,18 +68,18 @@ class _CompleteFormState extends ConsumerState<FatherDetailPage> {
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: FormBuilder(
-         //    autovalidateMode: mode,
+              //    autovalidateMode: mode,
               key: _formKey2,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   gapH20,
                   Forms.textForm(
-                      label: 'Father First Name',
-                      hintText: 'father first name',
-                      name: 'father_first_name',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Father First Name',
+                    hintText: 'father first name',
+                    name: 'father_first_name',
+                    isRequired: true,
+                    isText: true,
                   ),
                   gapH14,
                   Forms.textForm(
@@ -87,33 +87,33 @@ class _CompleteFormState extends ConsumerState<FatherDetailPage> {
                       hintText: 'father middle name',
                       name: 'father_middle_name',
                       isText: true,
-                     isRequired: false
+                      isRequired: false
                   ),
                   gapH14,
                   Forms.textForm(
-                      label: 'Father Last Name',
-                      hintText: 'father last name',
-                      name: 'father_last_name',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Father Last Name',
+                    hintText: 'father last name',
+                    name: 'father_last_name',
+                    isRequired: true,
+                    isText: true,
                   ),
                   gapH14,
                   _buildCard(label:'Religion', name: 'father_religion', datas: religions ),
                   gapH14,
                   Forms.textForm(
-                      label: 'Father Street Name',
-                      hintText: 'father street name',
-                      name: 'father_street_name',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Father Street Name',
+                    hintText: 'father street name',
+                    name: 'father_street_name',
+                    isRequired: true,
+                    isText: true,
                   ),
                   gapH14,
                   Forms.textForm(
-                      label: 'Father Tole',
-                      hintText: 'father tole',
-                      name: 'father_tole',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Father Tole',
+                    hintText: 'father tole',
+                    name: 'father_tole',
+                    isRequired: true,
+                    isText: true,
                   ),
                   gapH14,
                   Forms.textForm(
@@ -126,28 +126,28 @@ class _CompleteFormState extends ConsumerState<FatherDetailPage> {
                   ),
                   gapH14,
                   Forms.textForm(
-                      label: 'Father Age',
-                      hintText: 'father age',
-                      name: 'father_age',
-                      isRequired: true,
-                      isText: true,
-                      isNumber: true,
+                    label: 'Father Age',
+                    hintText: 'father age',
+                    name: 'father_age',
+                    isRequired: true,
+                    isText: true,
+                    isNumber: true,
                   ),
                   gapH14,
                   Forms.textForm(
-                      label: 'Father Birth Country',
-                      hintText: 'father birth country',
-                      name: 'father_birth_country',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Father Birth Country',
+                    hintText: 'father birth country',
+                    name: 'father_birth_country',
+                    isRequired: true,
+                    isText: true,
                   ),
                   gapH14,
                   Forms.textForm(
-                      label: 'Father CitizenShip Country',
-                      hintText: 'father citizenship country',
-                      name: 'father_citizenship_country',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Father CitizenShip Country',
+                    hintText: 'father citizenship country',
+                    name: 'father_citizenship_country',
+                    isRequired: true,
+                    isText: true,
                   ),
                   gapH14,
                   Forms.textForm(
@@ -184,11 +184,11 @@ class _CompleteFormState extends ConsumerState<FatherDetailPage> {
 
                   gapH14,
                   Forms.textForm(
-                      label: 'Father Occupation ',
-                      hintText: 'father occupation',
-                      name: 'father_occupation',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Father Occupation ',
+                    hintText: 'father occupation',
+                    name: 'father_occupation',
+                    isRequired: true,
+                    isText: true,
                   ),
                   gapH14,
 
@@ -383,8 +383,8 @@ class _CompleteFormState extends ConsumerState<FatherDetailPage> {
                         final formData = _formKey2.currentState!.value;
                         final newData = Map.of(formData);
                         newData['father_ward_id'] = wardF.id;
-                   //     ref.read(birthDataProvider.notifier).addBirthData(data: newData);
-                    //    ref.read(crudProvider.notifier).addBirthData(data: newData, isLastPage: true);
+                        //     ref.read(birthDataProvider.notifier).addBirthData(data: newData);
+                        //    ref.read(crudProvider.notifier).addBirthData(data: newData, isLastPage: true);
 
                         widget.fields.addAll(newData);
 
@@ -395,7 +395,7 @@ class _CompleteFormState extends ConsumerState<FatherDetailPage> {
 
 
                       } else {
-                      // ref.read(modeProvider.notifier).change();
+                        // ref.read(modeProvider.notifier).change();
                         Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
                       }
                     },

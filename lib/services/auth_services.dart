@@ -19,6 +19,9 @@ class AuthService {
     // logDev.log(token!);
 
 
+    await Future.delayed(Duration(seconds: 3));
+
+
 
     try {
       final response = await dio.post("https://panjikaran.digitalpalika.org/api/v1/auth/login/",

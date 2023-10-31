@@ -13,8 +13,16 @@ import 'dart:developer' as logDev;
 
 
 
-final crudProvider = StateNotifierProvider.autoDispose<CrudProvider, CommonState>((ref) => CrudProvider(CommonState(
-    errText: '', isLoad: false, isSuccess: false, isError: false, data: {} )));
+final crudProvider = StateNotifierProvider<CrudProvider, CommonState>((ref) => CrudProvider(CommonState(
+    errText: '',
+    isLoad: false,
+    isSuccess: false,
+    isError: false,
+    data: {},
+    birth: [],
+    death: []
+
+)));
 
 
 class CrudProvider extends StateNotifier<CommonState>{
@@ -36,7 +44,6 @@ class CrudProvider extends StateNotifier<CommonState>{
 
   Future<void> postBirth({required Map data}) async {
 
-   // logDev.log("data is $data}");
 
     state = state.copyWith(errText: '', isError: false, isLoad: true, isSuccess: false);
     final response = await DartaService.postBirth(data: data);
@@ -50,9 +57,27 @@ class CrudProvider extends StateNotifier<CommonState>{
     );
   }
 
+
+  Future<void> showBirth() async {
+
+
+    state = state.copyWith(errText: '', isError: false, isLoad: true, isSuccess: false);
+    final response = await DartaService.showBirth();
+    response.fold(
+            (l) {
+          state =  state.copyWith(errText: l, isError: true, isLoad: false, isSuccess: false);
+        },
+            (r) {
+          state = state.copyWith(errText: '', isError: false, isLoad: false, isSuccess: true, birth: r);
+        }
+    );
+  }
+
+
+
+
   Future<void> postDeath({required Map data}) async {
 
-   //  logDev.log("data is $data}");
 
     state = state.copyWith(errText: '', isError: false, isLoad: true, isSuccess: false);
     final response = await DartaService.postDeath(data: data);
@@ -66,9 +91,24 @@ class CrudProvider extends StateNotifier<CommonState>{
     );
   }
 
+
+  Future<void> showDeath() async {
+
+
+    state = state.copyWith(errText: '', isError: false, isLoad: true, isSuccess: false);
+    final response = await DartaService.showDeath();
+    response.fold(
+            (l) {
+          state =  state.copyWith(errText: l, isError: true, isLoad: false, isSuccess: false);
+        },
+            (r) {
+          state = state.copyWith(errText: '', isError: false, isLoad: false, isSuccess: true, death: r);
+        }
+    );
+  }
+
   Future<void> postDivorce({required Map data}) async {
 
-    //  logDev.log("data is $data}");
 
     state = state.copyWith(errText: '', isError: false, isLoad: true, isSuccess: false);
     final response = await DartaService.postDivorce(data: data);
@@ -84,7 +124,6 @@ class CrudProvider extends StateNotifier<CommonState>{
 
   Future<void> postMarriage({required Map<String, dynamic> data}) async {
 
-    //  logDev.log("data is $data}");
 
     state = state.copyWith(errText: '', isError: false, isLoad: true, isSuccess: false);
     final response = await DartaService.postMarriage(data: data);

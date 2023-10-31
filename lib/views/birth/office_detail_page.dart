@@ -17,6 +17,7 @@ import 'package:model/common/toasts.dart';
 import 'package:model/models/location.dart';
 import 'package:model/provider/test.dart';
 import 'package:model/provider/crud_provider.dart';
+import 'package:model/views/birth/show_birth.dart';
 import 'package:model/views/darta_main_page.dart';
 import 'package:model/widgets/text_form_field.dart';
 
@@ -78,6 +79,10 @@ class _CompleteFormState extends ConsumerState<OfficeLocationPage> {
         CommonSnack.errrorSnack(context: context, msg: next.errText);
       }else if(next.isSuccess){
         CommonSnack.successSnack(context: context, msg: "Successful Added");
+
+      //  ref.read(crudProvider.notifier).showBirth();
+
+      //  Get.offAll(ShowBirthPage());
         Get.offAll(DartaMainPage());
 
       }
@@ -100,7 +105,7 @@ class _CompleteFormState extends ConsumerState<OfficeLocationPage> {
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: FormBuilder(
-          //      autovalidateMode: mode,
+              //      autovalidateMode: mode,
               key: _formKey4,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -286,9 +291,9 @@ class _CompleteFormState extends ConsumerState<OfficeLocationPage> {
                       ),
                     ),
                   ),
-                  
+
                   gapH16,
-                  
+
                   Text("Select Father Issued District"),
 
                   gapH10,
@@ -494,7 +499,7 @@ class _CompleteFormState extends ConsumerState<OfficeLocationPage> {
 
                         widget.fields.addAll(newData);
 
-                      //  logDev.log("data is ${widget.fields}");
+                        //  logDev.log("data is ${widget.fields}");
 
 
 
@@ -502,7 +507,7 @@ class _CompleteFormState extends ConsumerState<OfficeLocationPage> {
 
 
                       } else {
-                     //    ref.read(modeProvider.notifier).change();
+                        //    ref.read(modeProvider.notifier).change();
                         Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
                       }
                     },

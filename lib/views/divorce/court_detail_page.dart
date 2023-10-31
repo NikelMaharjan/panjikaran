@@ -13,7 +13,6 @@ import 'package:model/models/location.dart';
 import 'package:model/provider/test.dart';
 import 'package:model/provider/crud_provider.dart';
 import 'package:model/provider/validate_provider.dart';
-import 'package:model/views/birth/father_detail_page.dart';
 import 'package:model/views/divorce/husband_detail_page.dart';
 import 'package:model/widgets/text_form_field.dart';
 
@@ -72,7 +71,7 @@ class _CompleteFormState extends ConsumerState<CourtDetailPage> {
                 Forms.textForm(
                   label: 'Court Decision Number',
                   hintText: 'court decision number',
-                  name: 'court_decission_date',
+                  name: 'court_decission_no',
                   isRequired: true,
                   isText: true,
                   isNumber: true
@@ -83,7 +82,7 @@ class _CompleteFormState extends ConsumerState<CourtDetailPage> {
                 Forms.textForm(
                     label: 'Court Decision Date',
                     hintText: '(DD-MM-YYYY)',
-                    name: 'court_decision_date',
+                    name: 'court_decission_date',
                     isRequired: true,
                     isDate: true,
                 ),

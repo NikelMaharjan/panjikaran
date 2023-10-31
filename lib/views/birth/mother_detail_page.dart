@@ -77,61 +77,61 @@ class _CompleteFormState extends ConsumerState<MotherDetailPage> {
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: FormBuilder(
-           //    autovalidateMode: mode,
+              //    autovalidateMode: mode,
               key: _formKey3,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   gapH20,
                   Forms.textForm(
-                      label: 'Mother First Name',
-                      hintText: 'mother first name',
-                      name: 'mother_first_name',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Mother First Name',
+                    hintText: 'mother first name',
+                    name: 'mother_first_name',
+                    isRequired: true,
+                    isText: true,
                   ),
 
                   gapH14,
 
                   Forms.textForm(
-                      label: 'Mother Middle Name',
-                      hintText: 'mother middle name',
-                      name: 'mother_middle_name',
-                      isText: true,
-                      isRequired: false,
-                  ),
-
-
-                  gapH14,
-
-                  Forms.textForm(
-                      label: 'Mother Last Name',
-                      hintText: 'mother last name',
-                      name: 'mother_last_name',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Mother Middle Name',
+                    hintText: 'mother middle name',
+                    name: 'mother_middle_name',
+                    isText: true,
+                    isRequired: false,
                   ),
 
 
                   gapH14,
 
                   Forms.textForm(
-                      label: 'Mother Street Name',
-                      hintText: 'mother street name',
-                      name: 'mother_street_name',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Mother Last Name',
+                    hintText: 'mother last name',
+                    name: 'mother_last_name',
+                    isRequired: true,
+                    isText: true,
                   ),
 
 
                   gapH14,
 
                   Forms.textForm(
-                      label: 'Mother Tole',
-                      hintText: 'mother tole',
-                      name: 'mother_tole',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Mother Street Name',
+                    hintText: 'mother street name',
+                    name: 'mother_street_name',
+                    isRequired: true,
+                    isText: true,
+                  ),
+
+
+                  gapH14,
+
+                  Forms.textForm(
+                    label: 'Mother Tole',
+                    hintText: 'mother tole',
+                    name: 'mother_tole',
+                    isRequired: true,
+                    isText: true,
                   ),
                   gapH14,
 
@@ -156,20 +156,20 @@ class _CompleteFormState extends ConsumerState<MotherDetailPage> {
                   gapH14,
 
                   Forms.textForm(
-                      label: 'Mother Birth Country',
-                      hintText: 'mother birth country',
-                      name: 'mother_birth_country',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Mother Birth Country',
+                    hintText: 'mother birth country',
+                    name: 'mother_birth_country',
+                    isRequired: true,
+                    isText: true,
                   ),
                   gapH14,
 
                   Forms.textForm(
-                      label: 'Mother CitizenShip Country',
-                      hintText: 'mother citizenship country',
-                      name: 'mother_citizenship_country',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Mother CitizenShip Country',
+                    hintText: 'mother citizenship country',
+                    name: 'mother_citizenship_country',
+                    isRequired: true,
+                    isText: true,
 
                   ),
                   gapH14,
@@ -238,12 +238,12 @@ class _CompleteFormState extends ConsumerState<MotherDetailPage> {
                   gapH14,
 
                   Forms.textForm(
-                      label: 'Marrried Registration No',
-                      hintText: 'married registration no',
-                      name: 'married_registration_no',
-                      isRequired: true,
-                      isText: true,
-                      isNumber: true,
+                    label: 'Marrried Registration No',
+                    hintText: 'married registration no',
+                    name: 'married_registration_no',
+                    isRequired: true,
+                    isText: true,
+                    isNumber: true,
                   ),
 
                   gapH14,
@@ -263,12 +263,12 @@ class _CompleteFormState extends ConsumerState<MotherDetailPage> {
 
 
                   Forms.textForm(
-                      label: 'Married Date (BS)',
-                      hintText: '(DD-MM-YYYY)',
-                      name: 'married_date_bs',
-                      isRequired: true,
-                      isText: true,
-                      isDate: true,
+                    label: 'Married Date (BS)',
+                    hintText: '(DD-MM-YYYY)',
+                    name: 'married_date_bs',
+                    isRequired: true,
+                    isText: true,
+                    isDate: true,
                   ),
 
                   gapH14,
@@ -510,17 +510,17 @@ class _CompleteFormState extends ConsumerState<MotherDetailPage> {
 
 
 
-                      //  ref.read(birthDataProvider.notifier).addBirthData(data: newData);
-                       Get.to(() => WitnessDetailPage(fields: widget.fields,), transition: Transition.leftToRight);
+                        //  ref.read(birthDataProvider.notifier).addBirthData(data: newData);
+                        Get.to(() => WitnessDetailPage(fields: widget.fields,), transition: Transition.leftToRight);
 
 
                       } else {
-                     //    ref.read(modeProvider.notifier).change();
+                        //    ref.read(modeProvider.notifier).change();
                         Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
                       }
                     },
                     child: const Text(
-                      'To Witness Detail Page'
+                        'To Witness Detail Page'
                     ),
                   ),
 
@@ -564,6 +564,3 @@ class _CompleteFormState extends ConsumerState<MotherDetailPage> {
     );
   }
 }
-
-
-

@@ -7,6 +7,8 @@ import 'dart:developer' as logDev;
 
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:model/models/birth/birth.dart';
+import 'package:model/models/death/death.dart';
 import 'package:model/widgets/text_form_field.dart';
 
 
@@ -14,6 +16,8 @@ class DartaService {
 
 
   static Future<Either<String, bool>> postBirth({required Map data}) async {
+
+
     final dio = Dio();
 
 
@@ -37,6 +41,70 @@ class DartaService {
       return Left(err.response.toString());
     }
   }
+
+
+  static Future<Either<String, List<Birth>>> showBirth() async {
+    final dio = Dio();
+
+
+
+    try {
+      final response = await dio.get("https://panjikaran.digitalpalika.org/api/v1/birth-notices/",
+          options: Options(
+              headers: {
+                'Accept': 'application/json',
+                'Authorization' : 'Token 67a7b4b2da4fd5859d0a6c0fe7fc3b2b8b932b79'
+              }
+          )
+      );
+
+      final data = (response.data['results'] as List).map((e) => Birth.fromJson(e)).toList();
+
+      return Right(data);
+
+
+    } on DioException catch (err) {
+      print(err.response.toString());
+      return Left(err.response.toString());
+    }
+  }
+
+
+  static Future<Either<String, List<Death>>> showDeath() async {
+    final dio = Dio();
+
+
+
+    try {
+      final response = await dio.get("https://panjikaran.digitalpalika.org/api/v1/death-notices/",
+          options: Options(
+              headers: {
+                'Accept': 'application/json',
+                'Authorization' : 'Token 67a7b4b2da4fd5859d0a6c0fe7fc3b2b8b932b79'
+              }
+          )
+      );
+
+      final data = (response.data['results'] as List).map((e) => Death.fromJson(e)).toList();
+
+      return Right(data);
+
+
+    } on DioException catch (err) {
+      print(err.response.toString());
+      return Left(err.response.toString());
+    }
+  }
+
+
+
+
+
+
+
+
+
+
 
   static Future<Either<String, bool>> postDeath({required Map data}) async {
     final dio = Dio();
@@ -64,6 +132,9 @@ class DartaService {
 
   static Future<Either<String, bool>>  postDivorce ({required Map data})async {
 
+
+
+
     final dio = Dio();
 
     try {
@@ -71,11 +142,7 @@ class DartaService {
 
         for(final m in data.entries) m.key : m.value,
 
-        'witness_photo' : MultipartFile.fromFile((data['witness_photo'] as XFile).path, filename: (data['witness_photo'] as XFile).name)
-
-
-
-
+        'witness_photo' : await MultipartFile.fromFile((data['witness_photo'] as XFile).path, filename: (data['witness_photo'] as XFile).name)
 
 
 
@@ -101,7 +168,6 @@ class DartaService {
 
 
 
-   // print("data is ${data}");
 
 
 

@@ -12,7 +12,7 @@ import '../models/common_state/common_state.dart';
 
 
 final otpStateProvider = StateNotifierProvider<OtpProvider, CommonState>((ref) => OtpProvider(CommonState(
-    errText: '', isLoad: false, isSuccess: false, isError: false, user: ref.watch(authProvider).user, otp: Otp(expired_at: "", otp: 0))));
+    errText: '', isLoad: false, isSuccess: false, isError: false, user: ref.watch(authProvider).user, otp: Otp(expire_at: "", otp: 0))));
 
 
 class OtpProvider extends StateNotifier<CommonState>{
@@ -26,7 +26,7 @@ class OtpProvider extends StateNotifier<CommonState>{
     final response = await OtpServices.getOtpToken(token: state.user!.token);
     response.fold(
             (l) {
-          state =  state.copyWith(errText: l, isError: true, isLoad: false, isSuccess: false, otp: Otp(expired_at: "", otp: 0));
+          state =  state.copyWith(errText: l, isError: true, isLoad: false, isSuccess: false, otp: Otp(expire_at: "", otp: 0));
         },
             (r) {
           state = state.copyWith(errText: '', isError: false, isLoad: false, isSuccess: true, otp: r);

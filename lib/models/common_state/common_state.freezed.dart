@@ -23,6 +23,8 @@ mixin _$CommonState {
   Map<dynamic, dynamic>? get data => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
   Otp? get otp => throw _privateConstructorUsedError;
+  List<Birth>? get birth => throw _privateConstructorUsedError;
+  List<Death>? get death => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CommonStateCopyWith<CommonState> get copyWith =>
@@ -42,7 +44,9 @@ abstract class $CommonStateCopyWith<$Res> {
       bool isError,
       Map<dynamic, dynamic>? data,
       User? user,
-      Otp? otp});
+      Otp? otp,
+      List<Birth>? birth,
+      List<Death>? death});
 }
 
 /// @nodoc
@@ -65,6 +69,8 @@ class _$CommonStateCopyWithImpl<$Res, $Val extends CommonState>
     Object? data = freezed,
     Object? user = freezed,
     Object? otp = freezed,
+    Object? birth = freezed,
+    Object? death = freezed,
   }) {
     return _then(_value.copyWith(
       errText: null == errText
@@ -95,6 +101,14 @@ class _$CommonStateCopyWithImpl<$Res, $Val extends CommonState>
           ? _value.otp
           : otp // ignore: cast_nullable_to_non_nullable
               as Otp?,
+      birth: freezed == birth
+          ? _value.birth
+          : birth // ignore: cast_nullable_to_non_nullable
+              as List<Birth>?,
+      death: freezed == death
+          ? _value.death
+          : death // ignore: cast_nullable_to_non_nullable
+              as List<Death>?,
     ) as $Val);
   }
 }
@@ -114,7 +128,9 @@ abstract class _$$_CommonStateCopyWith<$Res>
       bool isError,
       Map<dynamic, dynamic>? data,
       User? user,
-      Otp? otp});
+      Otp? otp,
+      List<Birth>? birth,
+      List<Death>? death});
 }
 
 /// @nodoc
@@ -135,6 +151,8 @@ class __$$_CommonStateCopyWithImpl<$Res>
     Object? data = freezed,
     Object? user = freezed,
     Object? otp = freezed,
+    Object? birth = freezed,
+    Object? death = freezed,
   }) {
     return _then(_$_CommonState(
       errText: null == errText
@@ -165,6 +183,14 @@ class __$$_CommonStateCopyWithImpl<$Res>
           ? _value.otp
           : otp // ignore: cast_nullable_to_non_nullable
               as Otp?,
+      birth: freezed == birth
+          ? _value._birth
+          : birth // ignore: cast_nullable_to_non_nullable
+              as List<Birth>?,
+      death: freezed == death
+          ? _value._death
+          : death // ignore: cast_nullable_to_non_nullable
+              as List<Death>?,
     ));
   }
 }
@@ -179,8 +205,12 @@ class _$_CommonState implements _CommonState {
       required this.isError,
       final Map<dynamic, dynamic>? data,
       this.user,
-      this.otp})
-      : _data = data;
+      this.otp,
+      final List<Birth>? birth,
+      final List<Death>? death})
+      : _data = data,
+        _birth = birth,
+        _death = death;
 
   @override
   final String errText;
@@ -204,10 +234,29 @@ class _$_CommonState implements _CommonState {
   final User? user;
   @override
   final Otp? otp;
+  final List<Birth>? _birth;
+  @override
+  List<Birth>? get birth {
+    final value = _birth;
+    if (value == null) return null;
+    if (_birth is EqualUnmodifiableListView) return _birth;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<Death>? _death;
+  @override
+  List<Death>? get death {
+    final value = _death;
+    if (value == null) return null;
+    if (_death is EqualUnmodifiableListView) return _death;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'CommonState(errText: $errText, isLoad: $isLoad, isSuccess: $isSuccess, isError: $isError, data: $data, user: $user, otp: $otp)';
+    return 'CommonState(errText: $errText, isLoad: $isLoad, isSuccess: $isSuccess, isError: $isError, data: $data, user: $user, otp: $otp, birth: $birth, death: $death)';
   }
 
   @override
@@ -222,12 +271,23 @@ class _$_CommonState implements _CommonState {
             (identical(other.isError, isError) || other.isError == isError) &&
             const DeepCollectionEquality().equals(other._data, _data) &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.otp, otp) || other.otp == otp));
+            (identical(other.otp, otp) || other.otp == otp) &&
+            const DeepCollectionEquality().equals(other._birth, _birth) &&
+            const DeepCollectionEquality().equals(other._death, _death));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, errText, isLoad, isSuccess,
-      isError, const DeepCollectionEquality().hash(_data), user, otp);
+  int get hashCode => Object.hash(
+      runtimeType,
+      errText,
+      isLoad,
+      isSuccess,
+      isError,
+      const DeepCollectionEquality().hash(_data),
+      user,
+      otp,
+      const DeepCollectionEquality().hash(_birth),
+      const DeepCollectionEquality().hash(_death));
 
   @JsonKey(ignore: true)
   @override
@@ -244,7 +304,9 @@ abstract class _CommonState implements CommonState {
       required final bool isError,
       final Map<dynamic, dynamic>? data,
       final User? user,
-      final Otp? otp}) = _$_CommonState;
+      final Otp? otp,
+      final List<Birth>? birth,
+      final List<Death>? death}) = _$_CommonState;
 
   @override
   String get errText;
@@ -260,6 +322,10 @@ abstract class _CommonState implements CommonState {
   User? get user;
   @override
   Otp? get otp;
+  @override
+  List<Birth>? get birth;
+  @override
+  List<Death>? get death;
   @override
   @JsonKey(ignore: true)
   _$$_CommonStateCopyWith<_$_CommonState> get copyWith =>

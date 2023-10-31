@@ -78,50 +78,50 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: FormBuilder(
-         //     autovalidateMode: mode,
+              //     autovalidateMode: mode,
               key: _formKey5,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   gapH20,
                   Forms.textForm(
-                      label: 'Witness Name English',
-                      hintText: 'witness name english',
-                      name: 'witness_full_name_en',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Witness Name English',
+                    hintText: 'witness name english',
+                    name: 'witness_full_name_en',
+                    isRequired: true,
+                    isText: true,
                   ),
 
                   gapH14,
 
                   Forms.textForm(
-                      label: 'Witness Name Nepali',
-                      hintText: 'witness name english',
-                      name: 'witness_full_name_np',
-                      isRequired: true,
-                      isText: true,
-                  ),
-
-
-                  gapH14,
-
-                  Forms.textForm(
-                      label: 'Witness Street Name',
-                      hintText: 'witness street name',
-                      name: 'witness_street_name',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Witness Name Nepali',
+                    hintText: 'witness name english',
+                    name: 'witness_full_name_np',
+                    isRequired: true,
+                    isText: true,
                   ),
 
 
                   gapH14,
 
                   Forms.textForm(
-                      label: 'Witness Tole',
-                      hintText: 'wintess tole',
-                      name: 'witness_tole',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Witness Street Name',
+                    hintText: 'witness street name',
+                    name: 'witness_street_name',
+                    isRequired: true,
+                    isText: true,
+                  ),
+
+
+                  gapH14,
+
+                  Forms.textForm(
+                    label: 'Witness Tole',
+                    hintText: 'wintess tole',
+                    name: 'witness_tole',
+                    isRequired: true,
+                    isText: true,
                   ),
 
 
@@ -139,20 +139,20 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
                   gapH14,
 
                   Forms.textForm(
-                      label: 'Witness Birth Country',
-                      hintText: 'withness birth country',
-                      name: 'witness_birth_country',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Witness Birth Country',
+                    hintText: 'withness birth country',
+                    name: 'witness_birth_country',
+                    isRequired: true,
+                    isText: true,
                   ),
                   gapH14,
 
                   Forms.textForm(
-                      label: 'Witness Citizenship Country',
-                      hintText: 'witness citizenship country',
-                      name: 'witness_citizenship_country',
-                      isRequired: true,
-                      isText: true,
+                    label: 'Witness Citizenship Country',
+                    hintText: 'witness citizenship country',
+                    name: 'witness_citizenship_country',
+                    isRequired: true,
+                    isText: true,
                   ),
                   gapH14,
 
@@ -385,7 +385,7 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
 
 
                       } else {
-                    //     ref.read(modeProvider.notifier).change();
+                        //     ref.read(modeProvider.notifier).change();
                         Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
                       }
                     },

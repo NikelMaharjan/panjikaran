@@ -3,15 +3,15 @@
 class Otp {
 
 
-  final String expired_at;
+  final String expire_at;
   final int otp;
 
-  Otp({required this.expired_at, required this.otp});
+  Otp({required this.expire_at, required this.otp});
 
   factory Otp.fromJson (Map<String, dynamic> json) {
 
     return Otp(
-        expired_at: json['expired_at'],
+        expire_at: json['expire_at'],
         otp: json['otp']
     );
 

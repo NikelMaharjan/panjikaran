@@ -12,6 +12,7 @@ import 'package:model/otp_page.dart';
 import 'package:model/profile_page.dart';
 import 'package:model/provider/auth_provider.dart';
 import 'package:get/get.dart';
+import 'package:model/views/birth/show_birth.dart';
 import 'package:model/views/darta_main_page.dart';
 import 'package:model/views/death/parents_and_witness_detail_page.dart';
 import 'package:model/views/divorce/witness_detail_page.dart';
@@ -72,9 +73,8 @@ class DashBoardPage extends ConsumerWidget {
         context,
         screens: [
 
-        //  ProfilePage(),
-
-          ProfilePage(),
+         ProfilePage(),
+         // ShowBirthPage(),
 
 
           DartaMainPage(),

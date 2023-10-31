@@ -61,27 +61,27 @@ class _CompleteFormState extends ConsumerState<BirthBibaran> {
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: FormBuilder(
-           autovalidateMode: mode,
+            autovalidateMode: mode,
             key: _formKey1,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 gapH20,
                 Forms.textForm(
-                    label: 'English Name',
-                    hintText: 'पुरा नाम लेख्नुहोश',
-                    name: 'name_en',
-                    isRequired: true,
-                    isText: true,
+                  label: 'English Name',
+                  hintText: 'पुरा नाम लेख्नुहोश',
+                  name: 'name_en',
+                  isRequired: true,
+                  isText: true,
 
                 ),
                 gapH10,
                 Forms.textForm(
-                    label: 'Nepali Name',
-                    hintText: 'पुरा नाम लेख्नुहोश',
-                    name: 'name_np',
-                    isRequired: true,
-                    isText: true,
+                  label: 'Nepali Name',
+                  hintText: 'पुरा नाम लेख्नुहोश',
+                  name: 'name_np',
+                  isRequired: true,
+                  isText: true,
                 ),
                 gapH10,
                 _buildCard(label:'Birth Place', name: 'birth_place', datas: [
@@ -150,11 +150,11 @@ class _CompleteFormState extends ConsumerState<BirthBibaran> {
                 ),
                 gapH10,
                 Forms.textForm(
-                    label: 'Foreign Address Nepali',
-                    hintText: 'विदेशी_ठेगाना',
-                    name: 'foreign_address_np',
-                    isText: true,
-                    isRequired:  false,
+                  label: 'Foreign Address Nepali',
+                  hintText: 'विदेशी_ठेगाना',
+                  name: 'foreign_address_np',
+                  isText: true,
+                  isRequired:  false,
                 ),
                 gapH10,
                 Column(
@@ -223,9 +223,9 @@ class _CompleteFormState extends ConsumerState<BirthBibaran> {
 
                               var response = await Dio().get(
                                   "https://panjikaran.digitalpalika.org/api/v1/districts",
-                                queryParameters: {
-                                  "province" : province.id
-                                }
+                                  queryParameters: {
+                                    "province" : province.id
+                                  }
                               );
                               final data = (response.data['results'] as List).map((e) => Districtt.fromJson(e)).toList();
                               return data;
@@ -270,9 +270,9 @@ class _CompleteFormState extends ConsumerState<BirthBibaran> {
 
                               var response = await Dio().get(
                                   "https://panjikaran.digitalpalika.org/api/v1/muncipalities",
-                                queryParameters: {
+                                  queryParameters: {
                                     "district" : district.id
-                                }
+                                  }
                               );
                               final data = (response.data['results'] as List).map((e) => Municipalityy.fromJson(e)).toList();
                               return data;
@@ -317,9 +317,9 @@ class _CompleteFormState extends ConsumerState<BirthBibaran> {
 
                               var response = await Dio().get(
                                   "https://panjikaran.digitalpalika.org/api/v1/wards",
-                                queryParameters: {
+                                  queryParameters: {
                                     "municipality" : municipality.id
-                                }
+                                  }
                               );
                               final data = (response.data['results'] as List).map((e) => Wardd.fromJson(e)).toList();
                               return data;
@@ -383,21 +383,21 @@ class _CompleteFormState extends ConsumerState<BirthBibaran> {
 
 
                       //
-                     //  final formatDate1 = DateFormat('yyyy-MM-dd').format(formData['birth_date_np']);
+                      //  final formatDate1 = DateFormat('yyyy-MM-dd').format(formData['birth_date_np']);
                       //
-                   //
+                      //
 
-                     // newData['birth_date_np'].toString().substring(0,2);
+                      // newData['birth_date_np'].toString().substring(0,2);
 
 
 
-                     // print(newData['birth_date_np']);
-                    // ref.read(birthDataProvider.notifier).addBirthData(data: newData);
-                  //   ref.read(crudProvider.notifier).addBirthData(data: newData);
-                   Get.to(() => FatherDetailPage(fields: newData,), transition: Transition.leftToRight);
+                      // print(newData['birth_date_np']);
+                      // ref.read(birthDataProvider.notifier).addBirthData(data: newData);
+                      //   ref.read(crudProvider.notifier).addBirthData(data: newData);
+                      Get.to(() => FatherDetailPage(fields: newData,), transition: Transition.leftToRight);
 
                     } else {
-                   //  ref.read(modeProvider.notifier).change();
+                      //  ref.read(modeProvider.notifier).change();
                       Toasts.showFormFailure('केही फिल्डहरू भरिएका छैनन्');
                     }
                   },

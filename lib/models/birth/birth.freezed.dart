@@ -22,6 +22,8 @@ Birth _$BirthFromJson(Map<String, dynamic> json) {
 mixin _$Birth {
   int get id => throw _privateConstructorUsedError;
   int get office_ward_id => throw _privateConstructorUsedError;
+  int get father_ward_id => throw _privateConstructorUsedError;
+  int get ward_id => throw _privateConstructorUsedError;
   String get name_np => throw _privateConstructorUsedError;
   String get name_en => throw _privateConstructorUsedError;
   String get birth_date_np => throw _privateConstructorUsedError;
@@ -32,17 +34,15 @@ mixin _$Birth {
   String get ethnicity => throw _privateConstructorUsedError;
   String get birth_type => throw _privateConstructorUsedError;
   bool get is_disable => throw _privateConstructorUsedError;
-  String get details_disability => throw _privateConstructorUsedError;
-  String get ward_id => throw _privateConstructorUsedError;
+  String? get details_disability => throw _privateConstructorUsedError;
   String get foreign_address_np => throw _privateConstructorUsedError;
   String get foreign_address_en => throw _privateConstructorUsedError;
   String get grandfather_first_name => throw _privateConstructorUsedError;
-  String get grandfather_middle_name => throw _privateConstructorUsedError;
+  String? get grandfather_middle_name => throw _privateConstructorUsedError;
   String get grandfather_last_name => throw _privateConstructorUsedError;
   String get father_first_name => throw _privateConstructorUsedError;
-  String get father_middle_name => throw _privateConstructorUsedError;
+  String? get father_middle_name => throw _privateConstructorUsedError;
   String get father_last_name => throw _privateConstructorUsedError;
-  String get father_ward_id => throw _privateConstructorUsedError;
   String get father_street_name => throw _privateConstructorUsedError;
   String get father_tole => throw _privateConstructorUsedError;
   String get father_house_no => throw _privateConstructorUsedError;
@@ -58,7 +58,7 @@ mixin _$Birth {
   String get father_religion => throw _privateConstructorUsedError;
   String get father_mothertongue => throw _privateConstructorUsedError;
   String get mother_first_name => throw _privateConstructorUsedError;
-  String get mother_middle_name => throw _privateConstructorUsedError;
+  String? get mother_middle_name => throw _privateConstructorUsedError;
   String get mother_last_name => throw _privateConstructorUsedError;
   int get mother_ward_id => throw _privateConstructorUsedError;
   String get mother_street_name => throw _privateConstructorUsedError;
@@ -85,15 +85,17 @@ mixin _$Birth {
   String get witness_street_name => throw _privateConstructorUsedError;
   String get witness_tole => throw _privateConstructorUsedError;
   String get witness_house_no => throw _privateConstructorUsedError;
+  String get married_registration_no => throw _privateConstructorUsedError;
   String get witness_birth_country => throw _privateConstructorUsedError;
   String get witness_citizenship_country => throw _privateConstructorUsedError;
   String get witness_citizenship_no => throw _privateConstructorUsedError;
   String get witness_citizenship_date => throw _privateConstructorUsedError;
+  String get created_at => throw _privateConstructorUsedError;
   String get qr_code => throw _privateConstructorUsedError;
-  Ward get office_ward => throw _privateConstructorUsedError;
   Ward get ward => throw _privateConstructorUsedError;
   Ward get father_ward => throw _privateConstructorUsedError;
   Ward get mother_ward => throw _privateConstructorUsedError;
+  Ward get office_ward => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -108,6 +110,8 @@ abstract class $BirthCopyWith<$Res> {
   $Res call(
       {int id,
       int office_ward_id,
+      int father_ward_id,
+      int ward_id,
       String name_np,
       String name_en,
       String birth_date_np,
@@ -118,17 +122,15 @@ abstract class $BirthCopyWith<$Res> {
       String ethnicity,
       String birth_type,
       bool is_disable,
-      String details_disability,
-      String ward_id,
+      String? details_disability,
       String foreign_address_np,
       String foreign_address_en,
       String grandfather_first_name,
-      String grandfather_middle_name,
+      String? grandfather_middle_name,
       String grandfather_last_name,
       String father_first_name,
-      String father_middle_name,
+      String? father_middle_name,
       String father_last_name,
-      String father_ward_id,
       String father_street_name,
       String father_tole,
       String father_house_no,
@@ -144,7 +146,7 @@ abstract class $BirthCopyWith<$Res> {
       String father_religion,
       String father_mothertongue,
       String mother_first_name,
-      String mother_middle_name,
+      String? mother_middle_name,
       String mother_last_name,
       int mother_ward_id,
       String mother_street_name,
@@ -171,20 +173,22 @@ abstract class $BirthCopyWith<$Res> {
       String witness_street_name,
       String witness_tole,
       String witness_house_no,
+      String married_registration_no,
       String witness_birth_country,
       String witness_citizenship_country,
       String witness_citizenship_no,
       String witness_citizenship_date,
+      String created_at,
       String qr_code,
-      Ward office_ward,
       Ward ward,
       Ward father_ward,
-      Ward mother_ward});
+      Ward mother_ward,
+      Ward office_ward});
 
-  $WardCopyWith<$Res> get office_ward;
   $WardCopyWith<$Res> get ward;
   $WardCopyWith<$Res> get father_ward;
   $WardCopyWith<$Res> get mother_ward;
+  $WardCopyWith<$Res> get office_ward;
 }
 
 /// @nodoc
@@ -202,6 +206,8 @@ class _$BirthCopyWithImpl<$Res, $Val extends Birth>
   $Res call({
     Object? id = null,
     Object? office_ward_id = null,
+    Object? father_ward_id = null,
+    Object? ward_id = null,
     Object? name_np = null,
     Object? name_en = null,
     Object? birth_date_np = null,
@@ -212,17 +218,15 @@ class _$BirthCopyWithImpl<$Res, $Val extends Birth>
     Object? ethnicity = null,
     Object? birth_type = null,
     Object? is_disable = null,
-    Object? details_disability = null,
-    Object? ward_id = null,
+    Object? details_disability = freezed,
     Object? foreign_address_np = null,
     Object? foreign_address_en = null,
     Object? grandfather_first_name = null,
-    Object? grandfather_middle_name = null,
+    Object? grandfather_middle_name = freezed,
     Object? grandfather_last_name = null,
     Object? father_first_name = null,
-    Object? father_middle_name = null,
+    Object? father_middle_name = freezed,
     Object? father_last_name = null,
-    Object? father_ward_id = null,
     Object? father_street_name = null,
     Object? father_tole = null,
     Object? father_house_no = null,
@@ -238,7 +242,7 @@ class _$BirthCopyWithImpl<$Res, $Val extends Birth>
     Object? father_religion = null,
     Object? father_mothertongue = null,
     Object? mother_first_name = null,
-    Object? mother_middle_name = null,
+    Object? mother_middle_name = freezed,
     Object? mother_last_name = null,
     Object? mother_ward_id = null,
     Object? mother_street_name = null,
@@ -265,15 +269,17 @@ class _$BirthCopyWithImpl<$Res, $Val extends Birth>
     Object? witness_street_name = null,
     Object? witness_tole = null,
     Object? witness_house_no = null,
+    Object? married_registration_no = null,
     Object? witness_birth_country = null,
     Object? witness_citizenship_country = null,
     Object? witness_citizenship_no = null,
     Object? witness_citizenship_date = null,
+    Object? created_at = null,
     Object? qr_code = null,
-    Object? office_ward = null,
     Object? ward = null,
     Object? father_ward = null,
     Object? mother_ward = null,
+    Object? office_ward = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -283,6 +289,14 @@ class _$BirthCopyWithImpl<$Res, $Val extends Birth>
       office_ward_id: null == office_ward_id
           ? _value.office_ward_id
           : office_ward_id // ignore: cast_nullable_to_non_nullable
+              as int,
+      father_ward_id: null == father_ward_id
+          ? _value.father_ward_id
+          : father_ward_id // ignore: cast_nullable_to_non_nullable
+              as int,
+      ward_id: null == ward_id
+          ? _value.ward_id
+          : ward_id // ignore: cast_nullable_to_non_nullable
               as int,
       name_np: null == name_np
           ? _value.name_np
@@ -324,14 +338,10 @@ class _$BirthCopyWithImpl<$Res, $Val extends Birth>
           ? _value.is_disable
           : is_disable // ignore: cast_nullable_to_non_nullable
               as bool,
-      details_disability: null == details_disability
+      details_disability: freezed == details_disability
           ? _value.details_disability
           : details_disability // ignore: cast_nullable_to_non_nullable
-              as String,
-      ward_id: null == ward_id
-          ? _value.ward_id
-          : ward_id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       foreign_address_np: null == foreign_address_np
           ? _value.foreign_address_np
           : foreign_address_np // ignore: cast_nullable_to_non_nullable
@@ -344,10 +354,10 @@ class _$BirthCopyWithImpl<$Res, $Val extends Birth>
           ? _value.grandfather_first_name
           : grandfather_first_name // ignore: cast_nullable_to_non_nullable
               as String,
-      grandfather_middle_name: null == grandfather_middle_name
+      grandfather_middle_name: freezed == grandfather_middle_name
           ? _value.grandfather_middle_name
           : grandfather_middle_name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       grandfather_last_name: null == grandfather_last_name
           ? _value.grandfather_last_name
           : grandfather_last_name // ignore: cast_nullable_to_non_nullable
@@ -356,17 +366,13 @@ class _$BirthCopyWithImpl<$Res, $Val extends Birth>
           ? _value.father_first_name
           : father_first_name // ignore: cast_nullable_to_non_nullable
               as String,
-      father_middle_name: null == father_middle_name
+      father_middle_name: freezed == father_middle_name
           ? _value.father_middle_name
           : father_middle_name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       father_last_name: null == father_last_name
           ? _value.father_last_name
           : father_last_name // ignore: cast_nullable_to_non_nullable
-              as String,
-      father_ward_id: null == father_ward_id
-          ? _value.father_ward_id
-          : father_ward_id // ignore: cast_nullable_to_non_nullable
               as String,
       father_street_name: null == father_street_name
           ? _value.father_street_name
@@ -428,10 +434,10 @@ class _$BirthCopyWithImpl<$Res, $Val extends Birth>
           ? _value.mother_first_name
           : mother_first_name // ignore: cast_nullable_to_non_nullable
               as String,
-      mother_middle_name: null == mother_middle_name
+      mother_middle_name: freezed == mother_middle_name
           ? _value.mother_middle_name
           : mother_middle_name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       mother_last_name: null == mother_last_name
           ? _value.mother_last_name
           : mother_last_name // ignore: cast_nullable_to_non_nullable
@@ -536,6 +542,10 @@ class _$BirthCopyWithImpl<$Res, $Val extends Birth>
           ? _value.witness_house_no
           : witness_house_no // ignore: cast_nullable_to_non_nullable
               as String,
+      married_registration_no: null == married_registration_no
+          ? _value.married_registration_no
+          : married_registration_no // ignore: cast_nullable_to_non_nullable
+              as String,
       witness_birth_country: null == witness_birth_country
           ? _value.witness_birth_country
           : witness_birth_country // ignore: cast_nullable_to_non_nullable
@@ -552,14 +562,14 @@ class _$BirthCopyWithImpl<$Res, $Val extends Birth>
           ? _value.witness_citizenship_date
           : witness_citizenship_date // ignore: cast_nullable_to_non_nullable
               as String,
+      created_at: null == created_at
+          ? _value.created_at
+          : created_at // ignore: cast_nullable_to_non_nullable
+              as String,
       qr_code: null == qr_code
           ? _value.qr_code
           : qr_code // ignore: cast_nullable_to_non_nullable
               as String,
-      office_ward: null == office_ward
-          ? _value.office_ward
-          : office_ward // ignore: cast_nullable_to_non_nullable
-              as Ward,
       ward: null == ward
           ? _value.ward
           : ward // ignore: cast_nullable_to_non_nullable
@@ -572,15 +582,11 @@ class _$BirthCopyWithImpl<$Res, $Val extends Birth>
           ? _value.mother_ward
           : mother_ward // ignore: cast_nullable_to_non_nullable
               as Ward,
+      office_ward: null == office_ward
+          ? _value.office_ward
+          : office_ward // ignore: cast_nullable_to_non_nullable
+              as Ward,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $WardCopyWith<$Res> get office_ward {
-    return $WardCopyWith<$Res>(_value.office_ward, (value) {
-      return _then(_value.copyWith(office_ward: value) as $Val);
-    });
   }
 
   @override
@@ -606,6 +612,14 @@ class _$BirthCopyWithImpl<$Res, $Val extends Birth>
       return _then(_value.copyWith(mother_ward: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WardCopyWith<$Res> get office_ward {
+    return $WardCopyWith<$Res>(_value.office_ward, (value) {
+      return _then(_value.copyWith(office_ward: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -617,6 +631,8 @@ abstract class _$$_BirthCopyWith<$Res> implements $BirthCopyWith<$Res> {
   $Res call(
       {int id,
       int office_ward_id,
+      int father_ward_id,
+      int ward_id,
       String name_np,
       String name_en,
       String birth_date_np,
@@ -627,17 +643,15 @@ abstract class _$$_BirthCopyWith<$Res> implements $BirthCopyWith<$Res> {
       String ethnicity,
       String birth_type,
       bool is_disable,
-      String details_disability,
-      String ward_id,
+      String? details_disability,
       String foreign_address_np,
       String foreign_address_en,
       String grandfather_first_name,
-      String grandfather_middle_name,
+      String? grandfather_middle_name,
       String grandfather_last_name,
       String father_first_name,
-      String father_middle_name,
+      String? father_middle_name,
       String father_last_name,
-      String father_ward_id,
       String father_street_name,
       String father_tole,
       String father_house_no,
@@ -653,7 +667,7 @@ abstract class _$$_BirthCopyWith<$Res> implements $BirthCopyWith<$Res> {
       String father_religion,
       String father_mothertongue,
       String mother_first_name,
-      String mother_middle_name,
+      String? mother_middle_name,
       String mother_last_name,
       int mother_ward_id,
       String mother_street_name,
@@ -680,24 +694,26 @@ abstract class _$$_BirthCopyWith<$Res> implements $BirthCopyWith<$Res> {
       String witness_street_name,
       String witness_tole,
       String witness_house_no,
+      String married_registration_no,
       String witness_birth_country,
       String witness_citizenship_country,
       String witness_citizenship_no,
       String witness_citizenship_date,
+      String created_at,
       String qr_code,
-      Ward office_ward,
       Ward ward,
       Ward father_ward,
-      Ward mother_ward});
+      Ward mother_ward,
+      Ward office_ward});
 
-  @override
-  $WardCopyWith<$Res> get office_ward;
   @override
   $WardCopyWith<$Res> get ward;
   @override
   $WardCopyWith<$Res> get father_ward;
   @override
   $WardCopyWith<$Res> get mother_ward;
+  @override
+  $WardCopyWith<$Res> get office_ward;
 }
 
 /// @nodoc
@@ -711,6 +727,8 @@ class __$$_BirthCopyWithImpl<$Res> extends _$BirthCopyWithImpl<$Res, _$_Birth>
   $Res call({
     Object? id = null,
     Object? office_ward_id = null,
+    Object? father_ward_id = null,
+    Object? ward_id = null,
     Object? name_np = null,
     Object? name_en = null,
     Object? birth_date_np = null,
@@ -721,17 +739,15 @@ class __$$_BirthCopyWithImpl<$Res> extends _$BirthCopyWithImpl<$Res, _$_Birth>
     Object? ethnicity = null,
     Object? birth_type = null,
     Object? is_disable = null,
-    Object? details_disability = null,
-    Object? ward_id = null,
+    Object? details_disability = freezed,
     Object? foreign_address_np = null,
     Object? foreign_address_en = null,
     Object? grandfather_first_name = null,
-    Object? grandfather_middle_name = null,
+    Object? grandfather_middle_name = freezed,
     Object? grandfather_last_name = null,
     Object? father_first_name = null,
-    Object? father_middle_name = null,
+    Object? father_middle_name = freezed,
     Object? father_last_name = null,
-    Object? father_ward_id = null,
     Object? father_street_name = null,
     Object? father_tole = null,
     Object? father_house_no = null,
@@ -747,7 +763,7 @@ class __$$_BirthCopyWithImpl<$Res> extends _$BirthCopyWithImpl<$Res, _$_Birth>
     Object? father_religion = null,
     Object? father_mothertongue = null,
     Object? mother_first_name = null,
-    Object? mother_middle_name = null,
+    Object? mother_middle_name = freezed,
     Object? mother_last_name = null,
     Object? mother_ward_id = null,
     Object? mother_street_name = null,
@@ -774,15 +790,17 @@ class __$$_BirthCopyWithImpl<$Res> extends _$BirthCopyWithImpl<$Res, _$_Birth>
     Object? witness_street_name = null,
     Object? witness_tole = null,
     Object? witness_house_no = null,
+    Object? married_registration_no = null,
     Object? witness_birth_country = null,
     Object? witness_citizenship_country = null,
     Object? witness_citizenship_no = null,
     Object? witness_citizenship_date = null,
+    Object? created_at = null,
     Object? qr_code = null,
-    Object? office_ward = null,
     Object? ward = null,
     Object? father_ward = null,
     Object? mother_ward = null,
+    Object? office_ward = null,
   }) {
     return _then(_$_Birth(
       id: null == id
@@ -792,6 +810,14 @@ class __$$_BirthCopyWithImpl<$Res> extends _$BirthCopyWithImpl<$Res, _$_Birth>
       office_ward_id: null == office_ward_id
           ? _value.office_ward_id
           : office_ward_id // ignore: cast_nullable_to_non_nullable
+              as int,
+      father_ward_id: null == father_ward_id
+          ? _value.father_ward_id
+          : father_ward_id // ignore: cast_nullable_to_non_nullable
+              as int,
+      ward_id: null == ward_id
+          ? _value.ward_id
+          : ward_id // ignore: cast_nullable_to_non_nullable
               as int,
       name_np: null == name_np
           ? _value.name_np
@@ -833,14 +859,10 @@ class __$$_BirthCopyWithImpl<$Res> extends _$BirthCopyWithImpl<$Res, _$_Birth>
           ? _value.is_disable
           : is_disable // ignore: cast_nullable_to_non_nullable
               as bool,
-      details_disability: null == details_disability
+      details_disability: freezed == details_disability
           ? _value.details_disability
           : details_disability // ignore: cast_nullable_to_non_nullable
-              as String,
-      ward_id: null == ward_id
-          ? _value.ward_id
-          : ward_id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       foreign_address_np: null == foreign_address_np
           ? _value.foreign_address_np
           : foreign_address_np // ignore: cast_nullable_to_non_nullable
@@ -853,10 +875,10 @@ class __$$_BirthCopyWithImpl<$Res> extends _$BirthCopyWithImpl<$Res, _$_Birth>
           ? _value.grandfather_first_name
           : grandfather_first_name // ignore: cast_nullable_to_non_nullable
               as String,
-      grandfather_middle_name: null == grandfather_middle_name
+      grandfather_middle_name: freezed == grandfather_middle_name
           ? _value.grandfather_middle_name
           : grandfather_middle_name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       grandfather_last_name: null == grandfather_last_name
           ? _value.grandfather_last_name
           : grandfather_last_name // ignore: cast_nullable_to_non_nullable
@@ -865,17 +887,13 @@ class __$$_BirthCopyWithImpl<$Res> extends _$BirthCopyWithImpl<$Res, _$_Birth>
           ? _value.father_first_name
           : father_first_name // ignore: cast_nullable_to_non_nullable
               as String,
-      father_middle_name: null == father_middle_name
+      father_middle_name: freezed == father_middle_name
           ? _value.father_middle_name
           : father_middle_name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       father_last_name: null == father_last_name
           ? _value.father_last_name
           : father_last_name // ignore: cast_nullable_to_non_nullable
-              as String,
-      father_ward_id: null == father_ward_id
-          ? _value.father_ward_id
-          : father_ward_id // ignore: cast_nullable_to_non_nullable
               as String,
       father_street_name: null == father_street_name
           ? _value.father_street_name
@@ -937,10 +955,10 @@ class __$$_BirthCopyWithImpl<$Res> extends _$BirthCopyWithImpl<$Res, _$_Birth>
           ? _value.mother_first_name
           : mother_first_name // ignore: cast_nullable_to_non_nullable
               as String,
-      mother_middle_name: null == mother_middle_name
+      mother_middle_name: freezed == mother_middle_name
           ? _value.mother_middle_name
           : mother_middle_name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       mother_last_name: null == mother_last_name
           ? _value.mother_last_name
           : mother_last_name // ignore: cast_nullable_to_non_nullable
@@ -1045,6 +1063,10 @@ class __$$_BirthCopyWithImpl<$Res> extends _$BirthCopyWithImpl<$Res, _$_Birth>
           ? _value.witness_house_no
           : witness_house_no // ignore: cast_nullable_to_non_nullable
               as String,
+      married_registration_no: null == married_registration_no
+          ? _value.married_registration_no
+          : married_registration_no // ignore: cast_nullable_to_non_nullable
+              as String,
       witness_birth_country: null == witness_birth_country
           ? _value.witness_birth_country
           : witness_birth_country // ignore: cast_nullable_to_non_nullable
@@ -1061,14 +1083,14 @@ class __$$_BirthCopyWithImpl<$Res> extends _$BirthCopyWithImpl<$Res, _$_Birth>
           ? _value.witness_citizenship_date
           : witness_citizenship_date // ignore: cast_nullable_to_non_nullable
               as String,
+      created_at: null == created_at
+          ? _value.created_at
+          : created_at // ignore: cast_nullable_to_non_nullable
+              as String,
       qr_code: null == qr_code
           ? _value.qr_code
           : qr_code // ignore: cast_nullable_to_non_nullable
               as String,
-      office_ward: null == office_ward
-          ? _value.office_ward
-          : office_ward // ignore: cast_nullable_to_non_nullable
-              as Ward,
       ward: null == ward
           ? _value.ward
           : ward // ignore: cast_nullable_to_non_nullable
@@ -1081,6 +1103,10 @@ class __$$_BirthCopyWithImpl<$Res> extends _$BirthCopyWithImpl<$Res, _$_Birth>
           ? _value.mother_ward
           : mother_ward // ignore: cast_nullable_to_non_nullable
               as Ward,
+      office_ward: null == office_ward
+          ? _value.office_ward
+          : office_ward // ignore: cast_nullable_to_non_nullable
+              as Ward,
     ));
   }
 }
@@ -1092,6 +1118,8 @@ class _$_Birth implements _Birth {
   const _$_Birth(
       {required this.id,
       required this.office_ward_id,
+      required this.father_ward_id,
+      required this.ward_id,
       required this.name_np,
       required this.name_en,
       required this.birth_date_np,
@@ -1102,17 +1130,15 @@ class _$_Birth implements _Birth {
       required this.ethnicity,
       required this.birth_type,
       required this.is_disable,
-      required this.details_disability,
-      required this.ward_id,
+      this.details_disability,
       required this.foreign_address_np,
       required this.foreign_address_en,
       required this.grandfather_first_name,
-      required this.grandfather_middle_name,
+      this.grandfather_middle_name,
       required this.grandfather_last_name,
       required this.father_first_name,
-      required this.father_middle_name,
+      this.father_middle_name,
       required this.father_last_name,
-      required this.father_ward_id,
       required this.father_street_name,
       required this.father_tole,
       required this.father_house_no,
@@ -1128,7 +1154,7 @@ class _$_Birth implements _Birth {
       required this.father_religion,
       required this.father_mothertongue,
       required this.mother_first_name,
-      required this.mother_middle_name,
+      this.mother_middle_name,
       required this.mother_last_name,
       required this.mother_ward_id,
       required this.mother_street_name,
@@ -1155,15 +1181,17 @@ class _$_Birth implements _Birth {
       required this.witness_street_name,
       required this.witness_tole,
       required this.witness_house_no,
+      required this.married_registration_no,
       required this.witness_birth_country,
       required this.witness_citizenship_country,
       required this.witness_citizenship_no,
       required this.witness_citizenship_date,
+      required this.created_at,
       required this.qr_code,
-      required this.office_ward,
       required this.ward,
       required this.father_ward,
-      required this.mother_ward});
+      required this.mother_ward,
+      required this.office_ward});
 
   factory _$_Birth.fromJson(Map<String, dynamic> json) =>
       _$$_BirthFromJson(json);
@@ -1172,6 +1200,10 @@ class _$_Birth implements _Birth {
   final int id;
   @override
   final int office_ward_id;
+  @override
+  final int father_ward_id;
+  @override
+  final int ward_id;
   @override
   final String name_np;
   @override
@@ -1193,9 +1225,7 @@ class _$_Birth implements _Birth {
   @override
   final bool is_disable;
   @override
-  final String details_disability;
-  @override
-  final String ward_id;
+  final String? details_disability;
   @override
   final String foreign_address_np;
   @override
@@ -1203,17 +1233,15 @@ class _$_Birth implements _Birth {
   @override
   final String grandfather_first_name;
   @override
-  final String grandfather_middle_name;
+  final String? grandfather_middle_name;
   @override
   final String grandfather_last_name;
   @override
   final String father_first_name;
   @override
-  final String father_middle_name;
+  final String? father_middle_name;
   @override
   final String father_last_name;
-  @override
-  final String father_ward_id;
   @override
   final String father_street_name;
   @override
@@ -1245,7 +1273,7 @@ class _$_Birth implements _Birth {
   @override
   final String mother_first_name;
   @override
-  final String mother_middle_name;
+  final String? mother_middle_name;
   @override
   final String mother_last_name;
   @override
@@ -1299,6 +1327,8 @@ class _$_Birth implements _Birth {
   @override
   final String witness_house_no;
   @override
+  final String married_registration_no;
+  @override
   final String witness_birth_country;
   @override
   final String witness_citizenship_country;
@@ -1307,19 +1337,21 @@ class _$_Birth implements _Birth {
   @override
   final String witness_citizenship_date;
   @override
-  final String qr_code;
+  final String created_at;
   @override
-  final Ward office_ward;
+  final String qr_code;
   @override
   final Ward ward;
   @override
   final Ward father_ward;
   @override
   final Ward mother_ward;
+  @override
+  final Ward office_ward;
 
   @override
   String toString() {
-    return 'Birth(id: $id, office_ward_id: $office_ward_id, name_np: $name_np, name_en: $name_en, birth_date_np: $birth_date_np, birth_date_en: $birth_date_en, birth_place: $birth_place, birth_assistant: $birth_assistant, gender: $gender, ethnicity: $ethnicity, birth_type: $birth_type, is_disable: $is_disable, details_disability: $details_disability, ward_id: $ward_id, foreign_address_np: $foreign_address_np, foreign_address_en: $foreign_address_en, grandfather_first_name: $grandfather_first_name, grandfather_middle_name: $grandfather_middle_name, grandfather_last_name: $grandfather_last_name, father_first_name: $father_first_name, father_middle_name: $father_middle_name, father_last_name: $father_last_name, father_ward_id: $father_ward_id, father_street_name: $father_street_name, father_tole: $father_tole, father_house_no: $father_house_no, father_age: $father_age, father_birth_country: $father_birth_country, father_citizenship_country: $father_citizenship_country, father_citizenship_no: $father_citizenship_no, father_issued_district: $father_issued_district, father_citizenship_date: $father_citizenship_date, father_passport: $father_passport, father_education_status: $father_education_status, father_occupation: $father_occupation, father_religion: $father_religion, father_mothertongue: $father_mothertongue, mother_first_name: $mother_first_name, mother_middle_name: $mother_middle_name, mother_last_name: $mother_last_name, mother_ward_id: $mother_ward_id, mother_street_name: $mother_street_name, mother_tole: $mother_tole, mother_house_no: $mother_house_no, mother_age: $mother_age, mother_birth_country: $mother_birth_country, mother_citizenship_country: $mother_citizenship_country, mother_citizenship_no: $mother_citizenship_no, mother_issued_district: $mother_issued_district, mother_citizenship_date: $mother_citizenship_date, mother_passport: $mother_passport, mother_education_status: $mother_education_status, mother_occupation: $mother_occupation, mother_religion: $mother_religion, mother_mothertongue: $mother_mothertongue, married_date_ad: $married_date_ad, married_date_bs: $married_date_bs, total_birth_child: $total_birth_child, total_alive_child: $total_alive_child, witness_full_name_np: $witness_full_name_np, witness_full_name_en: $witness_full_name_en, witness_ward: $witness_ward, witness_street_name: $witness_street_name, witness_tole: $witness_tole, witness_house_no: $witness_house_no, witness_birth_country: $witness_birth_country, witness_citizenship_country: $witness_citizenship_country, witness_citizenship_no: $witness_citizenship_no, witness_citizenship_date: $witness_citizenship_date, qr_code: $qr_code, office_ward: $office_ward, ward: $ward, father_ward: $father_ward, mother_ward: $mother_ward)';
+    return 'Birth(id: $id, office_ward_id: $office_ward_id, father_ward_id: $father_ward_id, ward_id: $ward_id, name_np: $name_np, name_en: $name_en, birth_date_np: $birth_date_np, birth_date_en: $birth_date_en, birth_place: $birth_place, birth_assistant: $birth_assistant, gender: $gender, ethnicity: $ethnicity, birth_type: $birth_type, is_disable: $is_disable, details_disability: $details_disability, foreign_address_np: $foreign_address_np, foreign_address_en: $foreign_address_en, grandfather_first_name: $grandfather_first_name, grandfather_middle_name: $grandfather_middle_name, grandfather_last_name: $grandfather_last_name, father_first_name: $father_first_name, father_middle_name: $father_middle_name, father_last_name: $father_last_name, father_street_name: $father_street_name, father_tole: $father_tole, father_house_no: $father_house_no, father_age: $father_age, father_birth_country: $father_birth_country, father_citizenship_country: $father_citizenship_country, father_citizenship_no: $father_citizenship_no, father_issued_district: $father_issued_district, father_citizenship_date: $father_citizenship_date, father_passport: $father_passport, father_education_status: $father_education_status, father_occupation: $father_occupation, father_religion: $father_religion, father_mothertongue: $father_mothertongue, mother_first_name: $mother_first_name, mother_middle_name: $mother_middle_name, mother_last_name: $mother_last_name, mother_ward_id: $mother_ward_id, mother_street_name: $mother_street_name, mother_tole: $mother_tole, mother_house_no: $mother_house_no, mother_age: $mother_age, mother_birth_country: $mother_birth_country, mother_citizenship_country: $mother_citizenship_country, mother_citizenship_no: $mother_citizenship_no, mother_issued_district: $mother_issued_district, mother_citizenship_date: $mother_citizenship_date, mother_passport: $mother_passport, mother_education_status: $mother_education_status, mother_occupation: $mother_occupation, mother_religion: $mother_religion, mother_mothertongue: $mother_mothertongue, married_date_ad: $married_date_ad, married_date_bs: $married_date_bs, total_birth_child: $total_birth_child, total_alive_child: $total_alive_child, witness_full_name_np: $witness_full_name_np, witness_full_name_en: $witness_full_name_en, witness_ward: $witness_ward, witness_street_name: $witness_street_name, witness_tole: $witness_tole, witness_house_no: $witness_house_no, married_registration_no: $married_registration_no, witness_birth_country: $witness_birth_country, witness_citizenship_country: $witness_citizenship_country, witness_citizenship_no: $witness_citizenship_no, witness_citizenship_date: $witness_citizenship_date, created_at: $created_at, qr_code: $qr_code, ward: $ward, father_ward: $father_ward, mother_ward: $mother_ward, office_ward: $office_ward)';
   }
 
   @override
@@ -1330,6 +1362,9 @@ class _$_Birth implements _Birth {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.office_ward_id, office_ward_id) ||
                 other.office_ward_id == office_ward_id) &&
+            (identical(other.father_ward_id, father_ward_id) ||
+                other.father_ward_id == father_ward_id) &&
+            (identical(other.ward_id, ward_id) || other.ward_id == ward_id) &&
             (identical(other.name_np, name_np) || other.name_np == name_np) &&
             (identical(other.name_en, name_en) || other.name_en == name_en) &&
             (identical(other.birth_date_np, birth_date_np) ||
@@ -1349,7 +1384,6 @@ class _$_Birth implements _Birth {
                 other.is_disable == is_disable) &&
             (identical(other.details_disability, details_disability) ||
                 other.details_disability == details_disability) &&
-            (identical(other.ward_id, ward_id) || other.ward_id == ward_id) &&
             (identical(other.foreign_address_np, foreign_address_np) ||
                 other.foreign_address_np == foreign_address_np) &&
             (identical(other.foreign_address_en, foreign_address_en) ||
@@ -1366,8 +1400,6 @@ class _$_Birth implements _Birth {
                 other.father_middle_name == father_middle_name) &&
             (identical(other.father_last_name, father_last_name) ||
                 other.father_last_name == father_last_name) &&
-            (identical(other.father_ward_id, father_ward_id) ||
-                other.father_ward_id == father_ward_id) &&
             (identical(other.father_street_name, father_street_name) ||
                 other.father_street_name == father_street_name) &&
             (identical(other.father_tole, father_tole) ||
@@ -1428,15 +1460,17 @@ class _$_Birth implements _Birth {
             (identical(other.witness_street_name, witness_street_name) || other.witness_street_name == witness_street_name) &&
             (identical(other.witness_tole, witness_tole) || other.witness_tole == witness_tole) &&
             (identical(other.witness_house_no, witness_house_no) || other.witness_house_no == witness_house_no) &&
+            (identical(other.married_registration_no, married_registration_no) || other.married_registration_no == married_registration_no) &&
             (identical(other.witness_birth_country, witness_birth_country) || other.witness_birth_country == witness_birth_country) &&
             (identical(other.witness_citizenship_country, witness_citizenship_country) || other.witness_citizenship_country == witness_citizenship_country) &&
             (identical(other.witness_citizenship_no, witness_citizenship_no) || other.witness_citizenship_no == witness_citizenship_no) &&
             (identical(other.witness_citizenship_date, witness_citizenship_date) || other.witness_citizenship_date == witness_citizenship_date) &&
+            (identical(other.created_at, created_at) || other.created_at == created_at) &&
             (identical(other.qr_code, qr_code) || other.qr_code == qr_code) &&
-            (identical(other.office_ward, office_ward) || other.office_ward == office_ward) &&
             (identical(other.ward, ward) || other.ward == ward) &&
             (identical(other.father_ward, father_ward) || other.father_ward == father_ward) &&
-            (identical(other.mother_ward, mother_ward) || other.mother_ward == mother_ward));
+            (identical(other.mother_ward, mother_ward) || other.mother_ward == mother_ward) &&
+            (identical(other.office_ward, office_ward) || other.office_ward == office_ward));
   }
 
   @JsonKey(ignore: true)
@@ -1445,6 +1479,8 @@ class _$_Birth implements _Birth {
         runtimeType,
         id,
         office_ward_id,
+        father_ward_id,
+        ward_id,
         name_np,
         name_en,
         birth_date_np,
@@ -1456,7 +1492,6 @@ class _$_Birth implements _Birth {
         birth_type,
         is_disable,
         details_disability,
-        ward_id,
         foreign_address_np,
         foreign_address_en,
         grandfather_first_name,
@@ -1465,7 +1500,6 @@ class _$_Birth implements _Birth {
         father_first_name,
         father_middle_name,
         father_last_name,
-        father_ward_id,
         father_street_name,
         father_tole,
         father_house_no,
@@ -1508,15 +1542,17 @@ class _$_Birth implements _Birth {
         witness_street_name,
         witness_tole,
         witness_house_no,
+        married_registration_no,
         witness_birth_country,
         witness_citizenship_country,
         witness_citizenship_no,
         witness_citizenship_date,
+        created_at,
         qr_code,
-        office_ward,
         ward,
         father_ward,
-        mother_ward
+        mother_ward,
+        office_ward
       ]);
 
   @JsonKey(ignore: true)
@@ -1537,6 +1573,8 @@ abstract class _Birth implements Birth {
   const factory _Birth(
       {required final int id,
       required final int office_ward_id,
+      required final int father_ward_id,
+      required final int ward_id,
       required final String name_np,
       required final String name_en,
       required final String birth_date_np,
@@ -1547,17 +1585,15 @@ abstract class _Birth implements Birth {
       required final String ethnicity,
       required final String birth_type,
       required final bool is_disable,
-      required final String details_disability,
-      required final String ward_id,
+      final String? details_disability,
       required final String foreign_address_np,
       required final String foreign_address_en,
       required final String grandfather_first_name,
-      required final String grandfather_middle_name,
+      final String? grandfather_middle_name,
       required final String grandfather_last_name,
       required final String father_first_name,
-      required final String father_middle_name,
+      final String? father_middle_name,
       required final String father_last_name,
-      required final String father_ward_id,
       required final String father_street_name,
       required final String father_tole,
       required final String father_house_no,
@@ -1573,7 +1609,7 @@ abstract class _Birth implements Birth {
       required final String father_religion,
       required final String father_mothertongue,
       required final String mother_first_name,
-      required final String mother_middle_name,
+      final String? mother_middle_name,
       required final String mother_last_name,
       required final int mother_ward_id,
       required final String mother_street_name,
@@ -1600,15 +1636,17 @@ abstract class _Birth implements Birth {
       required final String witness_street_name,
       required final String witness_tole,
       required final String witness_house_no,
+      required final String married_registration_no,
       required final String witness_birth_country,
       required final String witness_citizenship_country,
       required final String witness_citizenship_no,
       required final String witness_citizenship_date,
+      required final String created_at,
       required final String qr_code,
-      required final Ward office_ward,
       required final Ward ward,
       required final Ward father_ward,
-      required final Ward mother_ward}) = _$_Birth;
+      required final Ward mother_ward,
+      required final Ward office_ward}) = _$_Birth;
 
   factory _Birth.fromJson(Map<String, dynamic> json) = _$_Birth.fromJson;
 
@@ -1616,6 +1654,10 @@ abstract class _Birth implements Birth {
   int get id;
   @override
   int get office_ward_id;
+  @override
+  int get father_ward_id;
+  @override
+  int get ward_id;
   @override
   String get name_np;
   @override
@@ -1637,9 +1679,7 @@ abstract class _Birth implements Birth {
   @override
   bool get is_disable;
   @override
-  String get details_disability;
-  @override
-  String get ward_id;
+  String? get details_disability;
   @override
   String get foreign_address_np;
   @override
@@ -1647,17 +1687,15 @@ abstract class _Birth implements Birth {
   @override
   String get grandfather_first_name;
   @override
-  String get grandfather_middle_name;
+  String? get grandfather_middle_name;
   @override
   String get grandfather_last_name;
   @override
   String get father_first_name;
   @override
-  String get father_middle_name;
+  String? get father_middle_name;
   @override
   String get father_last_name;
-  @override
-  String get father_ward_id;
   @override
   String get father_street_name;
   @override
@@ -1689,7 +1727,7 @@ abstract class _Birth implements Birth {
   @override
   String get mother_first_name;
   @override
-  String get mother_middle_name;
+  String? get mother_middle_name;
   @override
   String get mother_last_name;
   @override
@@ -1743,6 +1781,8 @@ abstract class _Birth implements Birth {
   @override
   String get witness_house_no;
   @override
+  String get married_registration_no;
+  @override
   String get witness_birth_country;
   @override
   String get witness_citizenship_country;
@@ -1751,15 +1791,17 @@ abstract class _Birth implements Birth {
   @override
   String get witness_citizenship_date;
   @override
-  String get qr_code;
+  String get created_at;
   @override
-  Ward get office_ward;
+  String get qr_code;
   @override
   Ward get ward;
   @override
   Ward get father_ward;
   @override
   Ward get mother_ward;
+  @override
+  Ward get office_ward;
   @override
   @JsonKey(ignore: true)
   _$$_BirthCopyWith<_$_Birth> get copyWith =>

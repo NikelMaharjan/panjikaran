@@ -15,7 +15,6 @@ import 'package:model/models/location.dart';
 import 'package:model/provider/test.dart';
 import 'package:model/provider/crud_provider.dart';
 import 'package:model/provider/validate_provider.dart';
-import 'package:model/views/birth/father_detail_page.dart';
 import 'package:model/views/death/death_office_location_page.dart';
 import 'package:model/views/divorce/court_detail_page.dart';
 import 'package:model/views/divorce/location_detail_page.dart';
@@ -213,7 +212,9 @@ class _CompleteFormState extends ConsumerState<WitnessDetailPage> {
                       final formData = _formKey1.currentState!.value;
                       final newData = Map.of(formData);
 
-                      newData.update("witness_photo", (value) => newData['witness_photo'][0]);
+
+
+                      newData.update('witness_photo', (value) => newData['witness_photo'][0]);
 
 
                       widget.fields.addAll(newData);
