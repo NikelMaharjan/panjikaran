@@ -22,8 +22,8 @@ class BirthDetailPage extends StatelessWidget {
         children: [
 
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Text("Personal Details", style: TextStyle(fontSize: 20, letterSpacing: 2),),
+            padding: const EdgeInsets.all(20),
+            child: Text("Personal Details", style: TextStyle(fontSize: 20, letterSpacing: 2, fontWeight: FontWeight.bold),),
           ),
 
 
@@ -33,7 +33,7 @@ class BirthDetailPage extends StatelessWidget {
               DataColumn(
                 label: Text(
                   'Name (EN)',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(),
                 ),
               ),
               DataColumn(
@@ -159,8 +159,8 @@ class BirthDetailPage extends StatelessWidget {
 
           
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-            child: Text("Father Details", style: TextStyle(fontSize: 20, letterSpacing: 2),),
+            padding: const EdgeInsets.all(20),
+            child: Text("Father Details", style: TextStyle(fontSize: 20, letterSpacing: 2, fontWeight: FontWeight.bold),),
           ),
 
           DataTable(
@@ -169,7 +169,7 @@ class BirthDetailPage extends StatelessWidget {
               DataColumn(
                 label: Text(
                   'First Name',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(),
                 ),
               ),
               DataColumn(
@@ -293,8 +293,8 @@ class BirthDetailPage extends StatelessWidget {
           ),
 
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-            child: Text("Mother Details", style: TextStyle(fontSize: 20, letterSpacing: 2),),
+            padding: const EdgeInsets.all(20),
+            child: Text("Mother Details", style: TextStyle(fontSize: 20, letterSpacing: 2, fontWeight: FontWeight.bold),),
           ),
 
           DataTable(
@@ -303,7 +303,7 @@ class BirthDetailPage extends StatelessWidget {
               DataColumn(
                 label: Text(
                   'First Name',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(),
                 ),
               ),
               DataColumn(
@@ -440,8 +440,8 @@ class BirthDetailPage extends StatelessWidget {
 
 
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-            child: Text("Witness Details", style: TextStyle(fontSize: 20, letterSpacing: 2),),
+            padding: const EdgeInsets.all(20),
+            child: Text("Witness Details", style: TextStyle(fontSize: 20, letterSpacing: 2, fontWeight: FontWeight.bold),),
           ),
 
           DataTable(
@@ -450,7 +450,7 @@ class BirthDetailPage extends StatelessWidget {
               DataColumn(
                 label: Text(
                   'Name (EN)',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(),
                 ),
               ),
               DataColumn(
@@ -530,7 +530,7 @@ class BirthDetailPage extends StatelessWidget {
   DataRow _buildDataRow({required String title, required String description}) {
     return DataRow(
               cells: [
-                DataCell(Text(title, style: TextStyle(fontWeight: FontWeight.bold),)),
+                DataCell(Text(title, style: TextStyle(),)),
                 DataCell(Container(child: Text(description))),
               ],
             );

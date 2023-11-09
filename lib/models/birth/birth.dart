@@ -16,7 +16,6 @@ class Birth with _$Birth {
     required int office_ward_id,
     required int father_ward_id,
     required int ward_id,
-
     required String name_np,
     required String name_en,
     required String birth_date_np,

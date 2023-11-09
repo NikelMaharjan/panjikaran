@@ -19,7 +19,6 @@ class AuthService {
     // logDev.log(token!);
 
 
-    await Future.delayed(Duration(seconds: 3));
 
 
 

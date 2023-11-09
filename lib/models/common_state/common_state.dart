@@ -3,6 +3,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:model/models/birth/birth.dart';
 import 'package:model/models/death/death.dart';
+import 'package:model/models/divorce/divorce.dart';
+import 'package:model/models/marriage/marriage.dart';
 import 'package:model/models/otp.dart';
 import 'package:model/models/user.dart';
 
@@ -19,8 +21,11 @@ class CommonState with _$CommonState{
     Map? data,
     User? user,
     Otp? otp,
+        String? token,
         List<Birth>? birth,
         List<Death>? death,
+        List<Divorce>? divorce,
+        List<Marriage>? marriage
 
   }) =_CommonState;
 

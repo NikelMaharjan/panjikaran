@@ -9,13 +9,15 @@ import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:model/models/birth/birth.dart';
 import 'package:model/models/death/death.dart';
+import 'package:model/models/divorce/divorce.dart';
+import 'package:model/models/marriage/marriage.dart';
 import 'package:model/widgets/text_form_field.dart';
 
 
 class DartaService {
 
 
-  static Future<Either<String, bool>> postBirth({required Map data}) async {
+  static Future<Either<String, bool>> postBirth({required Map data, required String token}) async {
 
 
     final dio = Dio();
@@ -28,7 +30,7 @@ class DartaService {
           options: Options(
               headers: {
                 'Accept': 'application/json',
-                 'Authorization' : 'Token 67a7b4b2da4fd5859d0a6c0fe7fc3b2b8b932b79'
+                 'Authorization' : 'Token $token'
               }
           )
       );
@@ -43,7 +45,7 @@ class DartaService {
   }
 
 
-  static Future<Either<String, List<Birth>>> showBirth() async {
+  static Future<Either<String, List<Birth>>> showBirth({required String token}) async {
     final dio = Dio();
 
 
@@ -53,7 +55,7 @@ class DartaService {
           options: Options(
               headers: {
                 'Accept': 'application/json',
-                'Authorization' : 'Token 67a7b4b2da4fd5859d0a6c0fe7fc3b2b8b932b79'
+                'Authorization' : 'Token $token'
               }
           )
       );
@@ -69,8 +71,111 @@ class DartaService {
     }
   }
 
+  static Future<Either<String, bool>> deleteBirth({required String token, required int id}) async {
+    final dio = Dio();
 
-  static Future<Either<String, List<Death>>> showDeath() async {
+
+
+    try {
+      final response = await dio.delete("https://panjikaran.digitalpalika.org/api/v1/birth-notices/$id/",
+          options: Options(
+              headers: {
+                'Accept': 'application/json',
+                'Authorization' : 'Token $token'
+              }
+          )
+      );
+
+
+      return Right(true);
+
+
+    } on DioException catch (err) {
+      print(err.response.toString());
+      return Left(err.response.toString());
+    }
+  }
+
+  static Future<Either<String, bool>> deleteDeath({required String token, required int id}) async {
+    final dio = Dio();
+
+
+
+    try {
+      final response = await dio.delete("https://panjikaran.digitalpalika.org/api/v1/death-notices/$id/",
+          options: Options(
+              headers: {
+                'Accept': 'application/json',
+                'Authorization' : 'Token $token'
+              }
+          )
+      );
+
+
+      return Right(true);
+
+
+    } on DioException catch (err) {
+      print(err.response.toString());
+      return Left(err.response.toString());
+    }
+  }
+
+
+  static Future<Either<String, bool>> deleteDivorce({required String token, required int id}) async {
+    final dio = Dio();
+
+
+
+    try {
+      final response = await dio.delete("https://panjikaran.digitalpalika.org/api/v1/divorce-notices/$id/",
+          options: Options(
+              headers: {
+                'Accept': 'application/json',
+                'Authorization' : 'Token $token'
+              }
+          )
+      );
+
+
+      return Right(true);
+
+
+    } on DioException catch (err) {
+      print(err.response.toString());
+      return Left(err.response.toString());
+    }
+  }
+  static Future<Either<String, bool>> deleteMarriage({required String token, required int id}) async {
+    final dio = Dio();
+
+
+
+    try {
+      final response = await dio.delete("https://panjikaran.digitalpalika.org/api/v1/marriage-notices/$id/",
+          options: Options(
+              headers: {
+                'Accept': 'application/json',
+                'Authorization' : 'Token $token'
+              }
+          )
+      );
+
+
+      return Right(true);
+
+
+    } on DioException catch (err) {
+      print(err.response.toString());
+      return Left(err.response.toString());
+    }
+  }
+
+
+
+
+
+  static Future<Either<String, List<Death>>> showDeath({required String token}) async {
     final dio = Dio();
 
 
@@ -80,12 +185,64 @@ class DartaService {
           options: Options(
               headers: {
                 'Accept': 'application/json',
-                'Authorization' : 'Token 67a7b4b2da4fd5859d0a6c0fe7fc3b2b8b932b79'
+                'Authorization' : 'Token $token'
               }
           )
       );
 
       final data = (response.data['results'] as List).map((e) => Death.fromJson(e)).toList();
+
+      return Right(data);
+
+
+    } on DioException catch (err) {
+      print(err.response.toString());
+      return Left(err.response.toString());
+    }
+  }
+
+  static Future<Either<String, List<Divorce>>> showDivorce({required String token}) async {
+    final dio = Dio();
+
+
+
+    try {
+      final response = await dio.get("https://panjikaran.digitalpalika.org/api/v1/divorce-notices/",
+          options: Options(
+              headers: {
+                'Accept': 'application/json',
+                'Authorization' : 'Token $token'
+              }
+          )
+      );
+
+      final data = (response.data['results'] as List).map((e) => Divorce.fromJson(e)).toList();
+
+      return Right(data);
+
+
+    } on DioException catch (err) {
+      print(err.response.toString());
+      return Left(err.response.toString());
+    }
+  }
+
+  static Future<Either<String, List<Marriage>>> showMarriage({required String token}) async {
+    final dio = Dio();
+
+
+
+    try {
+      final response = await dio.get("https://panjikaran.digitalpalika.org/api/v1/marriage-notices/",
+          options: Options(
+              headers: {
+                'Accept': 'application/json',
+                'Authorization' : 'Token $token'
+              }
+          )
+      );
+
+      final data = (response.data['results'] as List).map((e) => Marriage.fromJson(e)).toList();
 
       return Right(data);
 
@@ -106,7 +263,9 @@ class DartaService {
 
 
 
-  static Future<Either<String, bool>> postDeath({required Map data}) async {
+
+
+  static Future<Either<String, bool>> postDeath({required Map data, required String token}) async {
     final dio = Dio();
 
 
@@ -116,7 +275,7 @@ class DartaService {
           options: Options(
               headers: {
                 'Accept': 'application/json',
-                'Authorization' : 'Token 67a7b4b2da4fd5859d0a6c0fe7fc3b2b8b932b79'
+                'Authorization' : 'Token $token'
               }
           )
       );
@@ -130,7 +289,7 @@ class DartaService {
     }
   }
 
-  static Future<Either<String, bool>>  postDivorce ({required Map data})async {
+  static Future<Either<String, bool>>  postDivorce ({required Map data, required String token})async {
 
 
 
@@ -150,7 +309,7 @@ class DartaService {
       final response = await dio.post("https://panjikaran.digitalpalika.org/api/v1/divorce-notices/", data: formData, options: Options(
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Token 67a7b4b2da4fd5859d0a6c0fe7fc3b2b8b932b79'
+            'Authorization' : 'Token $token'
           }
       ));
       print(response);
@@ -162,7 +321,7 @@ class DartaService {
   }
 
 
-  static Future<Either<String, bool>>  postMarriage ({required Map<String, dynamic> data})async {
+  static Future<Either<String, bool>>  postMarriage ({required Map<String, dynamic> data, required String token})async {
 
     final dio = Dio();
 
@@ -182,7 +341,7 @@ class DartaService {
       final response = await dio.post("https://panjikaran.digitalpalika.org/api/v1/marriage-notices/", data: formData, options: Options(
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Token 67a7b4b2da4fd5859d0a6c0fe7fc3b2b8b932b79'
+            'Authorization' : 'Token $token'
           }
       ));
       print(response);

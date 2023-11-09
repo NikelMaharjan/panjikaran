@@ -1,5 +1,6 @@
 
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,7 +11,9 @@ import 'package:model/views/death/death_registration_page.dart';
 import 'package:model/views/death/show_death.dart';
 import 'package:model/views/divorce/court_detail_page.dart';
 import 'package:model/views/divorce/husband_detail_page.dart';
+import 'package:model/views/divorce/show_divorce.dart';
 import 'package:model/views/marriage/groom_detail_page.dart';
+import 'package:model/views/marriage/show_marriage.dart';
 
 import '../constants/sizes.dart';
 import 'package:get/get.dart';
@@ -120,49 +123,60 @@ class DartaMainPage extends ConsumerWidget {
         return AlertDialog(
           shape: RoundedRectangleBorder(borderRadius:
           BorderRadius.all(Radius.circular(10))),
-          content: Text(''),
-          actions: [
+          content:   Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
 
-            TextButton(
-              child: const Text('View'),
-              onPressed: () {
-
-
-                Navigator.of(context).pop();
-
-                if(index == 0){
-                  ref.read(crudProvider.notifier).showBirth();
-                  Get.to(() => ShowBirthPage(), transition: Transition.leftToRight);
-                }
-
-                if(index == 1){
-                  ref.read(crudProvider.notifier).showDeath();
-                  Get.to(() => ShowDeathPage(), transition: Transition.leftToRight);
-                }
+              gapH24,
 
 
 
+              ElevatedButton(
+                child: const Text('View'),
+                onPressed: () {
 
 
-              },
-            ),
-            TextButton(
-              child: const Text('Add'),
-              onPressed: () {
+                  Navigator.of(context).pop();
 
-                Navigator.of(context).pop();
+                  if(index == 0){
+                    ref.read(crudProvider.notifier).showBirth();
+                    Get.to(() => ShowBirthPage(), transition: Transition.leftToRight);
+                  }
 
+                  if(index == 1){
+                    ref.read(crudProvider.notifier).showDeath();
+                    Get.to(() => ShowDeathPage(), transition: Transition.leftToRight);
+                  }
 
-              index == 0 ?  Get.to(() => BirthBibaran(), transition: Transition.leftToRight)
-                  :  index == 1 ?  Get.to(() => DeathRegistrationPage(), transition: Transition.leftToRight)
-                  : index == 2 ?   Get.to(() => CourtDetailPage(), transition: Transition.leftToRight)
-                  :    Get.to(() => GroomDetailPage(), transition: Transition.leftToRight);
+                  if(index == 2){
+                    ref.read(crudProvider.notifier).showDivorce();
+                    Get.to(() => ShowDivorcePage(), transition: Transition.leftToRight);
+                  }
+
+                  if(index == 3){
+                    ref.read(crudProvider.notifier).showMarriage();
+                    Get.to(() => ShowMarriagePage(), transition: Transition.leftToRight);
+                  }
 
 
 
 
 
 
+                },
+              ),
+              ElevatedButton(
+                child: const Text('Add'),
+                onPressed: () {
+
+                  Navigator.of(context).pop();
+
+
+                  index == 0 ?  Get.to(() => BirthBibaran(), transition: Transition.leftToRight)
+                      :  index == 1 ?  Get.to(() => DeathRegistrationPage(), transition: Transition.leftToRight)
+                      : index == 2 ?   Get.to(() => CourtDetailPage(), transition: Transition.leftToRight)
+                      :    Get.to(() => GroomDetailPage(), transition: Transition.leftToRight);
 
 
 
@@ -170,9 +184,19 @@ class DartaMainPage extends ConsumerWidget {
 
 
 
-              },
-            ),
-          ],
+
+
+
+
+
+
+                },
+              ),
+            ],
+          ),
+          actions: [],
+
+
         );
       },
     );

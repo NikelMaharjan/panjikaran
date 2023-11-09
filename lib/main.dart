@@ -11,7 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:model/count.dart';
-import 'package:model/home_page.dart';
+import 'package:model/auth_page.dart';
 import 'package:model/models/user.dart';
 import 'package:model/status_page.dart';
 
@@ -86,7 +86,7 @@ class Main extends StatelessWidget {
         return GetMaterialApp(
             theme: ThemeData(
                 useMaterial3: true,
-                fontFamily: 'Poppins',
+                fontFamily: 'Raleway',
                 elevatedButtonTheme: ElevatedButtonThemeData(
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.black,
